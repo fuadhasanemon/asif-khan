@@ -67,4 +67,42 @@
       display: inline;
     }
   }
+
+  /* Standalone pages (/publications): less top padding than a home section. */
+  .section.page-top {
+    padding-top: 72px;
+  }
+
+  /* Cite box actions: copy + .bib download side by side. */
+  .cite-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: center;
+  }
+  .cite-dl {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: underline;
+  }
+  .dt-abstract {
+    margin: 0;
+    max-width: 760px;
+    font-size: 17px;
+    line-height: 1.72;
+  }
+  .bib-all {
+    margin: 32px 0 0;
+    font-size: 15px;
+  }
+  .bib-all a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  @media (max-width: 760px) {
+    .section.page-top {
+      padding-top: 40px;
+    }
+  }
 }

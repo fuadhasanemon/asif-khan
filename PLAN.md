@@ -67,6 +67,28 @@ Status: **approved 2026-11-19; step 1 done.**
   1. **Chicago, sole author:** the prototype printed "Khan, M. A.. 2027." with a double period. Fixed. This is the only difference the parity test allows.
   2. **BibTeX keys:** the prototype gives p5 (proceedings) and p9 (presentation) the same key, `chowdhury2025flood`, which breaks a combined `.bib`. Keys are now unique across the list, so later duplicates get `b`, `c`…; p9 becomes `chowdhury2025floodb`. All other keys are unchanged.
 
+### Step 4: publication pages
+- **Detail pages:** `/publications/[slug]` prerenders all 18 pages from the JSON slugs. Each page has:
+  - breadcrumb, tags, title, authors (with `Khan, M. A.` highlighted), venue, and the actions (Read at the publisher, Copy citation, Copy link)
+  - At a glance with the computed authorship, and the abstract placeholder
+  - Where it fits, with deep links to `/#research?thread=…` (wired in step 5)
+  - Cite this work (APA 7 / Chicago / BibTeX switcher, copy, `.bib` download), related work, and previous/next
+- **Breadcrumb target:** "Publications" links to `/publications` (the URL parent) instead of the home anchor the prototype used. It looks the same.
+- **`.bib` downloads:**
+  - Each paper has one at `/publications/<slug>/bib` (filename = BibTeX key), linked as "Download .bib" next to "Copy citation" in the cite box.
+  - All papers come as one file at `/publications.bib`, linked as "Download all as BibTeX (.bib)" under the list on `/publications`.
+  - Both are prerendered.
+- **Metadata:**
+  - The title template is "Title · Md. Asif Khan".
+  - Descriptions come from content (the abstract when present, otherwise kind, year and venue).
+  - Each page has a canonical URL and Open Graph `article` data.
+  - Journal articles and conference papers also carry Google Scholar's `citation_*` meta tags. Presentations and manuscripts don't.
+- **JSON-LD:**
+  - Each paper gets a `ScholarlyArticle`: the authors (my entry linked to the home page `Person` and to ORCID), DOI, publisher, the journal/volume/issue chain, the proceedings, or a `PublicationEvent` for talks, and the status for manuscripts.
+  - The home page gets a `Person` with alumniOf, the address from `contact.location`, and sameAs (non-TODO profiles only).
+- **Real 404 for unknown slugs:** under Cache Components, `notFound()` on an unlisted param sends status 200 plus `noindex` (the shell has already streamed). `src/proxy.ts` runs only on `/publications/:slug` and `/publications/:slug/bib` and rewrites unknown slugs to a 404. Known slugs pass through untouched.
+- **`/publications` page:** the same explorer as the home section, with an `h1` page title and `h2` rows.
+
 ---
 
 (Original plan below, as approved.)
