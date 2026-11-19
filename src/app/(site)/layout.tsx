@@ -1,3 +1,4 @@
+import { BackToTop } from "@/components/site/BackToTop"
 import { SiteHeader } from "@/components/site/SiteHeader"
 import { Contact } from "@/components/sections/Contact"
 
@@ -12,6 +13,7 @@ export default function SiteLayout({ children }: LayoutProps<"/">) {
         {children}
       </main>
       <Contact />
+      <BackToTop />
     </>
   )
 }

@@ -2,7 +2,8 @@ import { inlineText } from "@/lib/inline-text"
 import { publicationById, research, sections } from "@/lib/content"
 import type { ThreadIdT } from "@/lib/schemas"
 
-import { ResearchExplorerView, type ResearchStage } from "./ResearchExplorer"
+import type { ResearchStage } from "./ResearchExplorer"
+import { ResearchExplorer } from "./ResearchExplorerClient"
 import { SectionHead } from "./SectionHead"
 
 /** Stage data with publication links resolved to detail-page URLs. */
@@ -26,7 +27,7 @@ export function Research() {
     <section id="research" className="section" aria-labelledby="research-h">
       <div className="wrap">
         <SectionHead id="research" title={r.title} intro={r.intro} />
-        <ResearchExplorerView threads={research.threads} stages={researchStages()} active="count" />
+        <ResearchExplorer threads={research.threads} stages={researchStages()} initial="count" />
         <div className="earlier" data-reveal="">
           <h3>{r.earlier.heading}</h3>
           <p>{inlineText(r.earlier.body)}</p>

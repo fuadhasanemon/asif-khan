@@ -3,7 +3,7 @@ import { publications, sections } from "@/lib/content"
 import { searchText } from "@/lib/publication"
 import type { Segment } from "@/components/viz/CompositionBar"
 
-import { PublicationExplorerView } from "./PublicationExplorer"
+import { PublicationExplorer } from "./PublicationExplorerClient"
 import type { PublicationListItem } from "./PublicationList"
 import { SectionHead } from "./SectionHead"
 
@@ -41,12 +41,11 @@ export function Publications() {
     <section id="publications" className="section" aria-labelledby="publications-h">
       <div className="wrap">
         <SectionHead id="publications" title={s.title} intro={s.intro} />
-        <PublicationExplorerView
+        <PublicationExplorer
           items={publicationListItems()}
           segments={publicationSegments()}
           labels={{ searchLabel: s.searchLabel, searchPlaceholder: s.searchPlaceholder }}
-          filter="all"
-          query=""
+          urlMode="hash"
         />
       </div>
     </section>

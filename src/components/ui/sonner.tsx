@@ -1,46 +1,30 @@
 "use client"
 
-import { useTheme } from "next-themes"
 import { Toaster as Sonner, type ToasterProps } from "sonner"
-import { CircleCheckIcon, InfoIcon, TriangleAlertIcon, OctagonXIcon, Loader2Icon } from "lucide-react"
 
-const Toaster = ({ ...props }: ToasterProps) => {
-  const { theme = "system" } = useTheme()
+const Check = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+    <path d="M3 8.5l3.2 3L13 4.5" />
+  </svg>
+)
 
+/**
+ * Sonner, restyled to the site: Ledger toast, Paper text, brass check, square
+ * corners, Public Sans. Bottom-centre so it never covers the back-to-top button.
+ * Styles live in shell.css (`.toast`).
+ */
+function Toaster(props: ToasterProps) {
   return (
     <Sonner
-      theme={theme as ToasterProps["theme"]}
-      className="toaster group"
-      icons={{
-        success: (
-          <CircleCheckIcon className="size-4" />
-        ),
-        info: (
-          <InfoIcon className="size-4" />
-        ),
-        warning: (
-          <TriangleAlertIcon className="size-4" />
-        ),
-        error: (
-          <OctagonXIcon className="size-4" />
-        ),
-        loading: (
-          <Loader2Icon className="size-4 animate-spin" />
-        ),
-      }}
-      style={
-        {
-          "--normal-bg": "var(--popover)",
-          "--normal-text": "var(--popover-foreground)",
-          "--normal-border": "var(--border)",
-          "--border-radius": "var(--radius)",
-        } as React.CSSProperties
-      }
-      toastOptions={{
-        classNames: {
-          toast: "cn-toast",
-        },
-      }}
+      position="bottom-center"
+      duration={2400}
+      visibleToasts={2}
+      gap={8}
+      offset={24}
+      mobileOffset={16}
+      icons={{ success: <Check /> }}
+      toastOptions={{ unstyled: true, classNames: { toast: "toast", icon: "toast-icon", title: "toast-title" } }}
+      containerAriaLabel="Notifications"
       {...props}
     />
   )

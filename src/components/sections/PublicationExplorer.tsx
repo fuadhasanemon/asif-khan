@@ -1,3 +1,5 @@
+import type { Ref } from "react"
+
 import type { PubTypeT } from "@/lib/schemas"
 import { CompositionBar, type Segment } from "@/components/viz/CompositionBar"
 
@@ -15,6 +17,7 @@ type Props = {
   onQuery?: (q: string) => void
   onReset?: () => void
   headingLevel?: 2 | 3
+  searchRef?: Ref<HTMLInputElement>
 }
 
 export function filterItems(items: PublicationListItem[], filter: PubTypeT | "all", query: string) {
@@ -26,7 +29,18 @@ export function filterItems(items: PublicationListItem[], filter: PubTypeT | "al
  * Publication explorer (prototype `#publications` tools + list), stateless.
  * The same view serves the home section and the /publications page.
  */
-export function PublicationExplorerView({ items, segments, labels, filter, query, onPick, onQuery, onReset, headingLevel }: Props) {
+export function PublicationExplorerView({
+  items,
+  segments,
+  labels,
+  filter,
+  query,
+  onPick,
+  onQuery,
+  onReset,
+  headingLevel,
+  searchRef,
+}: Props) {
   const visible = filterItems(items, filter, query)
   const canReset = filter !== "all" || query.trim() !== ""
   return (
@@ -51,6 +65,7 @@ export function PublicationExplorerView({ items, segments, labels, filter, query
           </label>
           <input
             id="pub-q"
+            ref={searchRef}
             type="search"
             placeholder={labels.searchPlaceholder}
             autoComplete="off"

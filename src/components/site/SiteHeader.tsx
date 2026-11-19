@@ -2,10 +2,11 @@ import Link from "next/link"
 import { sections, site } from "@/lib/content"
 
 import { MobileMenu } from "./MobileMenu"
+import { NavLinks } from "./NavLinks"
 
 /**
- * Sticky Ledger bar (prototype `.nav`). Scroll spy, `aria-current` and the
- * reading-progress scrub are wired in the interaction and motion steps.
+ * Sticky Ledger bar (prototype `.nav`). Scroll spy lives in NavLinks;
+ * the reading-progress scrub is wired in the motion step.
  */
 export function SiteHeader() {
   const nav = sections.nav.map((n) => ({ href: `/#${n.id}`, label: n.label, id: n.id }))
@@ -16,13 +17,7 @@ export function SiteHeader() {
         <Link href="/#top" className="brand">
           {site.name}
         </Link>
-        <nav aria-label="Sections" className="navlinks">
-          {nav.map((n) => (
-            <Link key={n.id} href={n.href} data-nav-id={n.id}>
-              {n.label}
-            </Link>
-          ))}
-        </nav>
+        <NavLinks items={nav} />
         <a className="btn btn-outline-light nav-cv" href={site.contact.cvPath}>
           Download CV
         </a>

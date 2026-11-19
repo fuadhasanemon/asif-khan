@@ -1,6 +1,9 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import { toast } from "sonner"
+
+import { copyText } from "@/lib/clipboard"
 
 type Props = {
   text: string
@@ -13,9 +16,11 @@ type Props = {
 }
 
 /**
- * Copy-to-clipboard button with the prototype's inline states:
- * "Copy email" → "Email copied", or a fallback hint when the clipboard is blocked.
- * Sonner toasts are layered on in the interaction step.
+ * Copy-to-clipboard button.
+ * - Success: a Sonner toast (announced politely) plus the prototype's inline
+ *   label change ("Citation copied").
+ * - Clipboard blocked: the inline fallback label ("Copy blocked; select the
+ *   text"), announced through a status region.
  */
 export function CopyButton({ text, label, doneLabel, failLabel, className, doneClassName }: Props) {
   const [state, setState] = useState<"idle" | "done" | "fail">("idle")
@@ -24,18 +29,11 @@ export function CopyButton({ text, label, doneLabel, failLabel, className, doneC
   useEffect(() => () => clearTimeout(timer.current), [])
 
   async function copy() {
-    let ok = false
-    try {
-      if (navigator.clipboard?.writeText) {
-        await navigator.clipboard.writeText(text)
-        ok = true
-      }
-    } catch {
-      ok = false
-    }
+    const ok = await copyText(text)
     setState(ok ? "done" : "fail")
+    if (ok) toast.success(doneLabel)
     clearTimeout(timer.current)
-    timer.current = setTimeout(() => setState("idle"), 2200)
+    timer.current = setTimeout(() => setState("idle"), ok ? 2200 : 4000)
   }
 
   return (
@@ -44,7 +42,10 @@ export function CopyButton({ text, label, doneLabel, failLabel, className, doneC
       className={[className, state === "done" ? doneClassName : null].filter(Boolean).join(" ") || undefined}
       onClick={copy}
     >
-      <span aria-live="polite">{state === "done" ? doneLabel : state === "fail" ? failLabel : label}</span>
+      {state === "done" ? doneLabel : state === "fail" ? failLabel : label}
+      <span className="sr" role="status">
+        {state === "fail" ? failLabel : ""}
+      </span>
     </button>
   )
 }

@@ -4,6 +4,8 @@ import Link from "next/link"
 import { useState } from "react"
 import { Dialog as SheetPrimitive } from "radix-ui"
 
+import { useActiveSection } from "@/hooks/useActiveSection"
+
 type Item = { id: string; href: string; label: string }
 
 const MenuIcon = () => (
@@ -26,6 +28,7 @@ const CloseIcon = () => (
  */
 export function MobileMenu({ brand, items, cvPath }: { brand: string; items: Item[]; cvPath: string }) {
   const [open, setOpen] = useState(false)
+  const active = useActiveSection()
   const close = () => setOpen(false)
 
   return (
@@ -47,7 +50,13 @@ export function MobileMenu({ brand, items, cvPath }: { brand: string; items: Ite
           </div>
           <nav className="mobile-menu" aria-label="Sections">
             {items.map((n) => (
-              <Link key={n.id} href={n.href} data-nav-id={n.id} onClick={close}>
+              <Link
+                key={n.id}
+                href={n.href}
+                onClick={close}
+                className={n.id === active ? "is-active" : undefined}
+                aria-current={n.id === active ? "true" : undefined}
+              >
                 {n.label}
               </Link>
             ))}

@@ -1,5 +1,5 @@
 import { methods, sections, site } from "@/lib/content"
-import { MethodsMatrixView } from "@/components/viz/MethodsMatrix"
+import { MethodsMatrix } from "@/components/viz/MethodsMatrixClient"
 
 import { SectionHead } from "./SectionHead"
 
@@ -13,13 +13,7 @@ export function Methods() {
     <section id="skills" className="section" aria-labelledby="skills-h">
       <div className="wrap">
         <SectionHead id="skills" title={s.title} intro={s.intro} />
-        <MethodsMatrixView
-          data={methods}
-          caption={s.matrixCaption}
-          panelKicker={s.panelKicker}
-          selected={DEFAULT_METHOD}
-          hotCol={null}
-        />
+        <MethodsMatrix data={methods} caption={s.matrixCaption} panelKicker={s.panelKicker} initial={DEFAULT_METHOD} />
         <div className="tool-grid">
           <div>
             <h3 className="small-h">{s.softwareHeading}</h3>

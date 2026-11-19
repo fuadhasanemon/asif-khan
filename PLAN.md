@@ -89,6 +89,19 @@ Status: **approved 2026-11-19; step 1 done.**
 - **Real 404 for unknown slugs:** under Cache Components, `notFound()` on an unlisted param sends status 200 plus `noindex` (the shell has already streamed). `src/proxy.ts` runs only on `/publications/:slug` and `/publications/:slug/bib` and rewrites unknown slugs to a 404. Known slugs pass through untouched.
 - **`/publications` page:** the same explorer as the home section, with an `h1` page title and `h2` rows.
 
+### Step 5: interactions
+- **Research explorer:** the thread buttons set state and write `#research?thread=<id>` (replaceState, no scroll). `useHashParams` applies the fragment on load, on `hashchange`, and when arriving from another page (e.g. "Explore this research line"), then scrolls to the section. That last step is needed because a fragment with a query no longer matches an element id.
+- **Experience:** chart bars and timeline rows share `open` and `hot`. A bar selects its role, a row toggles it, and hover/focus highlights both.
+- **Methods:** row selection (`aria-pressed`) drives the `aria-live` panel, and hovering a column highlights it.
+- **Publications:**
+  - The composition bar toggles a type filter. Search matches title, coauthors and venue, and the live count reads "Showing n of 18". The empty state and "Show all" are in place.
+  - State is mirrored to `/#publications?type=…&q=…` on home and to `/publications?type=…&q=…` on the index page, where back/forward is also handled.
+  - After a reset, focus moves to the search box, because the button that had focus disappears.
+- **Scroll spy:** an IntersectionObserver band (`-45% 0 -50% 0`) sets `aria-current` and `.is-active` on both the desktop and mobile links. Recognition maps to Publications, as do `/publications/*` pages. The current id clears when its section leaves the band, which fixed Contact sticking after a route change (found by e2e).
+- **Copy actions:** the clipboard API is tried first, then the legacy `execCommand`. Success shows a Sonner toast plus the prototype's inline label. When copying is blocked, the inline fallback label is announced via `role="status"`. Sonner is restyled (Ledger, brass check, bottom-centre, so it never covers Back to top), and `next-themes` was removed.
+- **Back to top:** appears after `scrollY > 720`. It scrolls to the top (instantly under reduced motion) and moves focus to `<main>`.
+- **Playwright** (`pnpm test:e2e`, against the production build): 19 tests at desktop 1440 and mobile 390. They cover the home sections, research threads and deep links, the chart↔timeline link, the methods panel, publication filter/search/empty state/deep links, `/publications` query state, copy citation (clipboard contents + toast), the blocked-clipboard fallback, the detail page (citation styles, link back into research), nav state after navigation, the 404 for unknown slugs, the mobile Sheet (focus trap, Esc, close on navigation), horizontal-scroll regions with no page overflow, and Back to top focus.
+
 ---
 
 (Original plan below, as approved.)

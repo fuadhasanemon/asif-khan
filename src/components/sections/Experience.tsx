@@ -1,6 +1,6 @@
 import { experience, sections, site } from "@/lib/content"
 
-import { ExperienceView } from "./ExperienceView"
+import { ExperienceExplorer } from "./ExperienceClient"
 import { SectionHead } from "./SectionHead"
 
 /** Role open by default, as in the prototype (Teaching Support Assistant). */
@@ -31,7 +31,7 @@ export function Experience() {
     <section id="experience" className="section" aria-labelledby="experience-h">
       <div className="wrap">
         <SectionHead id="experience" title={s.title} intro={s.intro} />
-        <ExperienceView roles={experience} open={DEFAULT_ROLE} hot={null} aside={<EducationAside />} />
+        <ExperienceExplorer roles={experience} initialOpen={DEFAULT_ROLE} aside={<EducationAside />} />
       </div>
     </section>
   )
