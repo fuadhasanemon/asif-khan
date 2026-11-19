@@ -1,14 +1,22 @@
-import { site } from "@/lib/content"
+import { About } from "@/components/sections/About"
+import { Experience } from "@/components/sections/Experience"
+import { Hero } from "@/components/sections/Hero"
+import { Methods } from "@/components/sections/Methods"
+import { Publications } from "@/components/sections/Publications"
+import { Recognition } from "@/components/sections/Recognition"
+import { Research } from "@/components/sections/Research"
 
-/** Step 1 shell. Sections land in step 3. */
+/** Home: every section in prototype order. Contact and the footer come from the (site) layout. */
 export default function HomePage() {
   return (
-    <section id="top" className="hero on-ledger">
-      <div className="wrap hero-inner">
-        <p className="hero-kicker">{site.role}</p>
-        <h1 className="hero-name">{site.name}</h1>
-        <p className="hero-statement">{site.heroStatement}</p>
-      </div>
-    </section>
+    <>
+      <Hero />
+      <About />
+      <Research />
+      <Experience />
+      <Methods />
+      <Publications />
+      <Recognition />
+    </>
   )
 }

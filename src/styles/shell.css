@@ -54,4 +54,17 @@
     top: 12px;
     outline-color: var(--color-ledger);
   }
+
+  /* Research diagrams: continuous loops vs their still stand-ins (no JS needed). */
+  .still-only {
+    display: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .loop-only {
+      display: none;
+    }
+    .still-only {
+      display: inline;
+    }
+  }
 }

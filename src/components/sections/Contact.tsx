@@ -10,8 +10,11 @@ export function Contact() {
   const labels = sections.contact
 
   return (
-    <section id="contact" className="contact on-ledger">
+    <section id="contact" className="contact on-ledger" aria-labelledby="contact-h">
       <div className="wrap">
+        <h2 id="contact-h" className="sr">
+          {sections.nav.find((n) => n.id === "contact")?.label ?? "Contact"}
+        </h2>
         <p className="contact-statement" data-reveal="">
           {contact.statement}
         </p>

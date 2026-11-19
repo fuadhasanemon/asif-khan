@@ -8,6 +8,8 @@ type Props = {
   doneLabel: string
   failLabel: string
   className?: string
+  /** Extra class while in the copied state (prototype `.copy-btn.is-done`). */
+  doneClassName?: string
 }
 
 /**
@@ -15,7 +17,7 @@ type Props = {
  * "Copy email" → "Email copied", or a fallback hint when the clipboard is blocked.
  * Sonner toasts are layered on in the interaction step.
  */
-export function CopyButton({ text, label, doneLabel, failLabel, className }: Props) {
+export function CopyButton({ text, label, doneLabel, failLabel, className, doneClassName }: Props) {
   const [state, setState] = useState<"idle" | "done" | "fail">("idle")
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
 
@@ -37,7 +39,11 @@ export function CopyButton({ text, label, doneLabel, failLabel, className }: Pro
   }
 
   return (
-    <button type="button" className={className} onClick={copy}>
+    <button
+      type="button"
+      className={[className, state === "done" ? doneClassName : null].filter(Boolean).join(" ") || undefined}
+      onClick={copy}
+    >
       <span aria-live="polite">{state === "done" ? doneLabel : state === "fail" ? failLabel : label}</span>
     </button>
   )
