@@ -1,5 +1,7 @@
 import { expect, test, type Page } from "@playwright/test"
 
+import { gotoReady } from "./ready"
+
 test.describe.configure({ mode: "serial" })
 
 const opacityOf = (page: Page, sel: string) =>
@@ -53,7 +55,7 @@ test.describe("motion on (default)", () => {
   })
 
   test("reading-progress line tracks scroll", async ({ page }) => {
-    await page.goto("/")
+    await gotoReady(page, "/")
     await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight))
     await expect
       .poll(() => page.locator("[data-progress]").evaluate((el) => new DOMMatrix(getComputedStyle(el).transform).a))

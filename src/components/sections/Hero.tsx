@@ -2,6 +2,7 @@ import Link from "next/link"
 
 import { site } from "@/lib/content"
 import { HeroPlayedFlag } from "@/components/motion/HeroPlayedFlag"
+import { HeroScene } from "@/components/motion/HeroScene"
 import { HeroFieldLoader } from "@/components/viz/hero-field/HeroFieldLoader"
 
 /**
@@ -18,8 +19,10 @@ export function Hero() {
   const { announcement } = site
 
   return (
+    <>
     <section id="top" className="hero on-ledger" aria-labelledby="hero-name">
       <HeroFieldLoader />
+      <HeroScene />
       <HeroPlayedFlag />
       <div className="wrap hero-inner">
         <p className="hero-kicker rise d1">
@@ -63,6 +66,9 @@ export function Hero() {
         </Link>
       </div>
     </section>
+    {/* Scroll distance for the pinned scene, reserved from first paint (see motion.css). */}
+    <div className="scene-spacer" aria-hidden="true" />
+    </>
   )
 }
 

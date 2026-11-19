@@ -24,12 +24,27 @@ export function HeroFieldLoader() {
       const { width, height } = el.getBoundingClientRect()
       setField({ width, height, reduced: window.matchMedia("(prefers-reduced-motion: reduce)").matches })
     }
-    if ("requestIdleCallback" in window) {
-      const id = window.requestIdleCallback(go, { timeout: 2500 })
-      return () => window.cancelIdleCallback(id)
+    // Load at idle, or on the first scroll, whichever comes first: the hero's
+    // scroll scene needs the field as soon as the visitor starts scrolling.
+    let done = false
+    const once = () => {
+      if (done) return
+      done = true
+      go()
     }
-    const t = setTimeout(go, 1200)
-    return () => clearTimeout(t)
+    window.addEventListener("scroll", once, { passive: true, once: true })
+    let cancel: () => void
+    if ("requestIdleCallback" in window) {
+      const id = window.requestIdleCallback(once, { timeout: 2500 })
+      cancel = () => window.cancelIdleCallback(id)
+    } else {
+      const t = setTimeout(once, 1200)
+      cancel = () => clearTimeout(t)
+    }
+    return () => {
+      cancel()
+      window.removeEventListener("scroll", once)
+    }
   }, [])
 
   return (

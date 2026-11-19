@@ -6,8 +6,11 @@ export type MethodsViewProps = {
   panelKicker: string
   selected: string
   hotCol: string | null
+  /** Method row under the pointer or keyboard focus (crosshair). */
+  hotRow?: string | null
   onSelect?: (id: string) => void
   onHoverCol?: (id: string | null) => void
+  onHoverRow?: (id: string | null) => void
 }
 
 export const PLACEHOLDER_USE = {
@@ -20,9 +23,26 @@ const countText = (n: number) => (n ? (n === 1 ? "1 project" : `${n} projects`) 
 /**
  * Methods × projects matrix with row selection, column hover and the detail
  * panel (prototype `#skills`). Stateless.
+ *
+ * Crosshair: hovering or focusing a method lights the projects it was used in;
+ * hovering a project column lights the methods used in it. Dots at the
+ * crossing get a brass ring.
  */
-export function MethodsMatrixView({ data, caption, panelKicker, selected, hotCol, onSelect, onHoverCol }: MethodsViewProps) {
+export function MethodsMatrixView({
+  data,
+  caption,
+  panelKicker,
+  selected,
+  hotCol,
+  hotRow = null,
+  onSelect,
+  onHoverCol,
+  onHoverRow,
+}: MethodsViewProps) {
   const method = data.methods.find((m) => m.id === selected) ?? data.methods[0]!
+  const rowMethod = hotRow ? data.methods.find((m) => m.id === hotRow) : undefined
+  const litCols = new Set(hotCol ? [hotCol] : (rowMethod?.projects ?? []))
+  const litRows = new Set(hotRow ? [hotRow] : hotCol ? data.methods.filter((m) => m.projects.includes(hotCol)).map((m) => m.id) : [])
   const uses = method.needsProject ? [{ ...PLACEHOLDER_USE, ph: true }] : method.uses.map((u) => ({ ...u, ph: false }))
 
   return (
@@ -36,7 +56,7 @@ export function MethodsMatrixView({ data, caption, panelKicker, selected, hotCol
                 Method
               </th>
               {data.projects.map((pj) => (
-                <th scope="col" key={pj.id} className={`mx-col${hotCol === pj.id ? " is-col" : ""}`}>
+                <th scope="col" key={pj.id} className={`mx-col${litCols.has(pj.id) ? " is-col" : ""}`}>
                   <span className="mx-pj">{pj.short}</span>
                   <span className="mx-yr">{pj.where}</span>
                 </th>
@@ -47,7 +67,12 @@ export function MethodsMatrixView({ data, caption, panelKicker, selected, hotCol
             {data.methods.map((m, mi) => {
               const on = m.id === method.id
               return (
-                <tr key={m.id} className={`mx-row${on ? " is-on" : ""}`}>
+                <tr
+                  key={m.id}
+                  className={`mx-row${on ? " is-on" : ""}${litRows.has(m.id) ? " is-x" : ""}`}
+                  onMouseEnter={onHoverRow ? () => onHoverRow(m.id) : undefined}
+                  onMouseLeave={onHoverRow ? () => onHoverRow(null) : undefined}
+                >
                   <th scope="row">
                     <button
                       type="button"
@@ -55,6 +80,8 @@ export function MethodsMatrixView({ data, caption, panelKicker, selected, hotCol
                       aria-pressed={on}
                       aria-controls="method-panel"
                       onClick={onSelect ? () => onSelect(m.id) : undefined}
+                      onFocus={onHoverRow ? () => onHoverRow(m.id) : undefined}
+                      onBlur={onHoverRow ? () => onHoverRow(null) : undefined}
                     >
                       <span>{m.name}</span>
                       <span className="mx-n">{countText(m.projects.length)}</span>
@@ -65,13 +92,13 @@ export function MethodsMatrixView({ data, caption, panelKicker, selected, hotCol
                     return (
                       <td
                         key={pj.id}
-                        className={`mx-cell${hotCol === pj.id ? " is-col" : ""}`}
+                        className={`mx-cell${litCols.has(pj.id) ? " is-col" : ""}`}
                         onMouseEnter={onHoverCol ? () => onHoverCol(pj.id) : undefined}
                         onMouseLeave={onHoverCol ? () => onHoverCol(null) : undefined}
                       >
                         {used ? (
                           <span
-                            className="dot"
+                            className={`dot${litCols.has(pj.id) && litRows.has(m.id) ? " is-x" : ""}`}
                             role="img"
                             aria-label={`${m.name} used in ${pj.short}`}
                             data-delay={(0.2 + mi * 0.05 + pi * 0.03).toFixed(2)}

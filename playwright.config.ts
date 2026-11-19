@@ -14,13 +14,13 @@ export default defineConfig({
     trace: "retain-on-failure",
   },
   projects: [
-    { name: "desktop", use: { ...devices["Desktop Chrome"], viewport: { width: 1440, height: 900 } }, testIgnore: /(mobile|motion)\.spec/ },
+    { name: "desktop", use: { ...devices["Desktop Chrome"], viewport: { width: 1440, height: 900 } }, testIgnore: /(mobile|motion|interactive)\.spec/ },
     { name: "mobile", use: { ...devices["Pixel 7"], viewport: { width: 390, height: 844 } }, testMatch: /mobile\.spec/ },
-    // Timing-sensitive (the 1.5 s motion claim window): runs after the others, without CPU contention.
+    // Timing-sensitive (the 1.5 s motion claim window, the hero scene): runs after the others, without CPU contention.
     {
       name: "motion",
       use: { ...devices["Desktop Chrome"], viewport: { width: 1440, height: 900 } },
-      testMatch: /motion\.spec/,
+      testMatch: /(motion|interactive)\.spec/,
       dependencies: ["desktop", "mobile"],
       fullyParallel: false,
     },

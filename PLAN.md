@@ -160,6 +160,23 @@ These run in their own Playwright project after the others, because they assert 
 - **Cleanup:** I removed the generated shadcn files nothing used (button, dialog, input, input-group, sheet, textarea, tooltip), the `cn` helper, and the dependencies only they needed (`lucide-react`, `class-variance-authority`, `tw-animate-css`, the `shadcn` CLI, `cn`). What remains from shadcn is Command and Sonner, both restyled, plus the Radix Dialog primitive used directly for the mobile Sheet. Button, Input and Tooltip aren't used because the prototype's buttons, search field and labels are plain styled elements and it has no tooltips.
 - **e2e:** `extras.spec.ts` covers palette search by coauthor and venue, section jumps, Esc, copy-email toast, the 404 status and page, sitemap/robots, OG images on home and paper pages, and print. The full suite is 32 tests.
 
+### Interaction pass (requested after step 7; approved choices)
+Approved: signature scroll scene (pinned), career-chart year guide, methods crosshair, responsive diagrams. Declined: scroll smoothing (native scroll kept). Not done, by design: custom cursor, magnetic buttons, new palette or type. These are generic showcase moves with no tie to the subject, and the brief pins the identity.
+
+1. **Hero scroll scene** (`HeroScene`, `hero-field/formation.ts`), wide desktop only (≥ 1240 px, motion allowed). The hero pins for one screen of scroll, and the particle field acts out the statement in three beats: **counted** (a ledger grid whose neighbour links draw the ruling), **classified** (three groups), **admitted** (the brass seals line up past a brass gate). A one-word caption scrubs with each beat.
+   - **Mechanics:** the existing push-aside interactor now composes two offsets per particle each frame: the formation target (by scroll progress), then the pointer push. Velocity and real positions are untouched, so the field drifts on when you scroll back. Link distance and opacity follow how formed the field is.
+   - **Layout:** the scene region starts at least 56 px past the end of the name, measured on every refresh.
+   - **No layout shift:** a CSS `.scene-spacer` (one viewport) reserves the pin's scroll distance from first paint, under exactly the scene's conditions. HeroScene swaps it for GSAP's equal pin spacing in the same frame (`html[data-scene-pinned]`). I measured no change in document height or About's position and zero layout-shift entries, and the pin's end continues seamlessly.
+   - **Loading:** the particle field loads on the first scroll or at idle, whichever comes first.
+   - **Elsewhere:** on mobile, under reduced motion, without JS, or after the failsafe, the hero is exactly as before.
+2. **Career chart year guide:** a vertical guide follows the pointer and flags the month and the number of roles active then ("May 2025 · 5 roles"), computed from `experience.json` dates. Active rows stay strong and the rest recede. Focusing a bar moves the guide to that role's start.
+3. **Methods crosshair:** hovering or focusing a method lights the projects it used; hovering a project column lights its methods. The crossing dots get a brass ring (box-shadow, so it never fights GSAP's dot entrance).
+4. **Responsive diagrams** (decorative; the stage text carries the meaning):
+   - counting: the dashed reference line follows the pointer, and counts that fall short recede
+   - migration: the nearest route comes forward
+   - AI: holding the pointer on the human checkpoint pauses the cases and turns the ring brass
+5. **Tests:** `interactive.spec.ts` covers the scene (pinned, beats, About doesn't move), the year guide (pointer and keyboard), the crosshair, and the diagrams. `ready.ts` waits for the page's one post-hydration re-measure before tests interact. Timing-sensitive specs run in the serial motion project. The full suite is 38 tests, with consecutive clean runs.
+
 ---
 
 (Original plan below, as approved.)

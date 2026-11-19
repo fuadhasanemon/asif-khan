@@ -1,10 +1,12 @@
 import { expect, test } from "@playwright/test"
 
+import { gotoReady } from "./ready"
+
 const count = (page: import("@playwright/test").Page) => page.locator(".pub-count")
 
 test.describe("publication explorer", () => {
   test("filter by type via the composition bar, toggle off, and share via the URL", async ({ page }) => {
-    await page.goto("/")
+    await gotoReady(page, "/")
     await expect(count(page)).toHaveText("Showing 18 of 18")
     const journals = page.getByRole("group", { name: "Filter publications by type" }).getByRole("button", { name: /Journal articles/ })
     await journals.click()
@@ -16,7 +18,7 @@ test.describe("publication explorer", () => {
   })
 
   test("search matches title, coauthor and venue, with a live count", async ({ page }) => {
-    await page.goto("/")
+    await gotoReady(page, "/")
     const q = page.getByRole("searchbox", { name: "Search" })
     await q.fill("peerj")
     await expect(count(page)).toHaveText("Showing 2 of 18")
@@ -26,7 +28,7 @@ test.describe("publication explorer", () => {
   })
 
   test("empty state, then clearing moves focus back to the search box", async ({ page }) => {
-    await page.goto("/")
+    await gotoReady(page, "/")
     const q = page.getByRole("searchbox", { name: "Search" })
     await q.fill("zzzz-no-match")
     await expect(page.getByText("No publications match “zzzz-no-match” in this view.")).toBeVisible()
@@ -37,14 +39,14 @@ test.describe("publication explorer", () => {
   })
 
   test("deep link /#publications?type=talk&q=flood restores the view", async ({ page }) => {
-    await page.goto("/#publications?type=talk&q=flood")
+    await gotoReady(page, "/#publications?type=talk&q=flood")
     await expect(count(page)).toHaveText("Showing 1 of 18")
     await expect(page.getByRole("searchbox", { name: "Search" })).toHaveValue("flood")
     await expect(page.locator("#publications")).toBeInViewport()
   })
 
   test("/publications uses the query string", async ({ page }) => {
-    await page.goto("/publications?type=review")
+    await gotoReady(page, "/publications?type=review")
     await expect(count(page)).toHaveText("Showing 4 of 18")
     await page.getByRole("button", { name: /In preparation/ }).click()
     await expect(page).toHaveURL(/\/publications\?type=prep$/)
@@ -54,7 +56,7 @@ test.describe("publication explorer", () => {
 test.describe("copy actions", () => {
   test("copy citation: toast + inline label, clipboard holds the APA citation", async ({ page, context }) => {
     await context.grantPermissions(["clipboard-read", "clipboard-write"])
-    await page.goto("/")
+    await gotoReady(page, "/")
     const btn = page.locator(".pub").first().getByRole("button", { name: "Copy citation" })
     await btn.click()
     await expect(page.locator(".toast")).toHaveText(/Citation copied/)
@@ -68,7 +70,7 @@ test.describe("copy actions", () => {
       Object.defineProperty(navigator, "clipboard", { value: { writeText: () => Promise.reject(new Error("blocked")) } })
       document.execCommand = () => false
     })
-    await page.goto("/")
+    await gotoReady(page, "/")
     await page.getByRole("button", { name: "Copy email" }).click()
     await expect(page.getByRole("button", { name: /Copy blocked; select the address/ })).toBeVisible()
     await expect(page.locator(".toast")).toHaveCount(0)
@@ -77,7 +79,7 @@ test.describe("copy actions", () => {
 
 test.describe("publication details page", () => {
   test("renders, switches citation styles, and links back into the research explorer", async ({ page }) => {
-    await page.goto("/publications/speed-verification-and-accountability-human-oversight-beyond")
+    await gotoReady(page, "/publications/speed-verification-and-accountability-human-oversight-beyond")
     await expect(page.locator("h1")).toHaveText(/Speed, verification, and accountability/)
     await expect(page.locator(".dt-authors .me")).toHaveText("Khan, M. A.")
     await page.getByRole("button", { name: "BibTeX", exact: true }).click()
@@ -89,7 +91,7 @@ test.describe("publication details page", () => {
   })
 
   test("navigating from the list keeps Publications current in the nav", async ({ page }) => {
-    await page.goto("/")
+    await gotoReady(page, "/")
     await page.locator(".pub-title a").first().click()
     await expect(page).toHaveURL(/\/publications\/an-appraisal/)
     await expect(page.getByRole("navigation", { name: "Sections" }).first().getByRole("link", { name: "Publications" })).toHaveAttribute(

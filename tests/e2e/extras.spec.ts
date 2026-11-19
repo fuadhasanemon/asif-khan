@@ -1,8 +1,10 @@
 import { expect, test } from "@playwright/test"
 
+import { gotoReady } from "./ready"
+
 test.describe("command palette", () => {
   test("Ctrl+K opens it; search by coauthor jumps to a publication", async ({ page }) => {
-    await page.goto("/")
+    await gotoReady(page, "/")
     await page.locator("body").press("Control+k")
     const dialog = page.getByRole("dialog", { name: "Command menu" })
     await expect(dialog).toBeVisible()
@@ -17,7 +19,7 @@ test.describe("command palette", () => {
   })
 
   test("search by venue, jump to a section, and close with Esc", async ({ page }) => {
-    await page.goto("/publications")
+    await gotoReady(page, "/publications")
     await page.locator("body").press("Control+k")
     const dialog = page.getByRole("dialog", { name: "Command menu" })
     const input = dialog.getByRole("combobox")
@@ -35,7 +37,7 @@ test.describe("command palette", () => {
 
   test("copy email action shows a toast", async ({ page, context }) => {
     await context.grantPermissions(["clipboard-read", "clipboard-write"])
-    await page.goto("/")
+    await gotoReady(page, "/")
     await page.locator("body").press("Control+k")
     const dialog = page.getByRole("dialog", { name: "Command menu" })
     await dialog.getByRole("combobox").fill("copy email")
@@ -77,7 +79,7 @@ test.describe("404, sitemap, robots", () => {
 
 test.describe("print stylesheet", () => {
   test("publication page prints without chrome, with the citation and the page URL", async ({ page }) => {
-    await page.goto("/publications/an-appraisal-of-the-economic-imperatives-of")
+    await gotoReady(page, "/publications/an-appraisal-of-the-economic-imperatives-of")
     await page.emulateMedia({ media: "print" })
     await expect(page.locator(".nav")).toBeHidden()
     await expect(page.locator("#contact")).toBeHidden()

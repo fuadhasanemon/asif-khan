@@ -1,11 +1,13 @@
 import { expect, test } from "@playwright/test"
 
+import { gotoReady } from "./ready"
+
 test.describe("home page", () => {
   test("renders every section, one h1, no console errors", async ({ page }) => {
     const errors: string[] = []
     page.on("pageerror", (e) => errors.push(String(e)))
     page.on("console", (m) => m.type() === "error" && errors.push(m.text()))
-    await page.goto("/")
+    await gotoReady(page, "/")
     for (const id of ["top", "about", "research", "experience", "skills", "publications", "recognition", "contact"])
       await expect(page.locator(`#${id}`)).toBeAttached()
     await expect(page.locator("h1")).toHaveCount(1)
@@ -14,7 +16,7 @@ test.describe("home page", () => {
   })
 
   test("research: switching threads updates the stage and the URL", async ({ page }) => {
-    await page.goto("/")
+    await gotoReady(page, "/")
     const tabs = page.getByRole("group", { name: "Research lines" })
     const mig = tabs.getByRole("button", { name: /Migration policy/ })
     await mig.click()
@@ -29,13 +31,13 @@ test.describe("home page", () => {
   })
 
   test("research: /#research?thread=ai deep link selects the thread and scrolls to it", async ({ page }) => {
-    await page.goto("/#research?thread=ai")
+    await gotoReady(page, "/#research?thread=ai")
     await expect(page.locator("#research-stage h3")).toHaveText("AI, GovTech, and public administration")
     await expect(page.locator("#research")).toBeInViewport()
   })
 
   test("experience: chart bar selects a role; timeline row toggles it; hover is shared", async ({ page }) => {
-    await page.goto("/")
+    await gotoReady(page, "/")
     const bar = page.getByRole("button", { name: /^Research Intern, Autismazing/ })
     await bar.click()
     await expect(bar).toHaveAttribute("aria-pressed", "true")
@@ -50,7 +52,7 @@ test.describe("home page", () => {
   })
 
   test("methods: selecting a row updates the live panel, including the placeholder", async ({ page }) => {
-    await page.goto("/")
+    await gotoReady(page, "/")
     await page.getByRole("button", { name: /^Comparative case study/ }).click()
     await expect(page.locator("#method-panel .m-title")).toHaveText("Comparative case study")
     await expect(page.locator("#method-panel")).toContainText("Supervised by Dr. Julia Albarracín")
@@ -59,7 +61,7 @@ test.describe("home page", () => {
   })
 
   test("back to top appears after the hero and returns focus to main", async ({ page }) => {
-    await page.goto("/")
+    await gotoReady(page, "/")
     await expect(page.getByRole("link", { name: "Back to top" }).last()).toBeAttached()
     await page.evaluate(() => window.scrollTo(0, 2000))
     const btn = page.locator(".totop")
@@ -70,7 +72,7 @@ test.describe("home page", () => {
   })
 
   test("scroll spy marks the current section; Recognition maps to Publications", async ({ page }) => {
-    await page.goto("/")
+    await gotoReady(page, "/")
     const nav = page.getByRole("navigation", { name: "Sections" }).first()
     await page.locator("#experience").evaluate((el) => el.scrollIntoView())
     await expect(nav.getByRole("link", { name: "Experience" })).toHaveAttribute("aria-current", "true")

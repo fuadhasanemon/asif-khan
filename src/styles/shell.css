@@ -411,3 +411,135 @@
 .print-only {
   display: none;
 }
+
+/* Career chart year guide */
+@layer components {
+  .chart-body {
+    position: relative;
+  }
+  .chart-guide-layer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 240px;
+    right: 0;
+    pointer-events: none;
+  }
+  .chart-guide {
+    position: absolute;
+    top: -30px;
+    bottom: 0;
+    width: 1px;
+    background: var(--color-docket);
+  }
+  .chart-flag {
+    position: absolute;
+    top: -2px;
+    left: 0;
+    transform: translateX(-50%);
+    display: inline-flex;
+    gap: 8px;
+    align-items: baseline;
+    padding: 2px 10px;
+    background: var(--color-ledger);
+    color: var(--color-paper);
+    font-size: 13px;
+    line-height: 1.5;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .chart-flag-n {
+    color: var(--color-brass-light);
+  }
+  .chart-row .chart-label,
+  .chart-row .chart-bar {
+    transition: opacity 0.2s ease;
+  }
+  .chart.has-guide .chart-row.is-off .chart-label,
+  .chart.has-guide .chart-row.is-off .chart-bar {
+    opacity: 0.35;
+  }
+  .chart.has-guide .chart-row.is-at .chart-label {
+    color: var(--color-ledger);
+    font-weight: 600;
+  }
+  @media (max-width: 760px) {
+    .chart-guide-layer {
+      left: 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .chart-row .chart-label,
+    .chart-row .chart-bar {
+      transition: none;
+    }
+  }
+}
+
+/* Methods crosshair */
+@layer components {
+  .mx-row.is-x th,
+  .mx-row.is-x td {
+    background: #eef0ea;
+  }
+  .mx-row.is-on.is-x th,
+  .mx-row.is-on.is-x td {
+    background: var(--color-ledger);
+  }
+  .mx-row.is-x .mx-m > span:first-child {
+    text-decoration: underline;
+    text-decoration-color: var(--color-brass);
+    text-underline-offset: 4px;
+  }
+  .mx-col.is-col .mx-pj {
+    color: var(--color-docket);
+  }
+  .dot {
+    transition:
+      background-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  .dot.is-x {
+    box-shadow: 0 0 0 4px rgba(201, 164, 76, 0.5);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .dot {
+      transition: none;
+    }
+  }
+}
+
+/* Research diagrams: pointer response */
+@layer components {
+  .diagram .a-bar,
+  .diagram .a-draw,
+  .diagram .d-check {
+    transition:
+      opacity 0.2s ease,
+      stroke-width 0.2s ease,
+      stroke 0.2s ease;
+  }
+  .diagram .a-fade {
+    transition: none;
+  }
+  .diagram .d-dim {
+    opacity: 0.16;
+  }
+  .diagram .d-hot {
+    opacity: 1;
+    stroke-width: 4px;
+  }
+  .diagram.is-held .a-flow {
+    animation-play-state: paused;
+  }
+  .diagram.is-held .d-check {
+    stroke: var(--color-brass);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .diagram .a-bar,
+    .diagram .a-draw,
+    .diagram .d-check {
+      transition: none;
+    }
+  }
+}

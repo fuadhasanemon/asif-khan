@@ -136,3 +136,55 @@
     animation: none !important;
   }
 }
+
+/* Hero scroll scene overlay (HeroScene): caption + "admitted" gate. Invisible unless GSAP drives it. */
+@layer components {
+  .scene {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .scene-gate {
+    position: absolute;
+    width: 2px;
+    margin-left: -1px;
+    background: var(--color-brass);
+    transform-origin: 50% 0;
+    opacity: 0;
+  }
+  .scene-caption {
+    position: absolute;
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--color-brass-light);
+  }
+  .scene-caption > span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    opacity: 0;
+  }
+  @media (max-width: 1239px), (prefers-reduced-motion: reduce) {
+    .scene {
+      display: none;
+    }
+  }
+}
+
+/*
+ * Scroll distance for the hero scene. Present only under the scene's own
+ * conditions (desktop, motion allowed, motion layer armed before first paint),
+ * so the pin created after hydration never shifts the page: HeroScene swaps
+ * it for GSAP's equal pin spacing in one frame (html[data-scene-pinned]). If
+ * the failsafe releases the flag, the spacer disappears together with the scene.
+ */
+.scene-spacer {
+  display: none;
+}
+@media (min-width: 1240px) and (prefers-reduced-motion: no-preference) {
+  html[data-motion-ready]:not([data-scene-pinned]) .scene-spacer {
+    display: block;
+    height: 100vh;
+  }
+}

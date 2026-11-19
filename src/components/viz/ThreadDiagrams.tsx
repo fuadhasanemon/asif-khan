@@ -1,6 +1,6 @@
 "use client"
 
-import { useLayoutEffect, useRef } from "react"
+import { useLayoutEffect, useRef, useState, type PointerEvent } from "react"
 
 import { animateDiagram } from "@/lib/motion"
 import type { ThreadIdT } from "@/lib/schemas"
@@ -13,9 +13,27 @@ import type { ThreadIdT } from "@/lib/schemas"
  *   them at the SVG origin for the first 1.4 s);
  *   `.still-only` groups hold the static stand-ins. A CSS media query swaps
  *   them under prefers-reduced-motion, so no JavaScript is involved.
+ * - Pointer response (decorative; the stage text carries the meaning):
+ *   counting: the dashed reference line follows the pointer and the counts
+ *   that fall short of it recede; migration: the route nearest the pointer
+ *   comes forward; AI: holding the pointer on the human checkpoint pauses the
+ *   cases there.
  */
+
+type Pt = { x: number; y: number } | null
 export function ThreadDiagram({ thread, label, animate = false }: { thread: ThreadIdT; label: string; animate?: boolean }) {
   const ref = useRef<SVGSVGElement>(null)
+  const [pt, setPt] = useState<Pt>(null)
+
+  /** Pointer position in the diagram's own 520×240 coordinates. */
+  function move(e: PointerEvent<SVGSVGElement>) {
+    const svg = ref.current
+    const ctm = svg?.getScreenCTM()
+    if (!svg || !ctm) return
+    const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(ctm.inverse())
+    setPt({ x: p.x, y: p.y })
+  }
+
   // After a thread switch, play the entrance as the new diagram mounts (before paint).
   // The first diagram on the page is animated by the reveal layer instead.
   useLayoutEffect(() => {
@@ -26,22 +44,47 @@ export function ThreadDiagram({ thread, label, animate = false }: { thread: Thre
     }
   }, [animate])
   return (
-    <svg ref={ref} viewBox="0 0 520 240" role="img" aria-label={label}>
-      {thread === "count" ? <CountArt /> : thread === "mig" ? <MigrationArt /> : <AiArt />}
+    <svg
+      ref={ref}
+      viewBox="0 0 520 240"
+      role="img"
+      aria-label={label}
+      className={`diagram${pt ? " is-live" : ""}${thread === "ai" && pt && Math.hypot(pt.x - 260, pt.y - 120) < 70 ? " is-held" : ""}`}
+      onPointerMove={move}
+      onPointerLeave={() => setPt(null)}
+    >
+      {thread === "count" ? <CountArt pt={pt} /> : thread === "mig" ? <MigrationArt pt={pt} /> : <AiArt />}
     </svg>
   )
 }
 
-function CountArt() {
+const COUNTS = [
+  { y: 36, w: 330, fill: "#12312C", opacity: undefined, delay: ".1s" },
+  { y: 72, w: 214, fill: "#12312C", opacity: "0.55", delay: ".25s" },
+  { y: 108, w: 430, fill: "#2A52BE", opacity: undefined, delay: ".4s" },
+  { y: 144, w: 138, fill: "#12312C", opacity: "0.35", delay: ".55s" },
+  { y: 180, w: 286, fill: "#C9A44C", opacity: undefined, delay: ".7s" },
+]
+
+function CountArt({ pt }: { pt: Pt }) {
+  const marker = pt ? Math.min(500, Math.max(60, pt.x)) : 290
   return (
     <>
       <line x1="40" y1="20" x2="40" y2="220" stroke="#1E2422" strokeWidth="1.5" />
-      <rect className="a-bar" x="40" y="36" width="330" height="18" fill="#12312C" style={{ animationDelay: ".1s" }} />
-      <rect className="a-bar" x="40" y="72" width="214" height="18" fill="#12312C" opacity="0.55" style={{ animationDelay: ".25s" }} />
-      <rect className="a-bar" x="40" y="108" width="430" height="18" fill="#2A52BE" style={{ animationDelay: ".4s" }} />
-      <rect className="a-bar" x="40" y="144" width="138" height="18" fill="#12312C" opacity="0.35" style={{ animationDelay: ".55s" }} />
-      <rect className="a-bar" x="40" y="180" width="286" height="18" fill="#C9A44C" style={{ animationDelay: ".7s" }} />
-      <line className="a-fade" x1="290" y1="20" x2="290" y2="220" stroke="#1E2422" strokeWidth="1" strokeDasharray="4 5" />
+      {COUNTS.map((c) => (
+        <rect
+          key={c.y}
+          className={`a-bar${pt && 40 + c.w < marker ? " d-dim" : ""}`}
+          x="40"
+          y={c.y}
+          width={c.w}
+          height="18"
+          fill={c.fill}
+          opacity={c.opacity}
+          style={{ animationDelay: c.delay }}
+        />
+      ))}
+      <line className="a-fade" x1={marker} y1="20" x2={marker} y2="220" stroke="#1E2422" strokeWidth="1" strokeDasharray="4 5" />
     </>
   )
 }
@@ -50,12 +93,14 @@ const DIRECT = "M100 120 L 420 120"
 const UPPER = "M100 120 C 180 30, 340 30, 420 120"
 const LOWER = "M100 120 C 180 210, 340 210, 420 120"
 
-function MigrationArt() {
+function MigrationArt({ pt }: { pt: Pt }) {
+  const near = pt ? (pt.y < 85 ? "upper" : pt.y > 155 ? "lower" : "direct") : null
+  const cls = (route: string) => `a-draw${near ? (near === route ? " d-hot" : " d-dim") : ""}`
   return (
     <>
-      <path className="a-draw" pathLength={1} d={UPPER} fill="none" stroke="#12312C" strokeWidth="1.5" opacity="0.45" />
-      <path className="a-draw" pathLength={1} d={DIRECT} fill="none" stroke="#2A52BE" strokeWidth="3" style={{ animationDelay: ".2s" }} />
-      <path className="a-draw" pathLength={1} d={LOWER} fill="none" stroke="#12312C" strokeWidth="1.5" opacity="0.45" style={{ animationDelay: ".4s" }} />
+      <path className={cls("upper")} pathLength={1} d={UPPER} fill="none" stroke="#12312C" strokeWidth="1.5" opacity="0.45" />
+      <path className={cls("direct")} pathLength={1} d={DIRECT} fill="none" stroke="#2A52BE" strokeWidth="3" style={{ animationDelay: ".2s" }} />
+      <path className={cls("lower")} pathLength={1} d={LOWER} fill="none" stroke="#12312C" strokeWidth="1.5" opacity="0.45" style={{ animationDelay: ".4s" }} />
       <line x1="260" y1="30" x2="260" y2="104" stroke="#1E2422" strokeWidth="4" />
       <line x1="260" y1="136" x2="260" y2="212" stroke="#1E2422" strokeWidth="4" />
       <circle cx="80" cy="120" r="22" fill="#F3F4F0" stroke="#12312C" strokeWidth="2" />
@@ -95,7 +140,7 @@ function AiArt() {
         <rect x="60" y="108" width="24" height="24" fill="#12312C" />
         <rect x="400" y="108" width="24" height="24" fill="#C9A44C" />
       </g>
-      <circle className="a-pulse" cx="260" cy="120" r="56" fill="#E8EBE4" stroke="#2A52BE" strokeWidth="2.5" />
+      <circle className="a-pulse d-check" cx="260" cy="120" r="56" fill="#E8EBE4" stroke="#2A52BE" strokeWidth="2.5" />
       <circle cx="260" cy="104" r="11" fill="none" stroke="#2A52BE" strokeWidth="2.5" />
       <path d="M238 142 C 243 124, 277 124, 282 142" fill="none" stroke="#2A52BE" strokeWidth="2.5" />
     </>
