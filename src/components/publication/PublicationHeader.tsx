@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { ViewTransition } from "react"
 
 import type { PublicationView } from "@/lib/content"
 import { authorList, facts } from "@/lib/publication"
@@ -23,9 +24,11 @@ export function PublicationHeader({ p, apa, canonical }: { p: PublicationView; a
             {p.status ? <span className={`status ${p.statusClass}`}>{p.status}</span> : null}
             {p.year ? <span className="dt-year">{p.year}</span> : null}
           </div>
-          <h1 id="dt-title" className="dt-title">
-            {p.title}
-          </h1>
+          <ViewTransition name={`pub-title-${p.id}`} share="morph" default="none">
+            <h1 id="dt-title" className="dt-title">
+              {p.title}
+            </h1>
+          </ViewTransition>
           <p className="dt-authors">
             {authorList(p).map((a) => (
               <span key={a.name}>

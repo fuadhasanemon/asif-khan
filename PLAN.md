@@ -139,6 +139,27 @@ Status: **approved 2026-11-19; step 1 done.**
 
 These run in their own Playwright project after the others, because they assert a timing window. The full suite has 25 tests, with 4 consecutive clean runs.
 
+### Step 7: professional extras
+1. **⌘K / Ctrl+K command palette** (`CommandMenu`, shadcn Command = cmdk in a Radix Dialog, restyled):
+   - **What it does:** jump to any section; find a publication by title, coauthor, venue or type; copy the email (toast); download the CV; download all citations (.bib).
+   - **Matching:** word-based (`paletteFilter`, unit-tested) instead of cmdk's fuzzy scorer, which ranked scattered-letter matches in long titles above exact actions.
+   - **No visible trigger:** the prototype has none. A small "Search ⌘K" button in the header could follow if you want it (proposal, not built).
+2. **URL state:** done in step 5.
+3. **Open Graph images** (`next/og`, prerendered): a home card plus one card per publication, in Newsreader/Public Sans on Ledger with a brass rule.
+   - Satori needs static fonts, so they come from Fontsource's static WOFF builds of the same OFL families, loaded through a `"use cache"` + `cacheLife("max")` helper. An uncached async read made the cards dynamic under Cache Components.
+   - Long titles step down in size, a status is shown only when it adds information ("Accepted"), and manuscripts in preparation omit the redundant venue line.
+   - Per-page metadata, JSON-LD, canonical URLs and the `.bib` files were done in step 4.
+4. **List → publication route transition:** React 19.3 `<ViewTransition name="pub-title-…" share="morph">` on the list title and the detail `h1` (the Next 16 guide's pattern). This deviates from "Framer shared layout": Framer's `layoutId` can't follow an App Router navigation, because the old page unmounts before the new one mounts. Browsers without the View Transitions API navigate normally, and the morph is off under reduced motion.
+5. **Toasts:** done in step 5.
+6. **Print stylesheet** (publication pages):
+   - hides the header, breadcrumb, actions, tabs, pager, contact, back-to-top and toasts
+   - prints the record, At a glance (with the DOI URL), the selected citation, and a print-only line with the page's canonical URL
+7. **Analytics:** `SiteAnalytics` renders `@vercel/analytics` only when `NEXT_PUBLIC_ANALYTICS=vercel` (see `.env.example`). Nothing loads by default.
+8. **404 page:** Ledger header, a section-style head, "Page not found" (`h1`), and three ways back (home, all publications, contact); `noindex`. It also serves unknown publication slugs via the proxy.
+- **Also:** `sitemap.xml` (home, index, 18 papers) and `robots.txt` (pointing to the sitemap).
+- **Cleanup:** I removed the generated shadcn files nothing used (button, dialog, input, input-group, sheet, textarea, tooltip), the `cn` helper, and the dependencies only they needed (`lucide-react`, `class-variance-authority`, `tw-animate-css`, the `shadcn` CLI, `cn`). What remains from shadcn is Command and Sonner, both restyled, plus the Radix Dialog primitive used directly for the mobile Sheet. Button, Input and Tooltip aren't used because the prototype's buttons, search field and labels are plain styled elements and it has no tooltips.
+- **e2e:** `extras.spec.ts` covers palette search by coauthor and venue, section jumps, Esc, copy-email toast, the 404 status and page, sitemap/robots, OG images on home and paper pages, and print. The full suite is 32 tests.
+
 ---
 
 (Original plan below, as approved.)

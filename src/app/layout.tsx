@@ -6,6 +6,7 @@ import { site } from "@/lib/content"
 import { Toaster } from "@/components/ui/sonner"
 import { MotionProvider } from "@/components/motion/MotionProvider"
 import { MotionRuntime } from "@/components/motion/MotionRuntime"
+import { SiteAnalytics } from "@/components/site/SiteAnalytics"
 import "./globals.css"
 
 const newsreader = Newsreader({
@@ -47,6 +48,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <MotionProvider>{children}</MotionProvider>
         <MotionRuntime />
         <Toaster />
+        <SiteAnalytics />
       </body>
     </html>
   )

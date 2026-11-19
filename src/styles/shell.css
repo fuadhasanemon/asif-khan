@@ -131,3 +131,283 @@
     font-weight: 500;
   }
 }
+
+/* Command palette (shadcn Command, restyled). */
+@layer components {
+  .cmdk-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    background: rgba(18, 49, 44, 0.42);
+  }
+  .cmdk-dialog {
+    position: fixed;
+    z-index: 51;
+    top: 12vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(680px, calc(100vw - 32px));
+    background: var(--color-card);
+    border: 1px solid var(--color-rule);
+    box-shadow: 0 18px 48px rgba(18, 49, 44, 0.28);
+    outline: none;
+  }
+  .cmdk {
+    display: flex;
+    flex-direction: column;
+    max-height: min(560px, 76vh);
+  }
+  .cmdk-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 20px;
+    border-bottom: 1px solid var(--color-rule);
+  }
+  .cmdk-input-icon {
+    color: var(--color-muted-1);
+    flex: none;
+  }
+  .cmdk-input {
+    flex: 1;
+    min-height: 60px;
+    border: 0;
+    background: transparent;
+    font: inherit;
+    font-size: 17px;
+    color: var(--color-graphite);
+    outline: none;
+  }
+  .cmdk-input::placeholder {
+    color: #6b746f;
+  }
+  .cmdk-list {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 8px 0;
+  }
+  .cmdk-empty {
+    padding: 28px 20px;
+    font-size: 15px;
+    color: var(--color-muted-1);
+  }
+  .cmdk-group [cmdk-group-heading] {
+    padding: 12px 20px 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-muted-1);
+  }
+  .cmdk-item {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 44px;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: var(--color-graphite);
+  }
+  .cmdk-item[data-selected="true"] {
+    background: var(--color-ledger);
+    color: var(--color-paper);
+  }
+  .cmdk-item[data-selected="true"] .cmdk-meta {
+    color: var(--color-brass-light);
+  }
+  .cmdk-title {
+    font-size: 16px;
+  }
+  .cmdk-pub {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+  .cmdk-pub-title {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    line-height: 1.3;
+  }
+  .cmdk-meta {
+    font-size: 13px;
+    color: var(--color-muted-1);
+    white-space: nowrap;
+  }
+  .cmdk-pub .cmdk-meta {
+    white-space: normal;
+  }
+  .cmdk-footer {
+    display: flex;
+    gap: 20px;
+    padding: 10px 20px;
+    border-top: 1px solid var(--color-rule);
+    font-size: 13px;
+    color: var(--color-muted-1);
+  }
+  .cmdk-footer kbd {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    padding: 1px 6px;
+    border: 1px solid var(--color-rule);
+    border-radius: 3px;
+    background: var(--color-paper);
+  }
+  @media (max-width: 760px) {
+    .cmdk-dialog {
+      top: 8px;
+    }
+    .cmdk-footer {
+      display: none;
+    }
+  }
+}
+
+/* 404 */
+@layer components {
+  .nf .sec-head {
+    margin-bottom: 48px;
+  }
+  .nf-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--color-rule);
+    max-width: 760px;
+  }
+  .nf-links li {
+    border-bottom: 1px solid var(--color-rule);
+  }
+  .nf-link {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 20px 0;
+    text-decoration: none;
+    color: var(--color-graphite);
+  }
+  .nf-t {
+    font-family: var(--font-serif);
+    font-size: 26px;
+    line-height: 1.2;
+    color: var(--color-ledger);
+    transition: color 0.2s ease;
+  }
+  .nf-m {
+    font-size: 15px;
+    color: var(--color-muted-1);
+  }
+  .nf-link:hover .nf-t {
+    color: var(--color-docket);
+  }
+}
+
+/* Print: publication pages print as a clean record with the citation (CLAUDE_CODE_PROMPT.md §7.6). */
+@media print {
+  @page {
+    margin: 18mm 16mm;
+  }
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .nav,
+  .skip-link,
+  .contact,
+  .totop,
+  .crumbs,
+  .dt-actions,
+  .cite-tabs,
+  .cite-actions,
+  .pager,
+  .link-btn,
+  .particles,
+  [data-sonner-toaster],
+  .cmdk-overlay,
+  .cmdk-dialog {
+    display: none !important;
+  }
+  * {
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .wrap {
+    max-width: none;
+    padding: 0;
+  }
+  .detail {
+    padding: 0;
+  }
+  .dt-head,
+  .dt-sec {
+    display: block;
+    padding: 0 0 14pt;
+    margin: 0 0 14pt;
+    border-color: #999;
+    break-inside: avoid;
+  }
+  .dt-title {
+    font-size: 24pt;
+    line-height: 1.15;
+    color: #000;
+    margin-bottom: 10pt;
+  }
+  .dt-authors,
+  .dt-venue {
+    font-size: 11pt;
+    color: #000;
+  }
+  .dt-authors .me {
+    background: none;
+    font-weight: 700;
+  }
+  .glance {
+    border: 1px solid #999;
+    background: none;
+    padding: 8pt 12pt;
+    margin-top: 12pt;
+  }
+  .dt-h {
+    font-size: 14pt;
+    margin-bottom: 6pt;
+  }
+  .ph-box,
+  .ph-inline {
+    background: none;
+    border: 1px dashed #999;
+    color: #444;
+  }
+  .cite-box {
+    border: 1px solid #999;
+    background: none;
+    padding: 10pt 12pt;
+  }
+  .cite-text {
+    font-size: 11pt;
+    color: #000;
+  }
+  .rel-a,
+  a {
+    color: #000 !important;
+    text-decoration: none;
+  }
+  /* Show where the DOI and the page live. */
+  .fact a[href^="https://doi.org"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+  }
+  .print-only {
+    display: block !important;
+    margin-top: 12pt;
+    font-size: 9pt;
+    color: #555;
+  }
+}
+.print-only {
+  display: none;
+}

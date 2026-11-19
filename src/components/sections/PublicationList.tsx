@@ -1,5 +1,5 @@
 import Link from "next/link"
-import type { Ref } from "react"
+import { ViewTransition, type Ref } from "react"
 import { m } from "motion/react"
 
 import type { PubTypeT } from "@/lib/schemas"
@@ -39,9 +39,12 @@ export function PublicationRow({
     <m.li ref={ref} className="pub" layout="position" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
       <span className="pub-year">{p.year}</span>
       <div>
-        <H className="pub-title">
-          <Link href={p.href}>{p.title}</Link>
-        </H>
+        {/* Morphs into the detail page's h1 on navigation (React ViewTransition, same name). */}
+        <ViewTransition name={`pub-title-${p.id}`} share="morph" default="none">
+          <H className="pub-title">
+            <Link href={p.href}>{p.title}</Link>
+          </H>
+        </ViewTransition>
         <p className="pub-authors">
           {p.authorsPre}
           <strong>Khan, M. A.</strong>

@@ -72,6 +72,7 @@ export default async function PublicationPage({ params }: PageProps<"/publicatio
         <PublicationHeader p={p} apa={apa(p)} canonical={absoluteUrl(p.href)} />
         <PublicationBody p={p} />
         <Pager p={p} />
+        <p className="print-only">{absoluteUrl(p.href)}</p>
       </div>
     </article>
   )
