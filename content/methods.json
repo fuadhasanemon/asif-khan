@@ -1,0 +1,143 @@
+{
+  "projects": [
+    {
+      "id": "aut",
+      "short": "Autism in Focus survey",
+      "where": "Autismazing, 2025"
+    },
+    {
+      "id": "nf",
+      "short": "Neurodiversity business case",
+      "where": "Neurodiversity Foundation, 2025"
+    },
+    {
+      "id": "imm",
+      "short": "US–Canada immigration comparison",
+      "where": "Independent project, 2025"
+    },
+    {
+      "id": "distil",
+      "short": "DistilRoBiLSTMFuse",
+      "where": "PeerJ Computer Science, 2024"
+    },
+    {
+      "id": "senti",
+      "short": "Sentiment datasets review",
+      "where": "PeerJ Computer Science, 2026"
+    }
+  ],
+  "methods": [
+    {
+      "id": "survey",
+      "name": "Survey design and analysis",
+      "projects": [
+        "aut"
+      ],
+      "uses": [
+        {
+          "title": "Autism in Focus Survey",
+          "ctx": "Autismazing, 2025. Designed the instruments; 96 respondents."
+        }
+      ],
+      "needsProject": false
+    },
+    {
+      "id": "interviews",
+      "name": "Semi-structured interviews",
+      "projects": [
+        "aut"
+      ],
+      "uses": [
+        {
+          "title": "Autism in Focus Survey",
+          "ctx": "Autismazing, 2025. About 20 interviews conducted personally."
+        }
+      ],
+      "needsProject": false
+    },
+    {
+      "id": "mixed",
+      "name": "Mixed-methods analysis",
+      "projects": [
+        "aut"
+      ],
+      "uses": [
+        {
+          "title": "Autism in Focus Survey",
+          "ctx": "Autismazing, 2025. Quantitative and qualitative data integrated."
+        }
+      ],
+      "needsProject": false
+    },
+    {
+      "id": "case",
+      "name": "Comparative case study",
+      "projects": [
+        "imm"
+      ],
+      "uses": [
+        {
+          "title": "Comparative immigration governance in the United States and Canada",
+          "ctx": "Independent project, 2025. Supervised by Dr. Julia Albarracín."
+        }
+      ],
+      "needsProject": false
+    },
+    {
+      "id": "policy",
+      "name": "Policy and stakeholder analysis",
+      "projects": [
+        "nf"
+      ],
+      "uses": [
+        {
+          "title": "Neurodiversity partnership business case",
+          "ctx": "Neurodiversity Foundation, 2025."
+        }
+      ],
+      "needsProject": false
+    },
+    {
+      "id": "pt",
+      "name": "Process tracing",
+      "projects": [],
+      "uses": [],
+      "needsProject": true
+    },
+    {
+      "id": "logit",
+      "name": "Logistic regression",
+      "projects": [],
+      "uses": [],
+      "needsProject": true
+    },
+    {
+      "id": "text",
+      "name": "Text classification",
+      "projects": [
+        "distil"
+      ],
+      "uses": [
+        {
+          "title": "DistilRoBiLSTMFuse: An efficient hybrid deep learning approach for sentiment analysis",
+          "ctx": "PeerJ Computer Science, 2024."
+        }
+      ],
+      "needsProject": false
+    },
+    {
+      "id": "slr",
+      "name": "Systematic literature review (PRISMA 2020)",
+      "projects": [
+        "senti"
+      ],
+      "uses": [
+        {
+          "title": "Sentiment analysis datasets: A review of trends, challenges, and future opportunities",
+          "ctx": "PeerJ Computer Science, 2026. First author."
+        }
+      ],
+      "needsProject": false
+    }
+  ]
+}

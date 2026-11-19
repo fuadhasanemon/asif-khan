@@ -1,0 +1,88 @@
+{
+  "nav": [
+    { "id": "about", "label": "About" },
+    { "id": "research", "label": "Research" },
+    { "id": "experience", "label": "Experience" },
+    { "id": "skills", "label": "Methods" },
+    { "id": "publications", "label": "Publications" },
+    { "id": "contact", "label": "Contact" }
+  ],
+  "about": {
+    "title": "About",
+    "recordHeading": "The record, counted"
+  },
+  "research": {
+    "title": "Research",
+    "intro": "Three lines of work, each asking how institutions exercise authority over the people they count, admit, or process. Choose one to explore it.",
+    "stages": {
+      "count": {
+        "heading": "Counting and institutional authority",
+        "body": "How official numbers are produced, contested, and carried into politics. My sole-authored paper examines the death toll of 1971 and the apology demand in Bangladesh–Pakistan relations since then.",
+        "diagramLabel": "Illustration: bars of different lengths, like competing counts of the same event",
+        "works": [
+          { "title": "Genocide, numbers, and memory: The death toll and the apology demand in Bangladesh–Pakistan relations since 1971", "meta": "Accepted, MPSA 2027", "publication": "p15" }
+        ]
+      },
+      "mig": {
+        "heading": "Migration policy and the limits of state authority",
+        "body": "How states organize labor migration and admission, and where their reach ends. Current work studies Bangladesh–South Korea labor cooperation beyond the Employment Permit System and compares immigration systems in the United States and Canada.",
+        "diagramLabel": "Illustration: two places joined by three routes; only the direct corridor passes the gate",
+        "works": [
+          { "title": "Beyond EPS: Bangladesh–South Korea labor cooperation under demographic pressure through migration diplomacy, corridor reliability, and institutional upgrading", "meta": "Accepted, MPSA 2027", "publication": "p16" },
+          { "title": "Comparative immigration governance in the United States and Canada", "meta": "Independent project, 2025", "publication": null }
+        ]
+      },
+      "ai": {
+        "heading": "AI, GovTech, and public administration",
+        "body": "How human oversight works when government adopts automated and digital tools. I study accountability in federal AI workflows and how universities adopt new digital systems under shared decision-making.",
+        "diagramLabel": "Illustration: cases moving along a workflow through a human checkpoint",
+        "works": [
+          { "title": "Speed, verification, and accountability: Human oversight beyond formal authority in federal AI workflows", "meta": "Sole author, in preparation", "publication": "p14" },
+          { "title": "Governing digital transformation under shared governance: Accountability and adoption in UIUC’s Canvas transition", "meta": "Independent project, 2026", "publication": null },
+          { "title": "A governance-ready project business case for a neurodiversity partnership with Western Illinois University", "meta": "Capstone, 2025", "publication": null }
+        ]
+      }
+    },
+    "earlier": {
+      "heading": "Earlier work in computational text analysis",
+      "body": "Before political science, I coauthored peer-reviewed work on sentiment analysis and applied machine learning, including a first-authored review of sentiment analysis datasets in *PeerJ Computer Science*. [Listed under Publications](/#publications)."
+    }
+  },
+  "experience": {
+    "title": "Experience",
+    "intro": "Teaching, applied research with nonprofit partners, and service to my department and student community. Select a bar or a role to see what it involved.",
+    "educationHeading": "Education"
+  },
+  "skills": {
+    "title": "Methods and skills",
+    "intro": "No proficiency scores. Each method is matched to the projects where I used it. Select a method for details.",
+    "matrixCaption": "Research methods and the projects that used them",
+    "panelKicker": "Selected method",
+    "softwareHeading": "Software",
+    "languagesHeading": "Languages",
+    "teachingHeading": "Teaching"
+  },
+  "publications": {
+    "title": "Publications",
+    "intro": "Journal articles, conference proceedings, presentations, and work under review or in preparation. Select a part of the bar to filter, or search.",
+    "searchLabel": "Search",
+    "searchPlaceholder": "Title, coauthor, or venue",
+    "filterLabels": [
+      { "type": "journal", "label": "Journal articles" },
+      { "type": "conference", "label": "Conference proceedings" },
+      { "type": "talk", "label": "Presentations" },
+      { "type": "review", "label": "Under review" },
+      { "type": "prep", "label": "In preparation" }
+    ]
+  },
+  "recognition": {
+    "title": "Grants, awards, and training",
+    "awardsHeading": "Grants and awards",
+    "certificationsHeading": "Certifications and professional training"
+  },
+  "contact": {
+    "emailHeading": "Email",
+    "profilesHeading": "Profiles",
+    "locationHeading": "Based in"
+  }
+}

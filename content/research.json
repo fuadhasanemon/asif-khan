@@ -1,0 +1,45 @@
+{
+  "threads": [
+    {
+      "id": "count",
+      "name": "Counting and institutional authority",
+      "short": "How official numbers are produced and contested",
+      "count": "1 paper"
+    },
+    {
+      "id": "mig",
+      "name": "Migration policy and the limits of state authority",
+      "short": "Labor migration, admission, and where state reach ends",
+      "count": "2 projects"
+    },
+    {
+      "id": "ai",
+      "name": "AI, GovTech, and public administration",
+      "short": "Human oversight when government adopts digital tools",
+      "count": "3 projects"
+    }
+  ],
+  "areas": {
+    "count": {
+      "name": "Counting and institutional authority",
+      "thread": "count"
+    },
+    "mig": {
+      "name": "Migration policy and the limits of state authority",
+      "thread": "mig"
+    },
+    "ai": {
+      "name": "AI, GovTech, and public administration",
+      "thread": "ai"
+    },
+    "comp": {
+      "name": "Earlier work in computational text analysis and applied machine learning"
+    },
+    "ir": {
+      "name": "International relations and security"
+    },
+    "applied": {
+      "name": "Coauthored applied research"
+    }
+  }
+}

@@ -1,0 +1,1653 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Publication details, desktop</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Public+Sans:ital,wght@0,300..700;1,400&amp;display=swap">
+<style>
+
+body{margin:0;background:#F3F4F0}
+.root{font-family:'Public Sans',system-ui,sans-serif;color:#1E2422;background:#F3F4F0;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.root *,.root *::before,.root *::after{box-sizing:border-box}
+.wrap{max-width:1240px;margin:0 auto;padding:0 56px}
+a{color:#2A52BE;text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{color:#1C3A8F}
+.root :focus-visible{outline:2px solid #2A52BE;outline-offset:3px;border-radius:2px}
+.dark :focus-visible{outline-color:#E2C779}
+.root html{scroll-behavior:smooth}
+
+.nav{position:sticky;top:0;z-index:20;background:#12312C;border-bottom:1px solid rgba(243,244,240,.1)}
+.navrow{display:flex;align-items:center;gap:36px;height:68px}
+.brand{font-family:'Newsreader',Georgia,serif;font-size:22px;color:#F3F4F0;text-decoration:none;margin-right:auto;font-variation-settings:'opsz' 36}
+.brand:hover{color:#fff}
+.navlinks{display:flex;gap:28px}
+.navlinks a{color:#C3CEC9;text-decoration:none;font-size:15px;padding:12px 0;border-bottom:1px solid transparent}
+.navlinks a:hover{color:#fff;border-bottom-color:#C9A44C}
+.menu-btn{display:none;align-items:center;justify-content:center;width:48px;height:48px;margin-right:-12px;background:none;border:0;color:#F3F4F0;cursor:pointer}
+.mobile-menu{display:flex;flex-direction:column;padding:4px 22px 28px;border-top:1px solid rgba(243,244,240,.1)}
+.mobile-menu a{color:#F3F4F0;text-decoration:none;font-family:'Newsreader',Georgia,serif;font-size:26px;padding:12px 0;border-bottom:1px solid rgba(243,244,240,.1)}
+.mobile-menu .mm-cv{margin-top:20px;font-family:'Public Sans',system-ui,sans-serif;font-size:15px;border:0;padding:0 22px;color:#12312C}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;font-family:'Public Sans',system-ui,sans-serif;font-weight:600;font-size:15px;line-height:1;text-decoration:none;border-radius:3px;transition:background-color .2s ease,color .2s ease,border-color .2s ease}
+.btn-brass{background:#C9A44C;color:#12312C}
+.btn-brass:hover{background:#DDBB66;color:#12312C}
+.btn-outline-light{border:1px solid rgba(243,244,240,.55);color:#F3F4F0}
+.btn-outline-light:hover{background:rgba(243,244,240,.1);color:#fff;border-color:#F3F4F0}
+.nav-cv{min-height:40px;padding:0 16px;font-size:14px}
+
+.hero{position:relative;background:#12312C;color:#F3F4F0;overflow:hidden;min-height:800px;display:flex;flex-direction:column}
+.particles{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;animation:fadein 2.4s ease .2s both}
+.hero-inner{position:relative;padding-top:148px;padding-bottom:88px;flex:1;width:100%}
+.hero-kicker{font-size:17px;color:#E2C779;margin:0 0 22px;letter-spacing:.01em}
+.hero-name{font-family:'Newsreader',Georgia,serif;font-weight:380;font-size:128px;line-height:.92;letter-spacing:-.025em;margin:0 0 40px;font-variation-settings:'opsz' 72}
+.hero-statement{font-family:'Newsreader',Georgia,serif;font-weight:320;font-size:38px;line-height:1.22;max-width:800px;margin:0 0 26px;color:#F3F4F0;font-variation-settings:'opsz' 48}
+.hero-sub{font-size:17px;line-height:1.65;color:#BACAC4;max-width:560px;margin:0 0 40px}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+.hero-foot{position:relative;display:flex;gap:28px;align-items:baseline;padding-top:22px;padding-bottom:30px;border-top:1px solid rgba(243,244,240,.14);font-size:15px;line-height:1.55;color:#BACAC4}
+.hero-foot a{color:#F3F4F0}
+.hero-foot a:hover{color:#E2C779}
+.hf-label{color:#E2C779;white-space:nowrap}
+
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.rise{animation:rise .95s cubic-bezier(.2,.7,.2,1) both}
+.d1{animation-delay:.1s}.d2{animation-delay:.22s}.d3{animation-delay:.42s}.d4{animation-delay:.6s}.d5{animation-delay:.85s}
+.reveal-ready [data-reveal]{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal-ready [data-reveal][data-shown]{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){.rise,.particles{animation:none}.reveal-ready [data-reveal]{opacity:1;transform:none;transition:none}.btn,.m-btn,.f-btn{transition:none}}
+
+.section{padding:136px 0;border-top:1px solid #CDD2CB;scroll-margin-top:68px}
+.section.first{border-top:0}
+.contact{scroll-margin-top:68px}
+.sec-head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:end;margin-bottom:72px}
+.h2{font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:60px;line-height:1.02;letter-spacing:-.015em;margin:0;font-variation-settings:'opsz' 72}
+.sec-intro{font-size:18px;line-height:1.6;color:#4A5450;margin:0;max-width:580px}
+.small-h{font-size:15px;font-weight:600;color:#1E2422;margin:0 0 14px}
+
+.about-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:88px;align-items:start}
+.lead{font-family:'Newsreader',Georgia,serif;font-size:31px;line-height:1.32;font-weight:360;margin:0 0 36px;color:#12312C;max-width:680px;font-variation-settings:'opsz' 36}
+.body p{font-size:17px;line-height:1.72;margin:0 0 20px;max-width:640px}
+.body p.lead{font-size:31px;line-height:1.32}
+.record{border-top:2px solid #1E2422}
+.record h3{font-size:15px;font-weight:600;margin:16px 0 4px;color:#1E2422}
+.rec-list{margin:0}
+.rec-row{display:grid;grid-template-columns:104px minmax(0,1fr);gap:20px;align-items:baseline;padding:18px 0;border-bottom:1px solid #CDD2CB}
+.rec-num{font-family:'Newsreader',Georgia,serif;font-size:42px;line-height:1;color:#12312C;font-variant-numeric:lining-nums tabular-nums;margin:0}
+.rec-label{font-size:15px;line-height:1.45;color:#3A433F;margin:0}
+
+.thread{display:grid;grid-template-columns:260px minmax(0,1fr);gap:64px;padding:56px 0;border-top:1px solid #CDD2CB}
+.thread-art{width:260px;height:180px;display:block}
+.thread h3{font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:36px;line-height:1.12;margin:0 0 16px;font-variation-settings:'opsz' 48}
+.thread p{font-size:17px;line-height:1.7;color:#2F3733;margin:0 0 28px;max-width:660px}
+.works{list-style:none;margin:0;padding:0}
+.work{display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:32px;padding:16px 0;border-top:1px solid #DCE0D8}
+.work-title{font-family:'Newsreader',Georgia,serif;font-size:20px;line-height:1.36;color:#1E2422}
+.work-meta{font-size:14px;line-height:1.5;color:#545D59;text-align:right}
+.earlier{margin-top:24px;padding:32px 36px;background:#E8EBE4;border-radius:2px}
+.earlier h3{font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:24px;margin:0 0 10px}
+.earlier p{font-size:16px;line-height:1.65;color:#2F3733;margin:0;max-width:760px}
+
+.xp-grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:88px;align-items:start}
+.tl{list-style:none;margin:0;padding:0 0 0 34px;position:relative}
+.tl::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:1px;background:#AEB6AF}
+.tl-item{position:relative;border-top:1px solid #CDD2CB}
+.tl-item:last-child{border-bottom:1px solid #CDD2CB}
+.tl-node{position:absolute;left:-34px;top:30px;width:15px;height:15px;border-radius:50%;border:2px solid #12312C;background:#F3F4F0;transition:background-color .2s ease}
+.tl-node.is-open{background:#C9A44C}
+.tl-btn{display:grid;grid-template-columns:168px minmax(0,1fr) auto;gap:24px;align-items:baseline;width:100%;padding:24px 0;background:none;border:0;text-align:left;font:inherit;color:inherit;cursor:pointer}
+.tl-btn:hover .tl-role{color:#2A52BE}
+.tl-date{font-size:14px;color:#4A5450;font-variant-numeric:tabular-nums}
+.tl-main{display:flex;flex-direction:column;gap:4px}
+.tl-role{font-family:'Newsreader',Georgia,serif;font-size:25px;line-height:1.2;color:#12312C;transition:color .2s ease}
+.tl-org{font-size:15px;line-height:1.5;color:#3A433F}
+.tl-kind{font-size:13px;color:#4A5450;padding:3px 10px;border:1px solid #BFC6BF;border-radius:999px;white-space:nowrap}
+.tl-detail{padding:0 0 28px 192px}
+.tl-note{font-size:15px;line-height:1.6;color:#3A433F;font-style:italic;margin:0 0 12px;max-width:620px}
+.tl-detail ul{margin:0;padding:0 0 0 18px;max-width:640px}
+.tl-detail li{font-size:16px;line-height:1.65;margin:0 0 8px}
+.edu{border-top:2px solid #1E2422;padding-top:4px}
+.edu-h{font-size:15px;font-weight:600;margin:16px 0 8px}
+.edu-item{padding:20px 0;border-bottom:1px solid #CDD2CB}
+.edu-item p{margin:0}
+.edu-year{font-size:14px;color:#4A5450;margin-bottom:6px!important}
+.edu-deg{font-family:'Newsreader',Georgia,serif;font-size:24px;line-height:1.2;color:#12312C}
+.edu-inst{font-size:15px;color:#3A433F;margin-top:4px!important}
+.edu-note{font-size:14px;line-height:1.55;color:#4A5450;margin-top:10px!important}
+
+.skills-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px;align-items:start}
+.m-list{display:flex;flex-direction:column;border-top:1px solid #CDD2CB}
+.m-btn{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:56px;padding:12px 18px;background:none;border:0;border-bottom:1px solid #CDD2CB;text-align:left;font:inherit;font-size:16px;color:#1E2422;cursor:pointer;transition:background-color .18s ease,color .18s ease}
+.m-btn:hover{background:#E6E9E2}
+.m-btn.is-on{background:#12312C;color:#F3F4F0}
+.m-count{font-size:13px;color:#545D59;white-space:nowrap}
+.m-btn.is-on .m-count{color:#E2C779}
+.m-panel{background:#FBFBF8;border:1px solid #CDD2CB;padding:44px 48px;min-height:340px}
+.m-kicker{font-size:14px;color:#4A5450;margin:0 0 10px}
+.m-title{font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:36px;line-height:1.12;margin:0 0 28px;color:#12312C}
+.m-uses{list-style:none;margin:0;padding:0}
+.m-use{display:flex;flex-direction:column;gap:6px;padding:18px 0;border-top:1px solid #DCE0D8}
+.m-use-title{font-family:'Newsreader',Georgia,serif;font-size:21px;line-height:1.35}
+.m-use-ctx{font-size:15px;color:#4A5450}
+.m-use.is-ph .m-use-title{font-family:'Public Sans',system-ui,sans-serif;font-size:15px;color:#7A4E00;background:#F5ECD2;padding:6px 10px;align-self:flex-start;border-radius:2px}
+.tool-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px;margin-top:72px;padding-top:32px;border-top:1px solid #CDD2CB}
+.tool-line{font-size:16px;line-height:1.65;color:#2F3733;margin:0;max-width:360px}
+
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px}
+.f-btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border:1px solid #AEB6AF;border-radius:999px;background:transparent;font:inherit;font-size:15px;font-weight:500;color:#1E2422;cursor:pointer;white-space:nowrap;transition:background-color .18s ease,color .18s ease}
+.f-btn:hover{border-color:#1E2422}
+.f-btn.is-on{background:#1E2422;border-color:#1E2422;color:#F3F4F0}
+.f-n{font-size:13px;color:#545D59}
+.f-btn.is-on .f-n{color:#C9D3CF}
+.pubs{list-style:none;margin:0;padding:0}
+.pub{display:grid;grid-template-columns:88px minmax(0,1fr);gap:32px;padding:30px 0;border-top:1px solid #CDD2CB}
+.pub:last-child{border-bottom:1px solid #CDD2CB}
+.pub-year{font-family:'Newsreader',Georgia,serif;font-size:22px;color:#4A5450;font-variant-numeric:lining-nums}
+.pub-title{font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:24px;line-height:1.3;margin:0 0 10px;max-width:880px}
+.pub-title a{color:#12312C;text-decoration:none;background-image:linear-gradient(#2A52BE,#2A52BE);background-size:0 1px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .3s ease,color .2s ease}
+.pub-title a:hover{color:#2A52BE;background-size:100% 1px}
+.pub-authors{font-size:15px;line-height:1.55;color:#3A433F;margin:0 0 4px;max-width:880px}
+.pub-authors strong{color:#12312C;font-weight:650}
+.pub-venue{font-size:15px;line-height:1.55;font-style:italic;color:#3A433F;margin:0;max-width:880px}
+.pub-foot{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:12px;font-size:14px}
+.pub-foot:empty{display:none}
+.status{font-size:13px;padding:3px 10px;border-radius:999px}
+.st-accepted{background:#DCEBE4;color:#17463A}
+.st-review{background:#E2E8F7;color:#22408F}
+.st-prep{background:#F1E9D2;color:#5E4A12}
+.doi{color:#2A52BE;font-size:14px}
+
+.aw-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:72px}
+.aw-list{list-style:none;margin:0;padding:0;border-top:1px solid #CDD2CB}
+.aw-list li{display:flex;flex-direction:column;gap:4px;padding:16px 0;border-bottom:1px solid #CDD2CB}
+.aw-t{font-family:'Newsreader',Georgia,serif;font-size:21px;line-height:1.3;color:#12312C}
+.aw-m{font-size:14px;color:#4A5450}
+
+.contact{background:#12312C;color:#F3F4F0;padding:144px 0 0}
+.contact-statement{font-family:'Newsreader',Georgia,serif;font-weight:340;font-size:58px;line-height:1.1;letter-spacing:-.01em;max-width:960px;margin:0 0 88px;font-variation-settings:'opsz' 72}
+.contact-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,3fr) minmax(0,4fr);gap:56px;padding-bottom:112px}
+.c-h{font-size:14px;font-weight:500;color:#E2C779;margin:0 0 14px}
+.c-email{font-family:'Newsreader',Georgia,serif;font-size:30px;color:#F3F4F0;text-decoration:underline;text-decoration-color:rgba(243,244,240,.35);text-underline-offset:6px;word-break:break-word}
+.c-email:hover{color:#fff;text-decoration-color:#C9A44C}
+.c-links{list-style:none;margin:0;padding:0}
+.c-links a{display:inline-block;padding:7px 0;color:#F3F4F0;font-size:17px;text-decoration:none;border-bottom:1px solid rgba(243,244,240,.25)}
+.c-links a:hover{border-bottom-color:#C9A44C;color:#fff}
+.c-p{font-size:17px;line-height:1.6;color:#BACAC4;margin:0 0 24px}
+.foot{display:flex;justify-content:space-between;gap:16px;padding:28px 0 36px;border-top:1px solid rgba(243,244,240,.14);font-size:14px;color:#BACAC4}
+.foot a{color:#F3F4F0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.progress{position:absolute;left:0;right:0;bottom:-1px;height:2px;pointer-events:none}
+.progress span{display:block;height:100%;background:#C9A44C;transform-origin:0 50%;transition:transform .12s linear}
+.navlinks a.is-active{color:#fff;border-bottom-color:#C9A44C}
+.mobile-menu a.is-active{color:#E2C779}
+.mask{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
+.mask-in{display:inline-block;animation:maskup 1.15s cubic-bezier(.2,.75,.1,1) .15s both}
+.mask-in.m2{animation-delay:.3s}
+@keyframes maskup{from{transform:translateY(108%)}to{transform:none}}
+.scroll-cue{margin-left:auto;display:inline-flex;align-items:center;gap:12px;min-height:44px;color:#BACAC4;text-decoration:none;font-size:14px;white-space:nowrap}
+.scroll-cue:hover{color:#F3F4F0}
+.cue-line{position:relative;display:block;width:1px;height:40px;background:rgba(243,244,240,.22);overflow:hidden}
+.cue-line::after{content:'';position:absolute;left:0;top:-40%;width:1px;height:40%;background:#E2C779;animation:cue 2.4s cubic-bezier(.6,0,.4,1) infinite}
+@keyframes cue{0%{top:-40%}100%{top:100%}}
+.sec-head::before{content:'';grid-column:1/-1;width:64px;height:2px;background:#C9A44C;transform-origin:0 50%;margin-bottom:-28px}
+.reveal-ready .sec-head::before{transform:scaleX(0);transition:transform 1s cubic-bezier(.2,.7,.2,1) .2s}
+.reveal-ready .sec-head[data-shown]::before{transform:scaleX(1)}
+
+.rmap{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:56px;align-items:start}
+.rtabs{display:flex;flex-direction:column;border-top:1px solid #CDD2CB;position:sticky;top:100px}
+.rtab{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;padding:24px 20px;text-align:left;background:none;border:0;border-bottom:1px solid #CDD2CB;font:inherit;color:#1E2422;cursor:pointer;transition:background-color .25s ease,color .25s ease}
+.rtab:hover{background:#E6E9E2}
+.rtab.is-on{background:#12312C;color:#F3F4F0}
+.rtab-name{font-family:'Newsreader',Georgia,serif;font-size:23px;line-height:1.2;grid-column:1}
+.rtab-line{font-size:14px;line-height:1.5;color:#4A5450;grid-column:1}
+.rtab-n{grid-column:2;grid-row:1;font-size:13px;color:#4A5450;white-space:nowrap;padding-top:6px}
+.rtab.is-on .rtab-line,.rtab.is-on .rtab-n{color:#BACAC4}
+.rstage{min-height:660px}
+.stage{animation:stagein .6s cubic-bezier(.2,.7,.2,1) both}
+@keyframes stagein{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.stage-art{background:#E8EBE4;padding:32px 36px;margin-bottom:36px}
+.stage-art svg{display:block;width:100%;height:auto}
+.stage h3{font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:36px;line-height:1.12;margin:0 0 16px}
+.stage p{font-size:17px;line-height:1.7;color:#2F3733;margin:0 0 28px;max-width:660px}
+.stage .work{animation:stagein .6s cubic-bezier(.2,.7,.2,1) both}
+.stage .work:nth-child(1){animation-delay:.25s}.stage .work:nth-child(2){animation-delay:.35s}.stage .work:nth-child(3){animation-delay:.45s}
+.a-bar{transform-box:fill-box;transform-origin:0 50%;animation:grow 1.2s cubic-bezier(.2,.7,.2,1) both}
+@keyframes grow{from{transform:scaleX(0)}to{transform:none}}
+.a-fade{animation:fadein .8s ease 1.3s both}
+.a-draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.6s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.a-flow{animation:flow 7.5s linear infinite;fill:#12312C}
+@keyframes flow{0%{transform:translateX(0);fill:#12312C;opacity:0}6%{opacity:1}47%{fill:#12312C}53%{fill:#C9A44C}94%{opacity:1}100%{transform:translateX(440px);fill:#C9A44C;opacity:0}}
+.a-pulse{animation:pulse 2.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{stroke-width:2.5}50%{stroke-width:6}}
+
+.chart{margin-bottom:80px}
+.chart-axis{position:relative;height:24px;margin-left:240px;margin-bottom:6px}
+.tick{position:absolute;top:0;transform:translateX(-50%);font-size:13px;color:#4A5450;font-variant-numeric:tabular-nums}
+.chart-rows{list-style:none;margin:0;padding:0;border-top:1px solid #CDD2CB}
+.chart-row{display:grid;grid-template-columns:240px minmax(0,1fr);align-items:center;border-bottom:1px solid #DCE0D8;transition:background-color .2s ease}
+.chart-row.is-hot{background:#E6E9E2}
+.chart-label{font-size:14px;color:#2F3733;padding:0 16px 0 0}
+.chart-track{position:relative;display:block;height:44px;background-image:repeating-linear-gradient(to right,#DCE0D8 0,#DCE0D8 1px,transparent 1px,transparent 10%)}
+.chart-bar{position:absolute;top:0;height:44px;min-width:14px;padding:0;background:none;border:0;cursor:pointer}
+.chart-bar::after{content:'';position:absolute;left:0;right:0;top:15px;height:14px;background:#12312C;border-radius:1px;transform-origin:0 50%;transition:transform .9s cubic-bezier(.2,.7,.2,1) var(--d,0s),background-color .2s ease}
+.chart-bar.is-ongoing::after{background:linear-gradient(90deg,#12312C 78%,rgba(18,49,44,.3))}
+.chart-bar:hover::after{background:#2A52BE}
+.chart-bar.is-open::after{background:#C9A44C}
+.reveal-ready .chart .chart-bar::after{transform:scaleX(0)}
+.reveal-ready .chart[data-shown] .chart-bar::after{transform:scaleX(1)}
+.tl-item{transition:background-color .2s ease}
+.tl-item.is-hot{background:#E6E9E2}
+
+.matrix-box{overflow-x:auto;border-top:2px solid #1E2422}
+.matrix{border-collapse:collapse;width:100%;min-width:900px}
+.matrix th,.matrix td{border-bottom:1px solid #DCE0D8;transition:background-color .2s ease}
+.mx-corner{text-align:left;font-size:14px;font-weight:600;padding:18px 16px;vertical-align:bottom;width:320px}
+.mx-col{vertical-align:bottom;text-align:left;font-weight:400;padding:18px 12px;width:16%}
+.mx-pj{display:block;font-family:'Newsreader',Georgia,serif;font-size:17px;line-height:1.25;color:#12312C}
+.mx-yr{display:block;font-size:12.5px;color:#4A5450;margin-top:4px;line-height:1.35}
+.mx-col.is-col,.mx-cell.is-col{background:#E6E9E2}
+.mx-row th{text-align:left;font-weight:400;padding:0}
+.mx-m{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;min-height:52px;padding:10px 16px;background:none;border:0;text-align:left;font:inherit;font-size:16px;color:inherit;cursor:pointer}
+.mx-n{font-size:13px;color:#545D59;white-space:nowrap}
+.mx-row:hover th,.mx-row:hover td{background:#EEF0EA}
+.mx-row.is-on th,.mx-row.is-on td{background:#12312C;color:#F3F4F0}
+.mx-row.is-on .mx-n{color:#E2C779}
+.mx-cell{padding:0 12px}
+.dot{display:inline-block;width:14px;height:14px;border-radius:50%;background:#12312C;transition:transform .35s cubic-bezier(.3,1.6,.5,1) var(--d,0s),background-color .2s ease}
+.mx-row.is-on .dot{background:#C9A44C}
+.reveal-ready .matrix-box .dot{transform:scale(0)}
+.reveal-ready .matrix-box[data-shown] .dot{transform:scale(1)}
+.m-panel{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:48px;align-items:start;margin-top:32px;min-height:0;padding:36px 40px}
+.m-panel .m-title{margin:0}
+.m-uses{border-top:0}
+
+.pub-tools{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:56px;align-items:end;margin-bottom:40px}
+.compo-top{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:44px;margin-bottom:10px}
+.pub-count{font-size:14px;color:#4A5450;margin:0}
+.reset{background:none;border:0;padding:10px 0;min-height:44px;font:inherit;font-size:14px;color:#2A52BE;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.compo{display:flex;gap:4px}
+.seg{display:flex;flex-direction:column;align-items:flex-start;gap:8px;flex-basis:0;min-width:0;padding:0 0 4px;background:none;border:0;text-align:left;font:inherit;color:#1E2422;cursor:pointer;transition:opacity .25s ease}
+.seg-bar{display:block;width:100%;height:16px;transform-origin:0 50%;transition:transform .9s cubic-bezier(.2,.7,.2,1) var(--d,0s),height .2s ease}
+.seg:hover .seg-bar,.seg.is-on .seg-bar{height:22px;margin-bottom:-6px}
+.seg-n{font-family:'Newsreader',Georgia,serif;font-size:24px;line-height:1;color:#12312C;padding-top:4px}
+.seg-label{font-size:13px;line-height:1.3;color:#3A433F}
+.seg-journal .seg-bar{background:#12312C}
+.seg-conference .seg-bar{background:#2A52BE}
+.seg-talk .seg-bar{background:#C9A44C}
+.seg-review .seg-bar{background:#9DB2EA}
+.seg-prep .seg-bar{background:#B5BFB8}
+.compo.has-pick .seg{opacity:.38}
+.compo.has-pick .seg.is-on,.compo.has-pick .seg:hover{opacity:1}
+.reveal-ready .pub-tools .seg-bar{transform:scaleX(0)}
+.reveal-ready .pub-tools[data-shown] .seg-bar{transform:scaleX(1)}
+.search-l{display:block;font-size:14px;font-weight:600;margin-bottom:8px}
+.search input{width:100%;min-height:48px;padding:0 16px;border:1px solid #9AA39C;border-radius:3px;background:#FBFBF8;font:inherit;font-size:16px;color:#1E2422}
+.search input::placeholder{color:#6B746F}
+.search input:focus-visible{outline:2px solid #2A52BE;outline-offset:1px;border-color:#2A52BE}
+.empty{padding:40px 0 48px;border-top:1px solid #CDD2CB}
+.empty p{font-size:17px;margin:0 0 20px}
+.btn-ink{background:#1E2422;color:#F3F4F0;border:0;cursor:pointer}
+.btn-ink:hover{background:#12312C;color:#fff}
+.pub{margin:0 -20px;padding:30px 20px;transition:background-color .2s ease}
+.pub:hover{background:#ECEFE8}
+.pub:last-child{border-bottom:1px solid #CDD2CB}
+.copy-btn{background:none;border:0;padding:10px 0;min-height:44px;font:inherit;font-size:14px;color:#2A52BE;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.copy-btn.is-done{color:#17463A;text-decoration:none}
+.pub-foot{margin-top:6px}
+.c-actions{margin-top:20px}
+.c-copy{min-height:44px;padding:0 18px;font-size:14px;background:none;cursor:pointer}
+.totop{position:fixed;right:28px;bottom:28px;z-index:30;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:#12312C;color:#F3F4F0;box-shadow:0 8px 22px rgba(18,49,44,.28);animation:fadein .3s ease both;text-decoration:none}
+.totop:hover{background:#1C4740;color:#fff}
+@media (prefers-reduced-motion: reduce){.mask-in,.cue-line::after,.stage,.stage .work,.a-bar,.a-fade,.a-draw,.a-flow,.a-pulse,.totop{animation:none}.a-draw{stroke-dashoffset:0}.chart-bar::after,.dot,.seg-bar,.progress span,.sec-head::before{transition:none}}
+
+.detail{padding:72px 0 128px;scroll-margin-top:68px;animation:stagein .5s cubic-bezier(.2,.7,.2,1) both}
+.crumbs{display:flex;align-items:center;gap:12px;font-size:15px;color:#4A5450;margin-bottom:48px}
+.crumbs a{display:inline-flex;align-items:center;min-height:44px}
+.crumb-sep{color:#9AA39C}
+.dt-head{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:72px;align-items:start;padding-bottom:64px;border-bottom:1px solid #CDD2CB}
+.dt-main > *{animation:stagein .7s cubic-bezier(.2,.7,.2,1) both}
+.dt-main > *:nth-child(2){animation-delay:.08s}.dt-main > *:nth-child(3){animation-delay:.16s}.dt-main > *:nth-child(4){animation-delay:.22s}.dt-main > *:nth-child(5){animation-delay:.3s}
+.dt-tags{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:24px}
+.kind-tag{font-size:13px;padding:3px 10px;border-radius:999px;border:1px solid #9AA39C;color:#1E2422}
+.kind-journal{background:#12312C;border-color:#12312C;color:#F3F4F0}
+.kind-conference{background:#2A52BE;border-color:#2A52BE;color:#fff}
+.kind-talk{background:#C9A44C;border-color:#C9A44C;color:#12312C}
+.dt-year{font-size:14px;color:#4A5450}
+.dt-title{font-family:'Newsreader',Georgia,serif;font-weight:380;font-size:54px;line-height:1.08;letter-spacing:-.012em;margin:0 0 28px;color:#12312C;max-width:880px;font-variation-settings:'opsz' 60;text-wrap:balance}
+.dt-authors{font-size:18px;line-height:1.6;margin:0 0 8px;color:#2F3733;max-width:820px}
+.dt-authors .me{color:#12312C;font-weight:650;background:linear-gradient(transparent 62%,rgba(201,164,76,.38) 62%)}
+.dt-venue{font-size:16px;line-height:1.6;font-style:italic;color:#3A433F;margin:0 0 36px;max-width:820px}
+.dt-actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn-line{background:transparent;border:1px solid #9AA39C;color:#1E2422;cursor:pointer}
+.btn-line:hover{border-color:#1E2422;background:#E9ECE5}
+.glance{background:#FBFBF8;border:1px solid #CDD2CB;padding:28px 28px 8px;animation:stagein .7s cubic-bezier(.2,.7,.2,1) .25s both}
+.glance-h{font-size:15px;font-weight:600;margin:0 0 8px}
+.facts{margin:0}
+.fact{padding:14px 0;border-top:1px solid #DCE0D8}
+.fact dt{font-size:13px;color:#4A5450;margin:0 0 4px}
+.fact dd{margin:0;font-size:15px;line-height:1.5;color:#1E2422;word-break:break-word}
+.dt-sec{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:56px;padding:48px 0;border-bottom:1px solid #CDD2CB}
+.dt-h{font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:28px;line-height:1.2;margin:0;color:#12312C}
+.dt-content{min-width:0}
+.ph-box{margin:0;padding:22px 24px;background:#F5ECD2;color:#5E4A12;font-size:16px;line-height:1.6;border-radius:2px;max-width:760px}
+.ph-inline{margin:0;font-size:15px;color:#7A4E00}
+.fit-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
+.fit-v{font-family:'Newsreader',Georgia,serif;font-size:21px;line-height:1.35;margin:0 0 10px;color:#12312C}
+.link-btn{display:inline-flex;align-items:center;min-height:44px;font-size:15px}
+.chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:14px;padding:6px 12px;border:1px solid #AEB6AF;border-radius:999px;background:#FBFBF8}
+.cite-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.cite-box{background:#FBFBF8;border:1px solid #CDD2CB;padding:24px 28px 12px;max-width:860px}
+.cite-text{margin:0 0 6px;white-space:pre-wrap;word-break:break-word;font-family:'Public Sans',system-ui,sans-serif;font-size:16px;line-height:1.65;color:#1E2422;animation:fadein .35s ease both}
+.cite-text.is-code{font-family:ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;font-size:14px;line-height:1.6}
+.rel{list-style:none;margin:0;padding:0}
+.rel li{border-top:1px solid #DCE0D8}
+.rel li:first-child{border-top:0}
+.rel-a{display:flex;flex-direction:column;gap:4px;padding:16px 0;text-decoration:none;color:#1E2422}
+.rel-k{font-size:13px;color:#4A5450}
+.rel-t{font-family:'Newsreader',Georgia,serif;font-size:21px;line-height:1.35;color:#12312C;transition:color .2s ease}
+.rel-m{font-size:14px;color:#4A5450}
+.rel-a:hover .rel-t{color:#2A52BE}
+.pager{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:56px}
+.pg{display:flex;flex-direction:column;gap:8px;padding:24px 28px;border:1px solid #CDD2CB;text-decoration:none;color:#1E2422;transition:background-color .2s ease,border-color .2s ease}
+.pg:hover{background:#E9ECE5;border-color:#9AA39C}
+.pg-next{text-align:right;align-items:flex-end}
+.pg-k{font-size:14px;color:#4A5450}
+.pg-t{font-family:'Newsreader',Georgia,serif;font-size:20px;line-height:1.35;color:#12312C;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.details-link{font-size:14px;min-height:44px;display:inline-flex;align-items:center}
+.wt-link{text-decoration:none;color:#1E2422}
+.wt-link:hover{color:#2A52BE;text-decoration:underline}
+@media (prefers-reduced-motion: reduce){.detail,.dt-main > *,.glance,.cite-text{animation:none}}
+
+@media (max-width: 1100px){
+.wrap{padding:0 40px}
+.navlinks{gap:20px}
+.hero-name{font-size:104px}
+.sec-head{grid-template-columns:minmax(0,1fr);gap:20px}
+.about-grid,.xp-grid{grid-template-columns:minmax(0,1fr);gap:64px}
+.thread{grid-template-columns:200px minmax(0,1fr);gap:40px}
+.thread-art{width:200px;height:auto}
+.contact-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+
+.rmap{grid-template-columns:minmax(0,1fr);gap:32px}
+.rtabs{position:static;flex-direction:row;border-top:0;gap:8px}
+.rtab{flex:1 1 0;border:1px solid #CDD2CB}
+.rstage{min-height:0}
+.pub-tools{grid-template-columns:minmax(0,1fr);gap:28px}
+.m-panel{grid-template-columns:minmax(0,1fr);gap:16px}
+
+.dt-head{grid-template-columns:minmax(0,1fr);gap:40px}
+.dt-sec{grid-template-columns:minmax(0,1fr);gap:20px}
+}
+@media (max-width: 760px){
+.wrap{padding:0 22px}
+.navrow{height:60px;gap:12px}
+.navlinks,.nav-cv{display:none}
+.menu-btn{display:inline-flex}
+.hero{min-height:0}
+.hero-inner{padding-top:72px;padding-bottom:56px}
+.hero-kicker{font-size:15px;margin-bottom:16px}
+.hero-name{font-size:56px;line-height:.98;margin-bottom:28px}
+.hero-statement{font-size:27px;line-height:1.25}
+.hero-sub{font-size:16px;margin-bottom:32px}
+.hero-actions .btn{flex:1 1 100%}
+.hero-foot{flex-direction:column;gap:6px;padding-top:18px}
+.section{padding:84px 0;scroll-margin-top:60px}
+.sec-head,.about-grid,.xp-grid,.skills-grid,.aw-grid,.contact-grid,.tool-grid{grid-template-columns:minmax(0,1fr);gap:28px}
+.sec-head{margin-bottom:40px;gap:16px}
+.h2{font-size:42px}
+.sec-intro{font-size:17px}
+.about-grid,.xp-grid{gap:56px}
+.body p.lead{font-size:24px;line-height:1.35}
+.rec-row{grid-template-columns:80px minmax(0,1fr);gap:14px}
+.rec-num{font-size:34px}
+.thread{grid-template-columns:minmax(0,1fr);gap:20px;padding:40px 0}
+.thread-art{width:180px;height:auto}
+.thread h3{font-size:29px}
+.work{grid-template-columns:minmax(0,1fr);gap:4px}
+.work-title{font-size:18px}
+.work-meta{text-align:left}
+.earlier{padding:24px 22px}
+.tl{padding-left:28px}
+.tl-node{left:-28px;top:26px;width:13px;height:13px}
+.tl::before{left:6px}
+.tl-btn{grid-template-columns:minmax(0,1fr);gap:6px;padding:20px 0}
+.tl-role{font-size:22px}
+.tl-kind{justify-self:start}
+.tl-detail{padding:0 0 24px 0}
+.m-panel{padding:28px 22px;min-height:0}
+.m-title{font-size:28px}
+.tool-grid{margin-top:48px;gap:24px}
+.filters{flex-wrap:nowrap;overflow-x:auto;margin:0 -22px 28px;padding:0 22px 8px}
+.pub{grid-template-columns:minmax(0,1fr);gap:4px;padding:24px 0}
+.pub-year{font-size:16px}
+.pub-title{font-size:20px}
+.aw-grid{gap:48px}
+.contact{padding-top:88px}
+.contact-statement{font-size:34px;margin-bottom:48px}
+.contact-grid{gap:36px;padding-bottom:72px}
+.c-email{font-size:24px}
+.foot{flex-direction:column}
+
+.scroll-cue{display:none}
+.sec-head::before{margin-bottom:-12px}
+.rtabs{overflow-x:auto;margin:0 -22px;padding:0 22px 4px}
+.rtab{flex:0 0 80%;padding:18px}
+.rtab-name{font-size:20px}
+.stage-art{padding:18px;margin-bottom:24px}
+.stage h3{font-size:28px}
+.chart{margin-bottom:56px}
+.chart-axis{margin-left:0}
+.tick-odd{display:none}
+.chart-row{grid-template-columns:minmax(0,1fr)}
+.chart-label{padding:12px 0 0;font-size:13px}
+.chart-track,.chart-bar{height:34px}
+.chart-bar::after{top:10px;height:12px}
+.m-panel{padding:24px 22px;margin-top:24px}
+.compo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 14px}
+.pub{margin:0;padding:24px 0}
+.pub:hover{background:none}
+.totop{right:16px;bottom:16px;width:48px;height:48px}
+
+.detail{padding:40px 0 80px}
+.crumbs{margin-bottom:24px}
+.dt-title{font-size:34px;line-height:1.12}
+.dt-authors{font-size:16px}
+.dt-actions .btn{flex:1 1 100%}
+.dt-head{padding-bottom:40px}
+.dt-sec{padding:36px 0}
+.dt-h{font-size:24px}
+.fit-grid{grid-template-columns:minmax(0,1fr);gap:24px}
+.cite-box{padding:18px 18px 8px}
+.pager{grid-template-columns:minmax(0,1fr);gap:12px}
+.pg-next{text-align:left;align-items:flex-start}
+}
+
+</style>
+</helmet>
+<div class="root {{rootCls}}" ref="{{rootRef}}" style="min-height:100%">
+
+<header class="nav dark">
+  <div class="wrap navrow">
+    <a href="#top" class="brand" onClick="{{goTop}}">Md. Asif Khan</a>
+    <nav aria-label="Sections" class="navlinks">
+      <sc-for list="{{navItems}}" as="n" hint-placeholder-count="6">
+        <a href="{{n.href}}" class="{{n.cls}}" aria-current="{{n.current}}" onClick="{{n.go}}">{{n.label}}</a>
+      </sc-for>
+    </nav>
+    <a class="btn btn-outline-light nav-cv" href="/files/Md-Asif-Khan-CV.pdf">Download CV</a>
+    <button class="menu-btn" type="button" aria-label="{{menuLabel}}" aria-expanded="{{menuExpanded}}" onClick="{{toggleMenu}}">
+      <sc-if value="{{menuOpen}}" hint-placeholder-val="{{ false }}">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 5l12 12M17 5L5 17"></path></svg>
+      </sc-if>
+      <sc-if value="{{menuClosed}}" hint-placeholder-val="{{ true }}">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 7h16M3 15h16"></path></svg>
+      </sc-if>
+    </button>
+  </div>
+  <div class="progress" aria-hidden="true"><span style="transform: scaleX({{progress}})"></span></div>
+  <sc-if value="{{menuOpen}}" hint-placeholder-val="{{ false }}">
+    <nav class="mobile-menu" aria-label="Sections">
+      <sc-for list="{{navItems}}" as="n" hint-placeholder-count="6">
+        <a href="{{n.href}}" class="{{n.cls}}" aria-current="{{n.current}}" onClick="{{n.goMenu}}">{{n.label}}</a>
+      </sc-for>
+      <a class="btn btn-brass mm-cv" href="/files/Md-Asif-Khan-CV.pdf">Download CV</a>
+    </nav>
+  </sc-if>
+</header>
+
+<sc-if value="{{listView}}" hint-placeholder-val="{{ true }}">
+<section id="top" class="hero dark">
+  <sc-if value="{{showParticles}}" hint-placeholder-val="{{ true }}">
+    <canvas class="particles" ref="{{canvasRef}}" aria-hidden="true"></canvas>
+  </sc-if>
+  <div class="wrap hero-inner">
+    <p class="hero-kicker rise d1">Political scientist and policy analyst</p>
+    <h1 class="hero-name"><span class="mask"><span class="mask-in">Md. Asif</span></span> <span class="mask"><span class="mask-in m2">Khan</span></span></h1>
+    <p class="hero-statement rise d3">I study how states count, classify, and admit people, and who answers for those decisions.</p>
+    <p class="hero-sub rise d4">M.A. in Political Science, Western Illinois University, 2026. Research on immigration policy, GovTech, and AI in public administration.</p>
+    <div class="hero-actions rise d4">
+      <a class="btn btn-brass" href="#research">Explore research</a>
+      <a class="btn btn-outline-light" href="/files/Md-Asif-Khan-CV.pdf">Download CV</a>
+    </div>
+  </div>
+  <div class="wrap hero-foot rise d5">
+    <span class="hf-label">Upcoming</span>
+    <span>Two papers accepted for the Midwest Political Science Association’s 84th Annual Conference, Chicago, April 2027. <a href="#publications">See the papers</a></span>
+    <a href="#about" class="scroll-cue"><span>Scroll</span><span class="cue-line" aria-hidden="true"></span></a>
+  </div>
+</section>
+
+<section id="about" class="section first">
+  <div class="wrap">
+    <div class="sec-head" data-reveal="">
+      <h2 class="h2">About</h2>
+    </div>
+    <div class="about-grid">
+      <div class="body">
+        <p class="lead">My research asks how public institutions decide who is counted, how people are classified, and who is held accountable when those decisions go wrong.</p>
+        <p>I completed an M.A. in Political Science at Western Illinois University in 2026 with a 4.00 GPA, after a B.S.S. in International Relations at the University of Dhaka. At Western Illinois I worked as a teaching support assistant in the Department of Political Science and as a pre-college instructor in the Rural Postsecondary and Economic Development (RPED) Program.</p>
+        <p>My interests sit where immigration policy, GovTech, and AI in public administration meet. I work with survey and interview data, comparative case studies, and quantitative tools in R, Python, and SPSS.</p>
+        <p>I grew up in Bangladesh and now live in Waukegan, Illinois. I speak Bengali, English, Hindi, and Urdu.</p>
+      </div>
+      <aside class="record" aria-labelledby="record-h" data-reveal="" data-count="">
+        <h3 id="record-h">The record, counted</h3>
+        <dl class="rec-list">
+          <sc-for list="{{record}}" as="r" hint-placeholder-count="6">
+            <div class="rec-row">
+              <dt class="rec-num">{{r.shown}}</dt>
+              <dd class="rec-label">{{r.label}}</dd>
+            </div>
+          </sc-for>
+        </dl>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="research" class="section">
+  <div class="wrap">
+    <div class="sec-head" data-reveal="">
+      <h2 class="h2">Research</h2>
+      <p class="sec-intro">Three lines of work, each asking how institutions exercise authority over the people they count, admit, or process. Choose one to explore it.</p>
+    </div>
+    <div class="rmap" data-reveal="">
+      <div class="rtabs" role="group" aria-label="Research lines">
+        <sc-for list="{{threads}}" as="t" hint-placeholder-count="3">
+          <button type="button" class="rtab {{t.cls}}" aria-pressed="{{t.pressed}}" aria-controls="research-stage" onClick="{{t.pick}}">
+            <span class="rtab-name">{{t.name}}</span>
+            <span class="rtab-line">{{t.short}}</span>
+            <span class="rtab-n">{{t.count}}</span>
+          </button>
+        </sc-for>
+      </div>
+      <div class="rstage" id="research-stage" aria-live="polite">
+
+        <sc-if value="{{isCount}}" hint-placeholder-val="{{ true }}">
+          <div class="stage">
+            <div class="stage-art">
+              <svg viewBox="0 0 520 240" role="img" aria-label="Illustration: bars of different lengths, like competing counts of the same event">
+                <line x1="40" y1="20" x2="40" y2="220" stroke="#1E2422" stroke-width="1.5"></line>
+                <rect class="a-bar" x="40" y="36" width="330" height="18" fill="#12312C" style="animation-delay: .1s"></rect>
+                <rect class="a-bar" x="40" y="72" width="214" height="18" fill="#12312C" opacity="0.55" style="animation-delay: .25s"></rect>
+                <rect class="a-bar" x="40" y="108" width="430" height="18" fill="#2A52BE" style="animation-delay: .4s"></rect>
+                <rect class="a-bar" x="40" y="144" width="138" height="18" fill="#12312C" opacity="0.35" style="animation-delay: .55s"></rect>
+                <rect class="a-bar" x="40" y="180" width="286" height="18" fill="#C9A44C" style="animation-delay: .7s"></rect>
+                <line class="a-fade" x1="290" y1="20" x2="290" y2="220" stroke="#1E2422" stroke-width="1" stroke-dasharray="4 5"></line>
+              </svg>
+            </div>
+            <h3>Counting and institutional authority</h3>
+            <p>How official numbers are produced, contested, and carried into politics. My sole-authored paper examines the death toll of 1971 and the apology demand in Bangladesh–Pakistan relations since then.</p>
+            <ul class="works">
+              <li class="work"><a class="work-title wt-link" href="#publication" onClick="{{openPub.p15}}">Genocide, numbers, and memory: The death toll and the apology demand in Bangladesh–Pakistan relations since 1971</a><span class="work-meta">Accepted, MPSA 2027</span></li>
+            </ul>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{isMig}}" hint-placeholder-val="{{ false }}">
+          <div class="stage">
+            <div class="stage-art">
+              <svg viewBox="0 0 520 240" role="img" aria-label="Illustration: two places joined by three routes; only the direct corridor passes the gate">
+                <path class="a-draw" pathLength="1" d="M100 120 C 180 30, 340 30, 420 120" fill="none" stroke="#12312C" stroke-width="1.5" opacity="0.45"></path>
+                <path class="a-draw" pathLength="1" d="M100 120 L 420 120" fill="none" stroke="#2A52BE" stroke-width="3" style="animation-delay: .2s"></path>
+                <path class="a-draw" pathLength="1" d="M100 120 C 180 210, 340 210, 420 120" fill="none" stroke="#12312C" stroke-width="1.5" opacity="0.45" style="animation-delay: .4s"></path>
+                <line x1="260" y1="30" x2="260" y2="104" stroke="#1E2422" stroke-width="4"></line>
+                <line x1="260" y1="136" x2="260" y2="212" stroke="#1E2422" stroke-width="4"></line>
+                <circle cx="80" cy="120" r="22" fill="#F3F4F0" stroke="#12312C" stroke-width="2"></circle>
+                <circle cx="440" cy="120" r="22" fill="#F3F4F0" stroke="#12312C" stroke-width="2"></circle>
+                <sc-if value="{{motionOK}}" hint-placeholder-val="{{ true }}">
+                  <circle r="5" fill="#C9A44C"><animateMotion dur="4.5s" begin="1.4s" repeatCount="indefinite" path="M100 120 L 420 120"></animateMotion></circle>
+                  <circle r="5" fill="#C9A44C"><animateMotion dur="4.5s" begin="3.6s" repeatCount="indefinite" path="M100 120 L 420 120"></animateMotion></circle>
+                  <circle r="4" fill="#12312C" opacity="0.6"><animateMotion dur="5s" begin="1.6s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0.47;0.47" keyTimes="0;0.6;1" path="M100 120 C 180 30, 340 30, 420 120"></animateMotion></circle>
+                  <circle r="4" fill="#12312C" opacity="0.6"><animateMotion dur="5s" begin="2.4s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0.47;0.47" keyTimes="0;0.6;1" path="M100 120 C 180 210, 340 210, 420 120"></animateMotion></circle>
+                </sc-if>
+              </svg>
+            </div>
+            <h3>Migration policy and the limits of state authority</h3>
+            <p>How states organise labour migration and admission, and where their reach ends. Current work studies Bangladesh–South Korea labour cooperation beyond the Employment Permit System and compares immigration systems in the United States and Canada.</p>
+            <ul class="works">
+              <li class="work"><a class="work-title wt-link" href="#publication" onClick="{{openPub.p16}}">Beyond EPS: Bangladesh–South Korea labor cooperation under demographic pressure through migration diplomacy, corridor reliability, and institutional upgrading</a><span class="work-meta">Accepted, MPSA 2027</span></li>
+              <li class="work"><span class="work-title">Comparative immigration governance in the United States and Canada</span><span class="work-meta">Independent project, 2025</span></li>
+            </ul>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{isAi}}" hint-placeholder-val="{{ false }}">
+          <div class="stage">
+            <div class="stage-art">
+              <svg viewBox="0 0 520 240" role="img" aria-label="Illustration: cases moving along a workflow through a human checkpoint">
+                <line x1="20" y1="120" x2="500" y2="120" stroke="#1E2422" stroke-width="1.5"></line>
+                <sc-if value="{{motionOK}}" hint-placeholder-val="{{ true }}">
+                  <rect class="a-flow" x="20" y="108" width="24" height="24" style="animation-delay: 0s"></rect>
+                  <rect class="a-flow" x="20" y="108" width="24" height="24" style="animation-delay: -2.5s"></rect>
+                  <rect class="a-flow" x="20" y="108" width="24" height="24" style="animation-delay: -5s"></rect>
+                </sc-if>
+                <sc-if value="{{motionOff}}" hint-placeholder-val="{{ false }}">
+                  <rect x="60" y="108" width="24" height="24" fill="#12312C"></rect>
+                  <rect x="400" y="108" width="24" height="24" fill="#C9A44C"></rect>
+                </sc-if>
+                <circle class="a-pulse" cx="260" cy="120" r="56" fill="#E8EBE4" stroke="#2A52BE" stroke-width="2.5"></circle>
+                <circle cx="260" cy="104" r="11" fill="none" stroke="#2A52BE" stroke-width="2.5"></circle>
+                <path d="M238 142 C 243 124, 277 124, 282 142" fill="none" stroke="#2A52BE" stroke-width="2.5"></path>
+              </svg>
+            </div>
+            <h3>AI, GovTech, and public administration</h3>
+            <p>How human oversight works when government adopts automated and digital tools. I study accountability in federal AI workflows and how universities adopt new digital systems under shared decision-making.</p>
+            <ul class="works">
+              <li class="work"><a class="work-title wt-link" href="#publication" onClick="{{openPub.p14}}">Speed, verification, and accountability: Human oversight beyond formal authority in federal AI workflows</a><span class="work-meta">Sole author, in preparation</span></li>
+              <li class="work"><span class="work-title">Governing digital transformation under shared governance: Accountability and adoption in UIUC’s Canvas transition</span><span class="work-meta">Independent project, 2026</span></li>
+              <li class="work"><span class="work-title">A governance-ready project business case for a neurodiversity partnership with Western Illinois University</span><span class="work-meta">Capstone, 2025</span></li>
+            </ul>
+          </div>
+        </sc-if>
+
+      </div>
+    </div>
+
+    <div class="earlier" data-reveal="">
+      <h3>Earlier work in computational text analysis</h3>
+      <p>Before political science, I coauthored peer-reviewed work on sentiment analysis and applied machine learning, including a first-authored review of sentiment analysis datasets in <i>PeerJ Computer Science</i>. <a href="#publications">Listed under Publications</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="section">
+  <div class="wrap">
+    <div class="sec-head" data-reveal="">
+      <h2 class="h2">Experience</h2>
+      <p class="sec-intro">Teaching, applied research with nonprofit partners, and service to my department and student community. Select a bar or a role to see what it involved.</p>
+    </div>
+
+    <div class="chart" data-reveal="">
+      <div class="chart-axis" aria-hidden="true">
+        <sc-for list="{{years}}" as="y" hint-placeholder-count="11">
+          <span class="tick {{y.cls}}" style="left: {{y.left}}%">{{y.label}}</span>
+        </sc-for>
+      </div>
+      <ul class="chart-rows">
+        <sc-for list="{{roles}}" as="role" hint-placeholder-count="7">
+          <li class="chart-row {{role.hotCls}}">
+            <span class="chart-label">{{role.short}}</span>
+            <span class="chart-track">
+              <button type="button" class="chart-bar {{role.barCls}}" style="left: {{role.left}}%; width: {{role.width}}%; --d: {{role.delay}}s" aria-label="{{role.barLabel}}" aria-pressed="{{role.expanded}}" onClick="{{role.select}}" onMouseEnter="{{role.hover}}" onMouseLeave="{{unhover}}" onFocus="{{role.hover}}" onBlur="{{unhover}}"></button>
+            </span>
+          </li>
+        </sc-for>
+      </ul>
+    </div>
+
+    <div class="xp-grid">
+      <ol class="tl">
+        <sc-for list="{{roles}}" as="role" hint-placeholder-count="7">
+          <li class="tl-item {{role.hotCls}}">
+            <span class="tl-node {{role.nodeCls}}" aria-hidden="true"></span>
+            <button type="button" class="tl-btn" aria-expanded="{{role.expanded}}" onClick="{{role.toggle}}" onMouseEnter="{{role.hover}}" onMouseLeave="{{unhover}}">
+              <span class="tl-date">{{role.dates}}</span>
+              <span class="tl-main">
+                <span class="tl-role">{{role.title}}</span>
+                <span class="tl-org">{{role.org}}</span>
+              </span>
+              <span class="tl-kind">{{role.kind}}</span>
+            </button>
+            <sc-if value="{{role.open}}" hint-placeholder-val="{{ false }}">
+              <div class="tl-detail">
+                <sc-if value="{{role.hasNote}}" hint-placeholder-val="{{ false }}">
+                  <p class="tl-note">{{role.note}}</p>
+                </sc-if>
+                <ul>
+                  <sc-for list="{{role.points}}" as="pt" hint-placeholder-count="2">
+                    <li>{{pt}}</li>
+                  </sc-for>
+                </ul>
+              </div>
+            </sc-if>
+          </li>
+        </sc-for>
+      </ol>
+      <aside class="edu" aria-labelledby="edu-h" data-reveal="">
+        <h3 id="edu-h" class="edu-h">Education</h3>
+        <div class="edu-item">
+          <p class="edu-year">2026</p>
+          <p class="edu-deg">M.A. in Political Science</p>
+          <p class="edu-inst">Western Illinois University, USA</p>
+          <p class="edu-note">GPA 4.00 / 4.00. International Commitment Scholarship, 2025 and 2026.</p>
+        </div>
+        <div class="edu-item">
+          <p class="edu-year">2022</p>
+          <p class="edu-deg">B.S.S. in International Relations</p>
+          <p class="edu-inst">University of Dhaka, Bangladesh</p>
+          <p class="edu-note">Thesis: Exploring gender bias, present barriers, and future opportunities in the eSports industry. Supervised by Dr. Amena Mohsen.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="section">
+  <div class="wrap">
+    <div class="sec-head" data-reveal="">
+      <h2 class="h2">Methods and skills</h2>
+      <p class="sec-intro">No proficiency scores. Each method is matched to the projects where I used it. Select a method for details.</p>
+    </div>
+    <div class="matrix-box" data-reveal="">
+      <table class="matrix">
+        <caption class="sr">Research methods and the projects that used them</caption>
+        <thead>
+          <tr>
+            <th scope="col" class="mx-corner">Method</th>
+            <sc-for list="{{projects}}" as="pj" hint-placeholder-count="5">
+              <th scope="col" class="mx-col {{pj.cls}}"><span class="mx-pj">{{pj.short}}</span><span class="mx-yr">{{pj.where}}</span></th>
+            </sc-for>
+          </tr>
+        </thead>
+        <tbody>
+          <sc-for list="{{methods}}" as="m" hint-placeholder-count="9">
+            <tr class="mx-row {{m.cls}}">
+              <th scope="row"><button type="button" class="mx-m" aria-pressed="{{m.pressed}}" onClick="{{m.pick}}"><span>{{m.name}}</span><span class="mx-n">{{m.countText}}</span></button></th>
+              <sc-for list="{{m.cells}}" as="c" hint-placeholder-count="5">
+                <td class="mx-cell {{c.cls}}" onMouseEnter="{{c.hover}}" onMouseLeave="{{unhoverCol}}">
+                  <sc-if value="{{c.used}}" hint-placeholder-val="{{ false }}">
+                    <span class="dot" role="img" aria-label="{{c.label}}" style="--d: {{c.delay}}s"></span>
+                  </sc-if>
+                </td>
+              </sc-for>
+            </tr>
+          </sc-for>
+        </tbody>
+      </table>
+    </div>
+    <div class="m-panel" aria-live="polite">
+      <div>
+        <p class="m-kicker">Selected method</p>
+        <h3 class="m-title">{{method.name}}</h3>
+      </div>
+      <ul class="m-uses">
+        <sc-for list="{{method.uses}}" as="u" hint-placeholder-count="1">
+          <li class="m-use {{u.cls}}">
+            <span class="m-use-title">{{u.title}}</span>
+            <span class="m-use-ctx">{{u.ctx}}</span>
+          </li>
+        </sc-for>
+      </ul>
+    </div>
+    <div class="tool-grid">
+      <div>
+        <h3 class="small-h">Software</h3>
+        <p class="tool-line">R, Python, SPSS, Qualtrics, Tableau, LaTeX</p>
+      </div>
+      <div>
+        <h3 class="small-h">Languages</h3>
+        <p class="tool-line">Bengali (native); English, Hindi, and Urdu (fluent); Arabic (reading); Spanish (learning)</p>
+      </div>
+      <div>
+        <h3 class="small-h">Teaching</h3>
+        <p class="tool-line">Guest lectures, grading, mentoring, course-site administration, and pre-college instruction</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="publications" class="section">
+  <div class="wrap">
+    <div class="sec-head" data-reveal="">
+      <h2 class="h2">Publications</h2>
+      <p class="sec-intro">Journal articles, conference proceedings, presentations, and work under review or in preparation. Select a part of the bar to filter, or search.</p>
+    </div>
+    <div class="pub-tools" data-reveal="">
+      <div>
+        <div class="compo-top">
+          <p class="pub-count" aria-live="polite">{{showingText}}</p>
+          <sc-if value="{{canReset}}" hint-placeholder-val="{{ false }}">
+            <button type="button" class="reset" onClick="{{resetPubs}}">Show all</button>
+          </sc-if>
+        </div>
+        <div class="compo {{compoCls}}" role="group" aria-label="Filter publications by type">
+          <sc-for list="{{segments}}" as="sg" hint-placeholder-count="5">
+            <button type="button" class="seg seg-{{sg.id}} {{sg.cls}}" style="flex-grow: {{sg.n}}" aria-pressed="{{sg.pressed}}" onClick="{{sg.pick}}">
+              <span class="seg-bar" style="--d: {{sg.delay}}s"></span>
+              <span class="seg-n">{{sg.n}}</span>
+              <span class="seg-label">{{sg.label}}</span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+      <div class="search">
+        <label for="pub-q" class="search-l">Search</label>
+        <input id="pub-q" type="search" placeholder="Title, coauthor, or venue" autocomplete="off" value="{{query}}" onChange="{{onQuery}}">
+      </div>
+    </div>
+    <sc-if value="{{noPubs}}" hint-placeholder-val="{{ false }}">
+      <div class="empty">
+        <p>No publications match “{{query}}” in this view.</p>
+        <button type="button" class="btn btn-ink" onClick="{{resetPubs}}">Clear search and filter</button>
+      </div>
+    </sc-if>
+    <ol class="pubs">
+      <sc-for list="{{pubs}}" as="p" hint-placeholder-count="6">
+        <li class="pub">
+          <span class="pub-year">{{p.year}}</span>
+          <div>
+            <h3 class="pub-title"><a href="#publication" onClick="{{p.open}}">{{p.title}}</a></h3>
+            <p class="pub-authors">{{p.pre}}<strong>Khan, M. A.</strong>{{p.post}}</p>
+            <p class="pub-venue">{{p.venue}}</p>
+            <div class="pub-foot">
+              <sc-if value="{{p.hasStatus}}" hint-placeholder-val="{{ false }}">
+                <span class="status {{p.statusCls}}">{{p.status}}</span>
+              </sc-if>
+              <sc-if value="{{p.hasDoi}}" hint-placeholder-val="{{ true }}">
+                <a class="doi" href="{{p.url}}">doi.org/{{p.doi}}</a>
+              </sc-if>
+              <a class="details-link" href="#publication" onClick="{{p.open}}">View details</a>
+              <button type="button" class="copy-btn {{p.copyCls}}" onClick="{{p.copy}}">{{p.copyLabel}}</button>
+            </div>
+          </div>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+
+<section id="recognition" class="section">
+  <div class="wrap">
+    <div class="sec-head" data-reveal="">
+      <h2 class="h2">Grants, awards, and training</h2>
+    </div>
+    <div class="aw-grid">
+      <div data-reveal="">
+        <h3 class="small-h">Grants and awards</h3>
+        <ul class="aw-list">
+          <li><span class="aw-t">Co-Principal Investigator, Moving Minds Neurodiversity Project</span><span class="aw-m">Two Rivers Arts Council Grant, awarded 2026</span></li>
+          <li><span class="aw-t">International Commitment Scholarship</span><span class="aw-m">Western Illinois University, 2025 and 2026</span></li>
+        </ul>
+      </div>
+      <div data-reveal="">
+        <h3 class="small-h">Certifications and professional training</h3>
+        <ul class="aw-list">
+          <li><span class="aw-t">Project Business Professional (PBP)</span></li>
+          <li><span class="aw-t">Lean Six Sigma, Green Belt</span></li>
+          <li><span class="aw-t">Agile and Digital Governance (Agile3)</span></li>
+          <li><span class="aw-t">ISO Lead Auditor, Quality and Compliance</span></li>
+          <li><span class="aw-t">Migration and Immigration Policy</span><span class="aw-m">International Organization for Migration (IOM)</span></li>
+          <li><span class="aw-t">Refugee Protection and Asylum Systems</span><span class="aw-m">UNHCR</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{detailView}}" hint-placeholder-val="{{ false }}">
+<main class="detail" id="publication" aria-labelledby="dt-title">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="#publications" onClick="{{backToList}}">Publications</a>
+      <span class="crumb-sep" aria-hidden="true">/</span>
+      <span aria-current="page">{{pd.kindLabel}}</span>
+    </nav>
+
+    <div class="dt-head">
+      <div class="dt-main">
+        <div class="dt-tags">
+          <span class="kind-tag kind-{{pd.t}}">{{pd.kindLabel}}</span>
+          <sc-if value="{{pd.hasStatus}}" hint-placeholder-val="{{ false }}">
+            <span class="status {{pd.statusCls}}">{{pd.status}}</span>
+          </sc-if>
+          <span class="dt-year">{{pd.yearText}}</span>
+        </div>
+        <h1 id="dt-title" class="dt-title">{{pd.title}}</h1>
+        <p class="dt-authors">
+          <sc-for list="{{pd.authors}}" as="au" hint-placeholder-count="3"><span class="{{au.cls}}">{{au.name}}</span><span>{{au.sep}}</span></sc-for>
+        </p>
+        <p class="dt-venue">{{pd.venueLine}}</p>
+        <div class="dt-actions">
+          <sc-if value="{{pd.hasDoi}}" hint-placeholder-val="{{ true }}">
+            <a class="btn btn-ink" href="{{pd.url}}">Read at the publisher</a>
+          </sc-if>
+          <button type="button" class="btn btn-line" onClick="{{pd.copyCite}}">{{pd.copyCiteLabel}}</button>
+          <button type="button" class="btn btn-line" onClick="{{pd.copyLink}}">{{pd.copyLinkLabel}}</button>
+        </div>
+      </div>
+
+      <aside class="glance" aria-labelledby="glance-h">
+        <h2 id="glance-h" class="glance-h">At a glance</h2>
+        <dl class="facts">
+          <sc-for list="{{pd.facts}}" as="f" hint-placeholder-count="5">
+            <div class="fact"><dt>{{f.k}}</dt><dd>{{f.v}}</dd></div>
+          </sc-for>
+          <sc-if value="{{pd.hasDoi}}" hint-placeholder-val="{{ true }}">
+            <div class="fact"><dt>DOI</dt><dd><a href="{{pd.url}}">{{pd.doi}}</a></dd></div>
+          </sc-if>
+        </dl>
+      </aside>
+    </div>
+
+    <div class="dt-body">
+      <section class="dt-sec" aria-labelledby="abs-h">
+        <h2 id="abs-h" class="dt-h">Abstract</h2>
+        <div class="dt-content">
+          <p class="ph-box">{{pd.abstractPh}}</p>
+        </div>
+      </section>
+
+      <section class="dt-sec" aria-labelledby="fit-h">
+        <h2 id="fit-h" class="dt-h">Where it fits</h2>
+        <div class="dt-content fit-grid">
+          <div>
+            <h3 class="small-h">Research line</h3>
+            <p class="fit-v">{{pd.areaName}}</p>
+            <sc-if value="{{pd.areaIsThread}}" hint-placeholder-val="{{ false }}">
+              <a class="link-btn" href="#research" onClick="{{pd.goThread}}">Explore this research line</a>
+            </sc-if>
+          </div>
+          <div>
+            <h3 class="small-h">Methods</h3>
+            <sc-if value="{{pd.hasMethods}}" hint-placeholder-val="{{ false }}">
+              <ul class="chips">
+                <sc-for list="{{pd.methods}}" as="m" hint-placeholder-count="1"><li class="chip">{{m}}</li></sc-for>
+              </ul>
+            </sc-if>
+            <sc-if value="{{pd.noMethods}}" hint-placeholder-val="{{ true }}">
+              <p class="ph-inline">[Add the methods used in this paper]</p>
+            </sc-if>
+          </div>
+          <div>
+            <h3 class="small-h">Your role</h3>
+            <p class="fit-v">{{pd.role}}</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="dt-sec" aria-labelledby="cite-h">
+        <h2 id="cite-h" class="dt-h">Cite this work</h2>
+        <div class="dt-content">
+          <div class="cite-tabs" role="group" aria-label="Citation style">
+            <sc-for list="{{pd.styles}}" as="st" hint-placeholder-count="3">
+              <button type="button" class="f-btn {{st.cls}}" aria-pressed="{{st.pressed}}" onClick="{{st.pick}}">{{st.label}}</button>
+            </sc-for>
+          </div>
+          <div class="cite-box">
+            <pre class="cite-text {{pd.citeCls}}">{{pd.citeText}}</pre>
+            <button type="button" class="copy-btn {{pd.copyCiteCls}}" onClick="{{pd.copyCite}}">{{pd.copyCiteLabel}}</button>
+          </div>
+        </div>
+      </section>
+
+      <sc-if value="{{pd.hasRelated}}" hint-placeholder-val="{{ true }}">
+        <section class="dt-sec" aria-labelledby="rel-h">
+          <h2 id="rel-h" class="dt-h">Related work</h2>
+          <ul class="dt-content rel">
+            <sc-for list="{{pd.related}}" as="r" hint-placeholder-count="2">
+              <li><a class="rel-a" href="#publication" onClick="{{r.open}}"><span class="rel-k">{{r.why}}</span><span class="rel-t">{{r.title}}</span><span class="rel-m">{{r.meta}}</span></a></li>
+            </sc-for>
+          </ul>
+        </section>
+      </sc-if>
+    </div>
+
+    <nav class="pager" aria-label="More publications">
+      <a class="pg" href="#publication" onClick="{{pd.prev.open}}"><span class="pg-k">Previous</span><span class="pg-t">{{pd.prev.title}}</span></a>
+      <a class="pg pg-next" href="#publication" onClick="{{pd.next.open}}"><span class="pg-k">Next</span><span class="pg-t">{{pd.next.title}}</span></a>
+    </nav>
+  </div>
+</main>
+</sc-if>
+
+
+<section id="contact" class="contact dark">
+  <div class="wrap">
+    <p class="contact-statement" data-reveal="">Questions about my research, a paper, or a possible collaboration are welcome.</p>
+    <div class="contact-grid">
+      <div>
+        <h3 class="c-h">Email</h3>
+        <a class="c-email" href="mailto:asifkhan.wiu@gmail.com">asifkhan.wiu@gmail.com</a>
+        <div class="c-actions">
+          <button type="button" class="btn btn-outline-light c-copy" onClick="{{copyEmail}}">{{emailLabel}}</button>
+        </div>
+      </div>
+      <div>
+        <h3 class="c-h">Profiles</h3>
+        <ul class="c-links">
+          <li><a href="https://orcid.org/0009-0001-8940-062X">ORCID</a></li>
+          <li><a href="https://scholar.google.com/">Google Scholar</a></li>
+          <li><a href="https://www.researchgate.net/">ResearchGate</a></li>
+          <li><a href="https://www.linkedin.com/">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="c-h">Based in</h3>
+        <p class="c-p">Waukegan, Illinois, USA</p>
+        <a class="btn btn-brass c-cv" href="/files/Md-Asif-Khan-CV.pdf">Download CV</a>
+      </div>
+    </div>
+    <footer class="foot">
+      <span>© 2026 Md. Asif Khan</span>
+      <a href="#top" onClick="{{goTop}}">Back to top</a>
+    </footer>
+  </div>
+</section>
+
+<sc-if value="{{showTop}}" hint-placeholder-val="{{ false }}">
+  <a href="#top" class="totop" aria-label="Back to top" onClick="{{goTop}}">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M10 16V4M4.5 9.5L10 4l5.5 5.5"></path></svg>
+  </a>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"particles": {"editor": "boolean", "default": true, "section": "Hero"}, "particleDensity": {"editor": "range", "default": 1, "min": 0.4, "max": 1.6, "step": 0.1, "section": "Hero"}, "startFilter": {"editor": "enum", "options": ["all", "journal", "conference", "talk", "review", "prep"], "default": "all", "section": "Publications"}, "startPub": {"editor": "enum", "options": ["none", "p0", "p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8", "p9", "p10", "p11", "p12", "p13", "p14", "p15", "p16", "p17"], "default": "p0", "section": "Publication page"}, "$preview": {"width": 1440, "height": 3000}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: 'ta', hot: null, method: 'survey', hotCol: null,
+      thread: 'count', filter: null, query: '', copied: null, pub: props.startPub && props.startPub !== 'none' ? props.startPub : null, citeStyle: 'apa',
+      menuOpen: false, revealReady: false, count: 1,
+      active: 'top', progress: 0, showTop: false, motionOK: true
+    };
+  }
+
+  componentDidMount() {
+    this._mounted = true;
+    var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+    this.reduce = !!(mq && mq.matches);
+    if (this.reduce) this.setState({ motionOK: false });
+    this.startReveal();
+    this.startScrollWatch();
+    if (this.canvasEl) this.startParticles();
+  }
+
+  componentWillUnmount() {
+    this._mounted = false;
+    this.stopParticles();
+    if (this._io) this._io.disconnect();
+    if (this._spy) this._spy.disconnect();
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+    if (this._countRaf) cancelAnimationFrame(this._countRaf);
+    if (this._copyT) clearTimeout(this._copyT);
+  }
+
+  componentDidUpdate(prev, prevState) {
+    if (prev.particleDensity !== this.props.particleDensity && this._setup) this._setup();
+    if (prevState && prevState.pub !== this.state.pub && (!prevState.pub || !this.state.pub)) this.refreshObservers();
+  }
+
+  refreshObservers() {
+    var root = this.rootEl, self = this;
+    if (!root) return;
+    if (this._io) {
+      var els = root.querySelectorAll('[data-reveal]:not([data-shown])');
+      for (var i = 0; i < els.length; i++) this._io.observe(els[i]);
+    }
+    if (this._spy) {
+      this._spy.disconnect();
+      ['top', 'about', 'research', 'experience', 'skills', 'publications', 'recognition', 'publication', 'contact'].forEach(function (id) {
+        var el = root.querySelector('#' + id);
+        if (el) self._spy.observe(el);
+      });
+    }
+  }
+
+  openPub(id, e) {
+    if (e && e.preventDefault) e.preventDefault();
+    var reduce = this.reduce;
+    this.setState({ pub: id, menuOpen: false, citeStyle: 'apa', active: 'publication' }, function () {
+      try { window.scrollTo({ top: 0, behavior: 'auto' }); } catch (x) { window.scrollTo(0, 0); }
+    });
+  }
+
+  goTo(id, e) {
+    var self = this;
+    if (!this.state.pub && id !== 'top') { if (this.state.menuOpen) this.setState({ menuOpen: false }); return; }
+    if (e && e.preventDefault) e.preventDefault();
+    this.setState({ pub: null, menuOpen: false }, function () {
+      setTimeout(function () {
+        if (id === 'top') { window.scrollTo(0, 0); return; }
+        var el = self.rootEl && self.rootEl.querySelector('#' + id);
+        if (el) el.scrollIntoView({ block: 'start' });
+      }, 30);
+    });
+  }
+
+  startScrollWatch() {
+    var self = this, ticking = false;
+    this._onScroll = function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        ticking = false;
+        var de = document.documentElement;
+        var max = de.scrollHeight - window.innerHeight;
+        var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+        var top = window.scrollY > 720;
+        if (Math.abs(p - self.state.progress) > 0.003 || top !== self.state.showTop) self.setState({ progress: p, showTop: top });
+      });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    var root = this.rootEl;
+    if (!root || typeof IntersectionObserver === 'undefined') return;
+    this._spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting && e.target.id) self.setState({ active: e.target.id }); });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    ['top', 'about', 'research', 'experience', 'skills', 'publications', 'recognition', 'contact'].forEach(function (id) {
+      var el = root.querySelector('#' + id);
+      if (el) self._spy.observe(el);
+    });
+  }
+
+  startReveal() {
+    var root = this.rootEl;
+    if (!root || this.reduce || typeof IntersectionObserver === 'undefined') return;
+    var self = this;
+    this.setState({ revealReady: true, count: 0 }, function () {
+      var els = root.querySelectorAll('[data-reveal]');
+      self._io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          e.target.setAttribute('data-shown', '');
+          self._io.unobserve(e.target);
+          if (e.target.hasAttribute('data-count')) self.runCount();
+        });
+      }, { threshold: 0.12 });
+      for (var i = 0; i < els.length; i++) self._io.observe(els[i]);
+    });
+  }
+
+  runCount() {
+    var self = this, t0 = null, dur = 1400;
+    function step(t) {
+      if (!self._mounted) return;
+      if (t0 === null) t0 = t;
+      var p = Math.min(1, (t - t0) / dur);
+      self.setState({ count: 1 - Math.pow(1 - p, 3) });
+      if (p < 1) self._countRaf = requestAnimationFrame(step);
+    }
+    this._countRaf = requestAnimationFrame(step);
+  }
+
+  copy(text, id) {
+    var self = this;
+    function done(ok) {
+      self.setState({ copied: ok ? id : 'fail:' + id });
+      if (self._copyT) clearTimeout(self._copyT);
+      self._copyT = setTimeout(function () { if (self._mounted) self.setState({ copied: null }); }, 2200);
+    }
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
+      else done(false);
+    } catch (e) { done(false); }
+  }
+
+  startParticles() {
+    if (this._running || !this.canvasEl) return;
+    var self = this, c = this.canvasEl, ctx = c.getContext('2d');
+    if (!ctx) return;
+    this._running = true;
+    var pts = [], W = 0, H = 0, mouse = null, raf = 0, visible = true;
+    var LINK = 132;
+
+    function setup() {
+      var r = c.getBoundingClientRect();
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = r.width; H = r.height;
+      c.width = Math.round(W * dpr); c.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var density = self.props.particleDensity ?? 1;
+      var n = Math.max(18, Math.min(110, Math.round((W * H) / 14000 * density)));
+      pts = [];
+      for (var i = 0; i < n; i++) {
+        pts.push({
+          x: W * Math.pow(Math.random(), 0.55), y: H * Math.random(),
+          vx: (Math.random() - 0.5) * 0.22, vy: (Math.random() - 0.5) * 0.22,
+          r: 0.9 + Math.random() * 1.3, seal: i % 9 === 0
+        });
+      }
+      draw(false);
+    }
+    this._setup = setup;
+
+    function draw(move) {
+      ctx.clearRect(0, 0, W, H);
+      var pos = [];
+      for (var i = 0; i < pts.length; i++) {
+        var p = pts[i];
+        if (move) {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < -10) p.x = W + 10; if (p.x > W + 10) p.x = -10;
+          if (p.y < -10) p.y = H + 10; if (p.y > H + 10) p.y = -10;
+        }
+        var x = p.x, y = p.y;
+        if (mouse) {
+          var dx = x - mouse.x, dy = y - mouse.y, d = Math.sqrt(dx * dx + dy * dy);
+          if (d < 140 && d > 0.1) { var f = (1 - d / 140) * 14; x += dx / d * f; y += dy / d * f; }
+        }
+        pos.push([x, y]);
+      }
+      ctx.lineWidth = 0.7;
+      for (var a = 0; a < pos.length; a++) {
+        for (var b = a + 1; b < pos.length; b++) {
+          var ex = pos[a][0] - pos[b][0], ey = pos[a][1] - pos[b][1];
+          var dd = ex * ex + ey * ey;
+          if (dd < LINK * LINK) {
+            var al = (1 - Math.sqrt(dd) / LINK) * 0.22;
+            ctx.strokeStyle = 'rgba(190,205,199,' + al.toFixed(3) + ')';
+            ctx.beginPath(); ctx.moveTo(pos[a][0], pos[a][1]); ctx.lineTo(pos[b][0], pos[b][1]); ctx.stroke();
+          }
+        }
+      }
+      for (var k = 0; k < pts.length; k++) {
+        ctx.fillStyle = pts[k].seal ? 'rgba(201,164,76,0.9)' : 'rgba(214,222,218,0.55)';
+        ctx.beginPath(); ctx.arc(pos[k][0], pos[k][1], pts[k].seal ? pts[k].r + 0.8 : pts[k].r, 0, Math.PI * 2); ctx.fill();
+      }
+    }
+
+    function loop() {
+      if (!visible || document.hidden) { raf = 0; return; }
+      draw(true);
+      raf = requestAnimationFrame(loop);
+    }
+    function kick() { if (!raf && !self.reduce && visible && !document.hidden) raf = requestAnimationFrame(loop); }
+    function onMove(e) {
+      var r = c.getBoundingClientRect();
+      var x = e.clientX - r.left, y = e.clientY - r.top;
+      mouse = (x >= 0 && y >= 0 && x <= r.width && y <= r.height) ? { x: x, y: y } : null;
+      if (self.reduce) draw(false);
+    }
+    function onVis() { kick(); }
+
+    setup();
+    window.addEventListener('mousemove', onMove, { passive: true });
+    document.addEventListener('visibilitychange', onVis);
+    var ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(function () { setup(); }) : null;
+    if (ro) ro.observe(c);
+    var io = typeof IntersectionObserver !== 'undefined' ? new IntersectionObserver(function (en) { visible = en[0].isIntersecting; kick(); }) : null;
+    if (io) io.observe(c);
+    kick();
+
+    this._stop = function () {
+      if (raf) cancelAnimationFrame(raf);
+      window.removeEventListener('mousemove', onMove);
+      document.removeEventListener('visibilitychange', onVis);
+      if (ro) ro.disconnect();
+      if (io) io.disconnect();
+    };
+  }
+
+  stopParticles() {
+    if (this._stop) this._stop();
+    this._stop = null; this._running = false; this._setup = null;
+  }
+
+  data() {
+    if (this._data) return this._data;
+    var roles = [
+      { id: 'bsa', short: 'BSA General Secretary', start: 2025.25, end: 2026.9, ongoing: true, dates: 'Apr 2025 – present', title: 'General Secretary', org: 'Bangladesh Student Association, Western Illinois University', kind: 'Leadership',
+        points: ['Elected general secretary of the university’s Bangladesh Student Association.'] },
+      { id: 'ta', short: 'Teaching Support Assistant', start: 2025.0, end: 2026.38, dates: 'Jan 2025 – May 2026', title: 'Teaching Support Assistant', org: 'Department of Political Science, Western Illinois University', kind: 'Teaching',
+        points: ['Assisted in undergraduate and graduate courses in political science and public administration.',
+                 'Graded assignments and examinations, delivered in-person and virtual guest lectures, mentored students, and administered course sites.',
+                 'Guest lectures in Introduction to Comparative Government and Politics, Fundamentals of International Relations, Introduction to Public Administration, and Introduction to Public Policy.'] },
+      { id: 'rped', short: 'RPED Pre-College Instructor', start: 2025.0, end: 2026.38, dates: 'Jan 2025 – May 2026', title: 'Pre-College Instructor', org: 'Rural Postsecondary and Economic Development (RPED) Program, Western Illinois University', kind: 'Teaching',
+        points: ['Designed and instructed recurring sessions for about 80 high school students across several program cycles.',
+                 'Supported student engagement and college-readiness activities.'] },
+      { id: 'svc', short: 'Department service', start: 2025.0, end: 2026.38, dates: '2025 – 2026', title: 'Department service', org: 'Department of Political Science, Western Illinois University', kind: 'Service',
+        points: ['Helped prepare a College of Arts and Sciences grant proposal, drafting supporting materials and background documentation under faculty supervision.',
+                 'Created and administer the department’s official digital media presence and its academic communications.',
+                 'Supported graduate expos, workshops, seminars, and departmental events.'] },
+      { id: 'nf', short: 'Neurodiversity Foundation intern', start: 2025.67, end: 2025.9, dates: 'Sep – Nov 2025', title: 'Research Intern', org: 'Neurodiversity Foundation, Richmond, Texas', kind: 'Research',
+        note: 'Capstone: Designing a governance-ready project business case for a neurodiversity partnership with Western Illinois University. Supervised by Lana Kristine Jelenjev, Dr. Casey LaFrance, and Dr. Gregory Baldi.',
+        points: ['Conducted policy, governance, and stakeholder analysis and applied Project Business Professional (PBP) principles.',
+                 'Developed administrative, implementation, accountability, and evaluation frameworks for the proposed partnership.'] },
+      { id: 'aut', short: 'Autismazing intern', start: 2025.08, end: 2025.4, dates: 'Feb – May 2025', title: 'Research Intern', org: 'Autismazing, New Bern, North Carolina', kind: 'Research',
+        note: 'Capstone: Autism in Focus Survey, a mixed-method analysis for Autismazing. Supervised by Deborah Kania, Dr. Casey LaFrance, and Dr. Gregory Baldi.',
+        points: ['Designed the survey instruments.',
+                 'Analysed survey and interview data from 96 autistic adults and caregivers across six partner organisations, integrating quantitative and qualitative evidence.',
+                 'Personally conducted about 20 interviews.'] },
+      { id: 'du', short: 'Dhaka student leadership', start: 2017.0, end: 2023.95, dates: '2017 – 2023', title: 'Student leadership', org: 'University of Dhaka', kind: 'Leadership',
+        points: ['Press Secretary, Senior Vice President, and Advisor, Dhaka University Non-Residential Student Association (2017–2023).',
+                 'Vice President and Advisor, The Diplomats, Sir A. F. Rahman Hall (2018–2022).',
+                 'Policy Liaison, International Association of Parliamentarians for Peace, South Asia Peace Initiative Summit (2018).'] }
+    ];
+    var projects = [
+      { id: 'aut', short: 'Autism in Focus survey', where: 'Autismazing, 2025' },
+      { id: 'nf', short: 'Neurodiversity business case', where: 'Neurodiversity Foundation, 2025' },
+      { id: 'imm', short: 'US–Canada immigration comparison', where: 'Independent project, 2025' },
+      { id: 'distil', short: 'DistilRoBiLSTMFuse', where: 'PeerJ Computer Science, 2024' },
+      { id: 'senti', short: 'Sentiment datasets review', where: 'PeerJ Computer Science, 2026' }
+    ];
+    var ph = { title: '[Add the project or paper where you used this method]', ctx: 'On the CV, but not yet linked to a project', cls: 'is-ph' };
+    var methods = [
+      { id: 'survey', name: 'Survey design and analysis', p: ['aut'], uses: [{ title: 'Autism in Focus Survey', ctx: 'Autismazing, 2025. Designed the instruments; 96 respondents.' }] },
+      { id: 'interviews', name: 'Semi-structured interviews', p: ['aut'], uses: [{ title: 'Autism in Focus Survey', ctx: 'Autismazing, 2025. About 20 interviews conducted personally.' }] },
+      { id: 'mixed', name: 'Mixed-methods analysis', p: ['aut'], uses: [{ title: 'Autism in Focus Survey', ctx: 'Autismazing, 2025. Quantitative and qualitative data integrated.' }] },
+      { id: 'case', name: 'Comparative case study', p: ['imm'], uses: [{ title: 'Comparative immigration governance in the United States and Canada', ctx: 'Independent project, 2025. Supervised by Dr. Julia Albarracín.' }] },
+      { id: 'policy', name: 'Policy and stakeholder analysis', p: ['nf'], uses: [{ title: 'Neurodiversity partnership business case', ctx: 'Neurodiversity Foundation, 2025.' }] },
+      { id: 'pt', name: 'Process tracing', p: [], uses: [ph] },
+      { id: 'logit', name: 'Logistic regression', p: [], uses: [ph] },
+      { id: 'text', name: 'Text classification', p: ['distil'], uses: [{ title: 'DistilRoBiLSTMFuse: A hybrid deep learning approach for sentiment analysis', ctx: 'PeerJ Computer Science, 2024.' }] },
+      { id: 'slr', name: 'Systematic literature review (PRISMA 2020)', p: ['senti'], uses: [{ title: 'Sentiment analysis datasets: A review of trends, challenges, and future opportunities', ctx: 'PeerJ Computer Science, 2026. First author.' }] }
+    ];
+    var threads = [
+      { id: 'count', name: 'Counting and institutional authority', short: 'How official numbers are produced and contested', count: '1 paper' },
+      { id: 'mig', name: 'Migration policy and the limits of state authority', short: 'Labour migration, admission, and where state reach ends', count: '2 projects' },
+      { id: 'ai', name: 'AI, GovTech, and public administration', short: 'Human oversight when government adopts digital tools', count: '3 projects' }
+    ];
+    var MPSA = 'Midwest Political Science Association (MPSA) 84th Annual Conference';
+    var QP26 = '2026 IEEE 2nd International Conference on Quantum Photonics, Artificial Intelligence & Networking (QPAIN)';
+    var QP25 = '2025 IEEE International Conference on Quantum Photonics, Artificial Intelligence, and Networking (QPAIN)';
+    var pubs = [
+      { t: 'journal', year: '2026', au: ['Habib, M. T.', 'Al Afand, S. M. S.', 'Khan, M. A.'], title: 'An appraisal of the economic imperatives of China’s Belt and Road Initiative: Lessons from Africa', venueName: 'Bangladesh Institute of International and Strategic Studies Journal (BIISS Journal)', vol: '47', issue: '3', pages: '389–413', publisher: 'Bangladesh Institute of International and Strategic Studies', doi: '10.56888/biiss-journal.v47i3.a1006', area: 'ir' },
+      { t: 'journal', year: '2026', au: ['Khan, M. A.', 'Papia, S. K.', 'Ali, K. M. Y.', 'Khan, H. A.', 'Rahman, M.', 'Islam, M. N.'], title: 'Sentiment analysis datasets: A review of trends, challenges, and future opportunities', venueName: 'PeerJ Computer Science', vol: '12', art: 'e3806', publisher: 'PeerJ', doi: '10.7717/peerj-cs.3806', area: 'comp', methods: ['Systematic literature review (PRISMA 2020)'] },
+      { t: 'journal', year: '2024', au: ['Papia, S. K.', 'Khan, M. A.', 'Habib, T.', 'Rahman, M.', 'Islam, M. N.'], title: 'DistilRoBiLSTMFuse: An efficient hybrid deep learning approach for sentiment analysis', venueName: 'PeerJ Computer Science', vol: '10', art: 'e2349', publisher: 'PeerJ', doi: '10.7717/peerj-cs.2349', area: 'comp', methods: ['Text classification'] },
+      { t: 'conference', year: '2026', au: ['Das, S.', 'Ghos, T. C.', 'Khan, M. A.', 'Chandra, P.', 'Bino, J.', 'Venkateswara, U.'], title: 'A global survey of AI in smart transportation systems for smart cities', venueName: QP26, pages: '1–6', publisher: 'IEEE', doi: '10.1109/QPAIN69676.2026.11546181', area: 'comp' },
+      { t: 'conference', year: '2026', au: ['Das, S.', 'Ghos, T. C.', 'Khan, M. A.', 'Chandra, P.', 'Bino, J.', 'Venkateswara, U.'], title: 'A survey of artificial intelligence applications in waste management systems', venueName: QP26, pages: '1–6', publisher: 'IEEE', doi: '10.1109/QPAIN69676.2026.11545749', area: 'comp' },
+      { t: 'conference', year: '2025', au: ['Chowdhury, S. T.', 'Rahman, M.', 'Khan, M. A.', 'Sarwar, H.'], title: 'Flood prediction in Bangladesh: A comparative study of machine learning models', venueName: QP25, pages: '1–6', publisher: 'IEEE', doi: '10.1109/QPAIN66474.2025.11172165', area: 'comp', related: ['p9'] },
+      { t: 'talk', year: '2027', au: ['Khan, M. A.'], title: 'Genocide, numbers, and memory: The death toll and the apology demand in Bangladesh–Pakistan relations since 1971', venueName: MPSA, place: 'Chicago, IL', when: 'April 1–4, 2027', status: 'Accepted', sc: 'st-accepted', area: 'count', related: ['p15'] },
+      { t: 'talk', year: '2027', au: ['Habib, M. T.', 'Khan, M. A.', 'Islam, M. D.'], title: 'Beyond EPS: Bangladesh–South Korea labor cooperation under demographic pressure through migration diplomacy, corridor reliability, and institutional upgrading', venueName: MPSA, place: 'Chicago, IL', when: 'April 1–4, 2027', status: 'Accepted', sc: 'st-accepted', area: 'mig', related: ['p16'] },
+      { t: 'talk', year: '2026', au: ['Banavath, V.', 'Biswas, A. K.', 'Islam, M. S.', 'Mim, S. K.', 'Khan, M. A.', 'Siam, M. K.'], title: 'Optimized random forest with explainable AI for accurate Boro rice yield prediction and real-time web app', venueName: '2026 IEEE 15th International Conference on Communication Systems and Network Technologies (CSNT 2026)', place: 'Al-Khobar, Saudi Arabia', when: 'April 7–9, 2026', publisher: 'IEEE', doi: '10.1109/CSNT69054.2026.11502261', area: 'comp' },
+      { t: 'talk', year: '2025', au: ['Chowdhury, S. T.', 'Rahman, M.', 'Khan, M. A.', 'Sarwar, H.'], title: 'Flood prediction in Bangladesh: A comparative study of machine learning models', venueName: 'QPAIN 2025', place: 'Saidpur, Bangladesh', when: 'July 31 – August 2, 2025', publisher: 'IEEE', doi: '10.1109/QPAIN66474.2025.11172165', area: 'comp', related: ['p5'] },
+      { t: 'review', year: '', au: ['Habib, M. T.', 'Khan, M. A.'], title: 'Strategic intelligence and smaller states: An agenda for the post-July 2024 uprising in Bangladesh', venueName: 'International Journal of Intelligence and CounterIntelligence', publisher: 'Taylor & Francis', status: 'Under review', sc: 'st-review', area: 'ir' },
+      { t: 'review', year: '', au: ['Abedin, R.', 'Khan, M. A.', 'Akter, H.'], title: 'Water insecurity after resettlement: Climate displacement and everyday vulnerability in coastal Bangladesh', venueName: 'Climate and Development', publisher: 'Taylor & Francis', status: 'Under review', sc: 'st-review', area: 'applied', related: ['p17'] },
+      { t: 'review', year: '', au: ['Tanchangya, T.', 'Islam, M. S.', 'Kabir, S.', 'Khan, M. A.'], title: 'The impact of regulatory, institutional, and stakeholder pressures on sustainable banking performance: The mediating role of green FinTech adoption', venueName: 'WSEAS Transactions on Business and Economics', status: 'Under review', sc: 'st-review', area: 'applied' },
+      { t: 'review', year: '', au: ['Islam, M. S.', 'Kabir, S.', 'Rivoo, T. A.', 'Tanchangya, T.', 'Tabassum, S.', 'Khan, M. A.', 'Hassan, N.', 'Siddiqi, K. O.'], title: 'Cloud computing, service models and governance in management information systems: A systematic review', venueName: 'Enterprise Information Systems', publisher: 'Taylor & Francis', status: 'Under review', sc: 'st-review', area: 'applied' },
+      { t: 'prep', year: '', au: ['Khan, M. A.'], title: 'Speed, verification, and accountability: Human oversight beyond formal authority in federal AI workflows', status: 'In preparation', sc: 'st-prep', area: 'ai' },
+      { t: 'prep', year: '', au: ['Khan, M. A.'], title: 'Genocide, numbers, and memory: The death toll and the apology demand in Bangladesh–Pakistan relations since 1971', status: 'In preparation', sc: 'st-prep', area: 'count', related: ['p6'] },
+      { t: 'prep', year: '', au: ['Habib, M. T.', 'Khan, M. A.', 'Islam, M. D.'], title: 'Beyond EPS: Bangladesh–South Korea labor cooperation under demographic pressure through migration diplomacy, corridor reliability, and institutional upgrading', status: 'In preparation', sc: 'st-prep', area: 'mig', related: ['p7'] },
+      { t: 'prep', year: '', au: ['Khan, M. A.', 'Abedin, R.', 'Akter, H.'], title: 'Climate justice after displacement: Assessment of housing security, livelihood recovery, and access to basic services for displaced people living along coastlines of Bangladesh', status: 'In preparation', sc: 'st-prep', area: 'applied', related: ['p11'] }
+    ];
+    var VENUE = function (p) {
+      if (p.t === 'journal') return p.venueName + ', ' + p.vol + (p.issue ? '(' + p.issue + ')' : '') + ', ' + (p.pages || p.art);
+      if (p.t === 'conference') return p.venueName + ', ' + p.pages;
+      if (p.t === 'talk') return p.venueName + ', ' + p.place + ', ' + p.when;
+      if (p.t === 'review') return p.venueName + (p.publisher ? ' (' + p.publisher + ')' : '');
+      return 'Manuscript in preparation';
+    };
+    pubs.forEach(function (p) {
+      var k = p.au.indexOf('Khan, M. A.');
+      p.pre = p.au.slice(0, k).join(', ') + (k > 0 ? (k === p.au.length - 1 ? ', & ' : ', ') : '');
+      var rest = p.au.slice(k + 1);
+      p.post = rest.length ? (rest.length === 1 ? ', & ' + rest[0] : ', ' + rest.slice(0, -1).join(', ') + ', & ' + rest[rest.length - 1]) : '';
+      p.venue = VENUE(p);
+    });
+    pubs.forEach(function (p, i) { p.id = 'p' + i; });
+    var types = [
+      { id: 'journal', label: 'Journal articles' },
+      { id: 'conference', label: 'Conference proceedings' },
+      { id: 'talk', label: 'Presentations' },
+      { id: 'review', label: 'Under review' },
+      { id: 'prep', label: 'In preparation' }
+    ];
+    var record = [
+      { v: 4, dec: 2, label: 'GPA in the M.A. in Political Science' },
+      { v: 3, dec: 0, label: 'Peer-reviewed journal articles' },
+      { v: 2, dec: 0, label: 'Papers accepted for MPSA 2027' },
+      { v: 96, dec: 0, label: 'Autistic adults and caregivers in the survey and interview data I analysed' },
+      { v: 80, dec: 0, label: 'High school students, approximately, instructed in the RPED Program' },
+      { v: 4, dec: 0, label: 'Languages spoken fluently' }
+    ];
+    var nav = [
+      { id: 'about', label: 'About' }, { id: 'research', label: 'Research' }, { id: 'experience', label: 'Experience' },
+      { id: 'skills', label: 'Methods' }, { id: 'publications', label: 'Publications' }, { id: 'contact', label: 'Contact' }
+    ];
+    var areas = {
+      count: { name: 'Counting and institutional authority', thread: 'count' },
+      mig: { name: 'Migration policy and the limits of state authority', thread: 'mig' },
+      ai: { name: 'AI, GovTech, and public administration', thread: 'ai' },
+      comp: { name: 'Earlier work in computational text analysis and applied machine learning' },
+      ir: { name: 'International relations and security' },
+      applied: { name: 'Coauthored applied research' }
+    };
+    var kinds = { journal: 'Journal article', conference: 'Conference paper', talk: 'Conference presentation', review: 'Manuscript under review', prep: 'Manuscript in preparation' };
+    this._data = { areas: areas, kinds: kinds, roles: roles, projects: projects, methods: methods, threads: threads, pubs: pubs, types: types, record: record, nav: nav };
+    return this._data;
+  }
+
+  cite(p, style) {
+    var yr = p.year || (p.t === 'review' ? 'under review' : 'in preparation');
+    var doi = p.doi ? 'https://doi.org/' + p.doi : '';
+    function apaAu(list) {
+      if (list.length === 1) return list[0];
+      return list.slice(0, -1).join(', ') + ', & ' + list[list.length - 1];
+    }
+    function flip(n) { var i = n.indexOf(', '); return i < 0 ? n : n.slice(i + 2) + ' ' + n.slice(0, i); }
+    function chiAu(list) {
+      var out = list.map(function (n, i) { return i === 0 ? n : flip(n); });
+      if (out.length === 1) return out[0];
+      if (out.length === 2) return out[0] + ', and ' + out[1];
+      return out.slice(0, -1).join(', ') + ', and ' + out[out.length - 1];
+    }
+    if (style === 'apa') {
+      var a = apaAu(p.au) + ' (' + yr + '). ' + p.title;
+      if (p.t === 'journal') return a + '. ' + p.venueName + ', ' + p.vol + (p.issue ? '(' + p.issue + ')' : '') + ', ' + (p.pages || p.art) + '. ' + doi;
+      if (p.t === 'conference') return a + '. In ' + p.venueName + ' (pp. ' + p.pages + '). ' + p.publisher + '. ' + doi;
+      if (p.t === 'talk') return a + ' [Paper presentation]. ' + p.venueName + ', ' + p.place + '.' + (doi ? ' ' + doi : '');
+      if (p.t === 'review') return a + ' [Manuscript submitted for publication].';
+      return a + ' [Manuscript in preparation].';
+    }
+    if (style === 'chicago') {
+      var c = chiAu(p.au) + '. ' + (p.year || yr.charAt(0).toUpperCase() + yr.slice(1)) + '. “' + p.title + '.”';
+      if (p.t === 'journal') return c + ' ' + p.venueName + ' ' + p.vol + (p.issue ? ' (' + p.issue + ')' : '') + ': ' + (p.pages || p.art) + '. ' + doi + '.';
+      if (p.t === 'conference') return c + ' In ' + p.venueName + ', ' + p.pages + '. ' + p.publisher + '. ' + doi + '.';
+      if (p.t === 'talk') return c + ' Paper presented at the ' + p.venueName + ', ' + p.place + ', ' + p.when + '.';
+      if (p.t === 'review') return c + ' Manuscript under review.';
+      return c + ' Manuscript in preparation.';
+    }
+    var first = p.au[0].split(',')[0].toLowerCase().replace(/[^a-z]/g, '');
+    var word = (p.title.toLowerCase().match(/[a-z]{4,}/) || ['work'])[0];
+    var type = p.t === 'journal' ? 'article' : (p.t === 'conference' ? 'inproceedings' : (p.t === 'talk' ? 'inproceedings' : 'unpublished'));
+    var f = [['author', p.au.join(' and ')], ['title', p.title.replace(/’/g, "'")]];
+    if (p.t === 'journal') f.push(['journal', p.venueName], ['volume', p.vol]);
+    if (p.issue) f.push(['number', p.issue]);
+    if (p.pages || p.art) f.push(['pages', (p.pages || p.art).replace('–', '--')]);
+    if (p.t === 'conference' || p.t === 'talk') f.push(['booktitle', p.venueName]);
+    if (p.publisher && p.t !== 'review') f.push(['publisher', p.publisher]);
+    if (p.t === 'review' || p.t === 'prep') f.push(['note', p.t === 'review' ? 'Manuscript under review' : 'Manuscript in preparation']);
+    if (p.year) f.push(['year', p.year]);
+    if (p.doi) f.push(['doi', p.doi]);
+    return '@' + type + '{' + first + (p.year || 'nd') + word + ',\n' + f.map(function (x) { return '  ' + x[0] + ' = {' + x[1] + '}'; }).join(',\n') + '\n}';
+  }
+
+  detailVals(d) {
+    var self = this, s = this.state;
+    var idx = 0;
+    for (var i = 0; i < d.pubs.length; i++) if (d.pubs[i].id === s.pub) idx = i;
+    var p = d.pubs[idx];
+    var n = p.au.length, k = p.au.indexOf('Khan, M. A.');
+    var ord = ['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth', 'Seventh', 'Eighth'];
+    var cnt = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
+    var role = n === 1 ? 'Sole author' : ord[k] + ' of ' + cnt[n] + ' authors';
+    var facts = [];
+    if (p.t === 'journal') facts.push({ k: 'Journal', v: p.venueName }, { k: 'Volume and issue', v: 'Volume ' + p.vol + (p.issue ? ', issue ' + p.issue : '') }, { k: p.pages ? 'Pages' : 'Article', v: p.pages || p.art });
+    if (p.t === 'conference') facts.push({ k: 'Proceedings', v: p.venueName }, { k: 'Pages', v: p.pages });
+    if (p.t === 'talk') facts.push({ k: 'Conference', v: p.venueName }, { k: 'Place', v: p.place }, { k: 'Dates', v: p.when });
+    if (p.t === 'review') facts.push({ k: 'Submitted to', v: p.venueName });
+    facts.push({ k: 'Year', v: p.year || (p.status || '') });
+    if (p.publisher) facts.push({ k: 'Publisher', v: p.publisher });
+    facts.push({ k: 'Authorship', v: role });
+    var area = d.areas[p.area] || { name: '' };
+    var copied = s.copied || '';
+    var slug = p.title.toLowerCase().replace(/[’']/g, '').replace(/[^a-z0-9]+/g, '-').split('-').filter(Boolean).slice(0, 7).join('-');
+    var cite = this.cite(p, s.citeStyle);
+    var rel = [];
+    (p.related || []).forEach(function (rid) {
+      var r = d.pubs.filter(function (x) { return x.id === rid; })[0];
+      if (r) rel.push({ r: r, why: r.t === 'talk' ? 'Also presented as' : (r.t === 'prep' ? 'Manuscript version' : (r.t === 'conference' ? 'Published in proceedings' : 'Related manuscript')) });
+    });
+    d.pubs.forEach(function (x) {
+      if (rel.length >= 3 || x.id === p.id || x.area !== p.area || x.title === p.title) return;
+      if (rel.some(function (y) { return y.r.id === x.id || y.r.title === x.title; })) return;
+      rel.push({ r: x, why: 'Same research line' });
+    });
+    function link(x) { return { title: x.title, open: function (e) { self.openPub(x.id, e); } }; }
+    var prev = d.pubs[(idx - 1 + d.pubs.length) % d.pubs.length], next = d.pubs[(idx + 1) % d.pubs.length];
+    return {
+      t: p.t, kindLabel: d.kinds[p.t], title: p.title,
+      hasStatus: !!p.status, status: p.status || '', statusCls: p.sc || '',
+      yearText: p.year,
+      authors: p.au.map(function (a, i) {
+        return { name: a, cls: a === 'Khan, M. A.' ? 'me' : '', sep: i < n - 2 ? ', ' : (i === n - 2 ? ', & ' : '') };
+      }),
+      venueLine: p.venue,
+      hasDoi: !!p.doi, doi: p.doi || '', url: p.doi ? 'https://doi.org/' + p.doi : '',
+      facts: facts,
+      abstractPh: (p.t === 'review' || p.t === 'prep') ? '[Optional: a short summary you are comfortable sharing before publication]' : (p.t === 'talk' ? '[Paste the abstract submitted to the conference]' : '[Paste the abstract from the published version]'),
+      areaName: area.name, areaIsThread: !!area.thread,
+      goThread: function (e) { if (e && e.preventDefault) e.preventDefault(); self.setState({ thread: area.thread }); self.goTo('research'); },
+      methods: p.methods || [], hasMethods: !!(p.methods && p.methods.length), noMethods: !(p.methods && p.methods.length),
+      role: role,
+      styles: [['apa', 'APA 7'], ['chicago', 'Chicago'], ['bibtex', 'BibTeX']].map(function (st) {
+        var on = s.citeStyle === st[0];
+        return { label: st[1], cls: on ? 'is-on' : '', pressed: on ? 'true' : 'false', pick: function () { self.setState({ citeStyle: st[0] }); } };
+      }),
+      citeText: cite, citeCls: s.citeStyle === 'bibtex' ? 'is-code' : '',
+      copyCite: function () { self.copy(cite, 'cite:' + p.id); },
+      copyCiteLabel: copied === 'cite:' + p.id ? 'Citation copied' : (copied === 'fail:cite:' + p.id ? 'Copy blocked; select the text' : 'Copy citation'),
+      copyCiteCls: copied === 'cite:' + p.id ? 'is-done' : '',
+      copyLink: function () { self.copy('https://asifkhan.net/publications/' + slug, 'link:' + p.id); },
+      copyLinkLabel: copied === 'link:' + p.id ? 'Link copied' : (copied === 'fail:link:' + p.id ? 'Copy blocked here' : 'Copy link'),
+      hasRelated: rel.length > 0,
+      related: rel.map(function (y) {
+        return { why: y.why, title: y.r.title, meta: d.kinds[y.r.t] + (y.r.year ? ', ' + y.r.year : ''), open: function (e) { self.openPub(y.r.id, e); } };
+      }),
+      prev: link(prev), next: link(next)
+    };
+  }
+
+  renderVals() {
+    var self = this, s = this.state, d = this.data();
+    if (!this._rootRef) this._rootRef = function (el) { self.rootEl = el; };
+    if (!this._canvasRef) this._canvasRef = function (el) {
+      if (el) { self.canvasEl = el; if (self._mounted) setTimeout(function () { self.startParticles(); }, 0); }
+      else { self.stopParticles(); self.canvasEl = null; }
+    };
+    var filter = s.filter || this.props.startFilter || 'all';
+    var q = (s.query || '').trim().toLowerCase();
+    var method = d.methods.filter(function (m) { return m.id === s.method; })[0] || d.methods[0];
+    var activeSection = (s.active === 'recognition' || s.pub) ? 'publications' : s.active;
+
+    var visiblePubs = d.pubs.filter(function (p) {
+      if (filter !== 'all' && p.t !== filter) return false;
+      if (!q) return true;
+      return (p.title + ' ' + p.pre + ' ' + p.post + ' ' + p.venue).toLowerCase().indexOf(q) !== -1;
+    });
+
+    var openPub = {};
+    d.pubs.forEach(function (p) { openPub[p.id] = function (e) { self.openPub(p.id, e); }; });
+    return {
+      listView: !s.pub,
+      detailView: !!s.pub,
+      pd: s.pub ? this.detailVals(d) : { authors: [], facts: [], styles: [], related: [], methods: [], prev: {}, next: {} },
+      openPub: openPub,
+      backToList: function (e) { self.goTo('publications', e); },
+      goTop: function (e) { self.goTo('top', e); },
+      rootRef: this._rootRef,
+      canvasRef: this._canvasRef,
+      rootCls: s.revealReady ? 'reveal-ready' : '',
+      showParticles: this.props.particles !== false,
+      motionOK: s.motionOK,
+      motionOff: !s.motionOK,
+      progress: s.progress.toFixed(4),
+      showTop: s.showTop,
+
+      navItems: d.nav.map(function (n) {
+        var on = n.id === activeSection;
+        return { href: '#' + n.id, label: n.label, cls: on ? 'is-active' : '', current: on ? 'true' : 'false',
+          go: function (e) { self.goTo(n.id, e); }, goMenu: function (e) { self.goTo(n.id, e); self.setState({ menuOpen: false }); } };
+      }),
+      menuOpen: s.menuOpen,
+      menuClosed: !s.menuOpen,
+      menuExpanded: s.menuOpen ? 'true' : 'false',
+      menuLabel: s.menuOpen ? 'Close menu' : 'Open menu',
+      toggleMenu: function () { self.setState({ menuOpen: !self.state.menuOpen }); },
+      closeMenu: function () { self.setState({ menuOpen: false }); },
+
+      record: d.record.map(function (r) {
+        var val = r.v * s.count;
+        return { label: r.label, shown: r.dec ? val.toFixed(r.dec) : String(Math.round(val)) };
+      }),
+
+      threads: d.threads.map(function (t) {
+        var on = t.id === s.thread;
+        return { name: t.name, short: t.short, count: t.count, cls: on ? 'is-on' : '', pressed: on ? 'true' : 'false',
+          pick: function () { self.setState({ thread: t.id }); } };
+      }),
+      isCount: s.thread === 'count',
+      isMig: s.thread === 'mig',
+      isAi: s.thread === 'ai',
+
+      years: [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027].map(function (y, i) {
+        return { label: String(y), left: String((y - 2017) * 10), cls: i % 2 ? 'tick-odd' : '' };
+      }),
+      unhover: function () { self.setState({ hot: null }); },
+      roles: d.roles.map(function (r, i) {
+        var open = s.open === r.id, hot = s.hot === r.id;
+        return Object.assign({}, r, {
+          open: open, expanded: open ? 'true' : 'false', nodeCls: open ? 'is-open' : '',
+          hotCls: hot ? 'is-hot' : '', hasNote: !!r.note,
+          left: ((r.start - 2017) * 10).toFixed(2), width: Math.max(1.2, (r.end - r.start) * 10).toFixed(2),
+          delay: (0.1 + i * 0.08).toFixed(2),
+          barCls: (open ? 'is-open ' : '') + (r.ongoing ? 'is-ongoing' : ''),
+          barLabel: r.title + ', ' + r.org + ', ' + r.dates,
+          toggle: function () { self.setState({ open: self.state.open === r.id ? null : r.id }); },
+          select: function () { self.setState({ open: r.id }); },
+          hover: function () { if (self.state.hot !== r.id) self.setState({ hot: r.id }); }
+        });
+      }),
+
+      projects: d.projects.map(function (pj) { return { short: pj.short, where: pj.where, cls: s.hotCol === pj.id ? 'is-col' : '' }; }),
+      unhoverCol: function () { self.setState({ hotCol: null }); },
+      methods: d.methods.map(function (m, mi) {
+        var on = m.id === method.id;
+        var n = m.p.length;
+        return {
+          name: m.name, cls: on ? 'is-on' : '', pressed: on ? 'true' : 'false',
+          countText: n ? (n === 1 ? '1 project' : n + ' projects') : 'To link',
+          pick: function () { self.setState({ method: m.id }); },
+          cells: d.projects.map(function (pj, pi) {
+            var used = m.p.indexOf(pj.id) !== -1;
+            return { used: used, label: m.name + ' used in ' + pj.short, delay: (0.2 + mi * 0.05 + pi * 0.03).toFixed(2),
+              cls: s.hotCol === pj.id ? 'is-col' : '',
+              hover: function () { if (self.state.hotCol !== pj.id) self.setState({ hotCol: pj.id }); } };
+          })
+        };
+      }),
+      method: { name: method.name, uses: method.uses.map(function (u) { return { title: u.title, ctx: u.ctx, cls: u.cls || '' }; }) },
+
+      segments: d.types.map(function (t, i) {
+        var n = d.pubs.filter(function (p) { return p.t === t.id; }).length;
+        var on = filter === t.id;
+        return { id: t.id, label: t.label, n: String(n), cls: on ? 'is-on' : '', pressed: on ? 'true' : 'false', delay: (0.1 + i * 0.12).toFixed(2),
+          pick: function () { self.setState({ filter: self.state.filter === t.id ? 'all' : t.id }); } };
+      }),
+      compoCls: filter !== 'all' ? 'has-pick' : '',
+      canReset: filter !== 'all' || !!q,
+      resetPubs: function () { self.setState({ filter: 'all', query: '' }); },
+      query: s.query,
+      onQuery: function (e) { self.setState({ query: e.target.value }); },
+      showingText: 'Showing ' + visiblePubs.length + ' of ' + d.pubs.length,
+      noPubs: visiblePubs.length === 0,
+      pubs: visiblePubs.map(function (p) {
+        var authors = p.pre + 'Khan, M. A.' + p.post;
+        var cite = self.cite(p, 'apa');
+        var label = s.copied === p.id ? 'Citation copied' : (s.copied === 'fail:' + p.id ? 'Copy blocked here; select the text instead' : 'Copy citation');
+        return { year: p.year, pre: p.pre, post: p.post, title: p.title, venue: p.venue,
+          hasDoi: !!p.doi, noDoi: !p.doi, doi: p.doi || '', url: p.doi ? 'https://doi.org/' + p.doi : '',
+          hasStatus: !!p.status, status: p.status || '', statusCls: p.sc || '',
+          copyLabel: label, copyCls: s.copied === p.id ? 'is-done' : '',
+          copy: function () { self.copy(cite, p.id); },
+          open: function (e) { self.openPub(p.id, e); } };
+      }),
+
+      copyEmail: function () { self.copy('asifkhan.wiu@gmail.com', 'email'); },
+      emailLabel: s.copied === 'email' ? 'Email copied' : (s.copied === 'fail:email' ? 'Copy blocked; select the address' : 'Copy email')
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,26 +1,116 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "../styles/site.css";
+@import "../styles/shell.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* The site has no dark theme. `.on-ledger` marks Ledger-background regions instead. */
+@custom-variant dark (&:where(.__no-dark-theme, .__no-dark-theme *));
+
+/*
+ * Design tokens (CLAUDE_CODE_PROMPT.md §2). Exposed both as CSS variables
+ * (var(--color-ledger)) and as Tailwind theme values (bg-ledger, text-brass…).
+ */
+@theme {
+  --color-ledger: #12312c;
+  --color-ledger-hover: #1c4740;
+  --color-paper: #f3f4f0;
+  --color-graphite: #1e2422;
+  --color-docket: #2a52be;
+  --color-docket-hover: #1c3a8f;
+  --color-brass: #c9a44c;
+  --color-brass-hover: #ddbb66;
+  --color-brass-light: #e2c779;
+  --color-rule: #cdd2cb;
+  --color-rule-soft: #dce0d8;
+  --color-muted-1: #4a5450;
+  --color-muted-2: #3a433f;
+  --color-muted-3: #545d59;
+  --color-card: #fbfbf8;
+  --color-tint: #e8ebe4;
+  --color-tint-hover: #e6e9e2;
+  --color-st-accepted-bg: #dcebe4;
+  --color-st-accepted-fg: #17463a;
+  --color-st-review-bg: #e2e8f7;
+  --color-st-review-fg: #22408f;
+  --color-st-prep-bg: #f1e9d2;
+  --color-st-prep-fg: #5e4a12;
+  --color-ph-bg: #f5ecd2;
+  --color-ph-fg: #7a4e00;
+
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  --font-sans: var(--font-public-sans), system-ui, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --radius-btn: 3px;
+  --container-content: 1240px;
 }
 
+/* shadcn/ui semantic variables, mapped onto the site palette so no default look remains. */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-card-foreground: var(--card-foreground);
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 3px;
+  --radius-xl: 3px;
+  --radius-2xl: 3px;
+  --radius-3xl: 3px;
+  --radius-4xl: 3px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --background: var(--color-paper);
+  --foreground: var(--color-graphite);
+  --card-foreground: var(--color-graphite);
+  --popover: var(--color-card);
+  --popover-foreground: var(--color-graphite);
+  --primary: var(--color-ledger);
+  --primary-foreground: var(--color-paper);
+  --secondary: var(--color-tint);
+  --secondary-foreground: var(--color-graphite);
+  --muted: var(--color-tint);
+  --muted-foreground: var(--color-muted-1);
+  --accent: var(--color-tint-hover);
+  --accent-foreground: var(--color-graphite);
+  --destructive: #a3261a;
+  --border: var(--color-rule);
+  --input: #9aa39c;
+  --ring: var(--color-docket);
+  --radius: 3px;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  /* Preflight removes list markers; the prototype's bulleted lists rely on them. */
+  .tl-detail ul {
+    list-style: disc;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Smooth anchor scrolling, except for people who asked for less motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }

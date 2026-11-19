@@ -1,0 +1,117 @@
+[
+  {
+    "id": "bsa",
+    "title": "General Secretary",
+    "shortLabel": "BSA General Secretary",
+    "organization": "Bangladesh Student Association, Western Illinois University",
+    "dates": "Apr 2025 – present",
+    "start": 2025.25,
+    "end": 2026.9,
+    "ongoing": true,
+    "kind": "Leadership",
+    "note": null,
+    "points": [
+      "Elected general secretary of the university’s Bangladesh Student Association."
+    ]
+  },
+  {
+    "id": "ta",
+    "title": "Teaching Support Assistant",
+    "shortLabel": "Teaching Support Assistant",
+    "organization": "Department of Political Science, Western Illinois University",
+    "dates": "Jan 2025 – May 2026",
+    "start": 2025,
+    "end": 2026.38,
+    "ongoing": false,
+    "kind": "Teaching",
+    "note": null,
+    "points": [
+      "Assisted in undergraduate and graduate courses in political science and public administration.",
+      "Graded assignments and examinations, delivered in-person and virtual guest lectures, mentored students, and administered course sites.",
+      "Guest lectures in Introduction to Comparative Government and Politics, Fundamentals of International Relations, Introduction to Public Administration, and Introduction to Public Policy."
+    ]
+  },
+  {
+    "id": "rped",
+    "title": "Pre-College Instructor",
+    "shortLabel": "RPED Pre-College Instructor",
+    "organization": "Rural Postsecondary and Economic Development (RPED) Program, Western Illinois University",
+    "dates": "Jan 2025 – May 2026",
+    "start": 2025,
+    "end": 2026.38,
+    "ongoing": false,
+    "kind": "Teaching",
+    "note": null,
+    "points": [
+      "Designed and instructed recurring sessions for about 80 high school students across several program cycles.",
+      "Supported student engagement and college-readiness activities."
+    ]
+  },
+  {
+    "id": "svc",
+    "title": "Department service",
+    "shortLabel": "Department service",
+    "organization": "Department of Political Science, Western Illinois University",
+    "dates": "2025 – 2026",
+    "start": 2025,
+    "end": 2026.38,
+    "ongoing": false,
+    "kind": "Service",
+    "note": null,
+    "points": [
+      "Helped prepare a College of Arts and Sciences grant proposal, drafting supporting materials and background documentation under faculty supervision.",
+      "Created and administer the department’s official digital media presence and its academic communications.",
+      "Supported graduate expos, workshops, seminars, and departmental events."
+    ]
+  },
+  {
+    "id": "nf",
+    "title": "Research Intern",
+    "shortLabel": "Neurodiversity Foundation intern",
+    "organization": "Neurodiversity Foundation, Richmond, Texas",
+    "dates": "Sep – Nov 2025",
+    "start": 2025.67,
+    "end": 2025.9,
+    "ongoing": false,
+    "kind": "Research",
+    "note": "Capstone: Designing a governance-ready project business case for a neurodiversity partnership with Western Illinois University. Supervised by Lana Kristine Jelenjev, Dr. Casey LaFrance, and Dr. Gregory Baldi.",
+    "points": [
+      "Conducted policy, governance, and stakeholder analysis and applied Project Business Professional (PBP) principles.",
+      "Developed administrative, implementation, accountability, and evaluation frameworks for the proposed partnership."
+    ]
+  },
+  {
+    "id": "aut",
+    "title": "Research Intern",
+    "shortLabel": "Autismazing intern",
+    "organization": "Autismazing, New Bern, North Carolina",
+    "dates": "Feb – May 2025",
+    "start": 2025.08,
+    "end": 2025.4,
+    "ongoing": false,
+    "kind": "Research",
+    "note": "Capstone: Autism in Focus Survey: Mixed-Method Analysis, for Autismazing. Supervised by Deborah Kania, Dr. Casey LaFrance, and Dr. Gregory Baldi.",
+    "points": [
+      "Designed the survey instruments.",
+      "Analyzed survey and interview data from 96 autistic adults and caregivers across six partner organizations, integrating quantitative and qualitative evidence.",
+      "Personally conducted about 20 interviews."
+    ]
+  },
+  {
+    "id": "du",
+    "title": "Student leadership",
+    "shortLabel": "Dhaka student leadership",
+    "organization": "University of Dhaka",
+    "dates": "2017 – 2023",
+    "start": 2017,
+    "end": 2023.95,
+    "ongoing": false,
+    "kind": "Leadership",
+    "note": null,
+    "points": [
+      "Press Secretary, Senior Vice President, and Advisor, Dhaka University Non-Residential Student Association (2017–2023).",
+      "Vice President and Advisor, The Diplomats, Sir A. F. Rahman Hall (2018–2022).",
+      "Policy Liaison, International Association of Parliamentarians for Peace, South Asia Peace Initiative Summit (2018)."
+    ]
+  }
+]

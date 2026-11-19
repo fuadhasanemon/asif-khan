@@ -1,0 +1,57 @@
+/*
+ * Rules that are not in the prototype, needed by the production shell.
+ * Kept separate from site.css so the port stays a clean 1:1 copy.
+ */
+@layer components {
+  /* Mobile menu sheet: same look as the prototype's in-bar drop-down. */
+  .sheet-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    background: transparent;
+  }
+  .sheet-menu {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 41;
+    max-height: 100dvh;
+    overflow-y: auto;
+    outline: none;
+  }
+  .sheet-menu .menu-btn {
+    display: inline-flex;
+  }
+  @media (min-width: 761px) {
+    .sheet-menu,
+    .sheet-overlay {
+      display: none;
+    }
+  }
+
+  /* Dev-only marker for profile links still set to TODO (hidden in production). */
+  .c-todo {
+    display: inline-block;
+    padding: 7px 0;
+    font-size: 17px;
+    color: var(--color-brass-light);
+    border-bottom: 1px dashed rgba(243, 244, 240, 0.35);
+  }
+
+  /* Skip link (accessibility; invisible until focused). */
+  .skip-link {
+    position: absolute;
+    left: 16px;
+    top: -100px;
+    z-index: 60;
+    padding: 12px 18px;
+    background: var(--color-brass);
+    color: var(--color-ledger);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--radius-btn);
+  }
+  .skip-link:focus-visible {
+    top: 12px;
+    outline-color: var(--color-ledger);
+  }
+}

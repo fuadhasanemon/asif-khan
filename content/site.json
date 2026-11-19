@@ -1,0 +1,65 @@
+{
+  "name": "Md. Asif Khan",
+  "shortName": "Asif Khan",
+  "domain": "https://asifkhan.net",
+  "role": "Political scientist and policy analyst",
+  "heroStatement": "I study how states count, classify, and admit people, and who answers for those decisions.",
+  "heroSub": "M.A. in Political Science, Western Illinois University, 2026. Research on immigration policy, GovTech, and AI in public administration.",
+  "announcement": {
+    "label": "Upcoming",
+    "text": "Two papers accepted for the Midwest Political Science Association’s 84th Annual Conference, Chicago, April 2027.",
+    "linkText": "See the papers",
+    "href": "/#publications"
+  },
+  "about": {
+    "lead": "My research asks how public institutions decide who is counted, how people are classified, and who is held accountable when those decisions go wrong.",
+    "paragraphs": [
+      "I completed an M.A. in Political Science at Western Illinois University in 2026 with a 4.00 GPA, after a B.S.S. in International Relations at the University of Dhaka. At Western Illinois I worked as a teaching support assistant in the Department of Political Science and as a pre-college instructor in the Rural Postsecondary and Economic Development (RPED) Program.",
+      "My interests sit where immigration policy, GovTech, and AI in public administration meet. I work with survey and interview data, comparative case studies, and quantitative tools in R, Python, and SPSS.",
+      "I grew up in Bangladesh and now live in Waukegan, Illinois. I speak Bengali, English, Hindi, and Urdu."
+    ]
+  },
+  "education": [
+    {
+      "year": "2026",
+      "degree": "M.A. in Political Science",
+      "institution": "Western Illinois University, USA",
+      "note": "GPA 4.00 / 4.00. International Commitment Scholarship, 2025 and 2026."
+    },
+    {
+      "year": "2022",
+      "degree": "B.S.S. in International Relations",
+      "institution": "University of Dhaka, Bangladesh",
+      "note": "Thesis: Exploring gender bias, present barriers, and future opportunities in the eSports industry. Supervised by Dr. Amena Mohsen."
+    }
+  ],
+  "skills": {
+    "software": ["R", "Python", "SPSS", "Qualtrics", "Tableau", "LaTeX"],
+    "languages": "Bengali (native); English, Hindi, and Urdu (fluent); Arabic (reading); Spanish (learning)",
+    "teaching": "Guest lectures, grading, mentoring, course-site administration, and pre-college instruction"
+  },
+  "awards": [
+    { "title": "Co-Principal Investigator, Moving Minds Neurodiversity Project", "meta": "Two Rivers Arts Council Grant, awarded 2026" },
+    { "title": "International Commitment Scholarship", "meta": "Western Illinois University, 2025 and 2026" }
+  ],
+  "certifications": [
+    { "title": "Project Business Professional (PBP)" },
+    { "title": "Lean Six Sigma, Green Belt" },
+    { "title": "Agile and Digital Governance (Agile3)" },
+    { "title": "ISO Lead Auditor, Quality and Compliance" },
+    { "title": "Migration and Immigration Policy", "meta": "International Organization for Migration (IOM)" },
+    { "title": "Refugee Protection and Asylum Systems", "meta": "UNHCR" }
+  ],
+  "contact": {
+    "statement": "Questions about my research, a paper, or a possible collaboration are welcome.",
+    "email": "asifkhan.wiu@gmail.com",
+    "location": "Waukegan, Illinois, USA",
+    "cvPath": "/files/Md-Asif-Khan-CV.pdf",
+    "profiles": [
+      { "label": "ORCID", "href": "https://orcid.org/0009-0001-8940-062X" },
+      { "label": "Google Scholar", "href": "TODO: Google Scholar profile URL" },
+      { "label": "ResearchGate", "href": "TODO: ResearchGate profile URL" },
+      { "label": "LinkedIn", "href": "TODO: LinkedIn profile URL" }
+    ]
+  }
+}
