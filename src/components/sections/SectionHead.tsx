@@ -16,6 +16,7 @@ export function SectionHead({
   const H = level === 1 ? "h1" : "h2"
   return (
     <div className="sec-head" data-reveal="">
+      <span className="sec-rule" aria-hidden="true" />
       <H className="h2" id={`${id}-h`}>
         {title}
       </H>

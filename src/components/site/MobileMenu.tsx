@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { useState } from "react"
 import { Dialog as SheetPrimitive } from "radix-ui"
+import { AnimatePresence, m } from "motion/react"
 
 import { useActiveSection } from "@/hooks/useActiveSection"
 
@@ -36,9 +37,17 @@ export function MobileMenu({ brand, items, cvPath }: { brand: string; items: Ite
       <SheetPrimitive.Trigger className="menu-btn" aria-label="Open menu">
         <MenuIcon />
       </SheetPrimitive.Trigger>
-      <SheetPrimitive.Portal>
-        <SheetPrimitive.Overlay className="sheet-overlay" />
-        <SheetPrimitive.Content className="sheet-menu nav on-ledger" aria-describedby={undefined}>
+      <AnimatePresence>
+        {open ? (
+      <SheetPrimitive.Portal forceMount>
+        <SheetPrimitive.Overlay forceMount className="sheet-overlay" />
+        <SheetPrimitive.Content forceMount asChild aria-describedby={undefined}>
+          <m.div
+            className="sheet-menu nav on-ledger"
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+          >
           <SheetPrimitive.Title className="sr">Menu</SheetPrimitive.Title>
           <div className="wrap navrow">
             <Link href="/#top" className="brand" onClick={close}>
@@ -64,8 +73,11 @@ export function MobileMenu({ brand, items, cvPath }: { brand: string; items: Ite
               Download CV
             </a>
           </nav>
+          </m.div>
         </SheetPrimitive.Content>
       </SheetPrimitive.Portal>
+        ) : null}
+      </AnimatePresence>
     </SheetPrimitive.Root>
   )
 }

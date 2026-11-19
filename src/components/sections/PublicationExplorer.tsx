@@ -1,4 +1,7 @@
-import type { Ref } from "react"
+import { useEffect, type Ref } from "react"
+import { AnimatePresence } from "motion/react"
+
+import { requestScrollRefresh } from "@/lib/motion"
 
 import type { PubTypeT } from "@/lib/schemas"
 import { CompositionBar, type Segment } from "@/components/viz/CompositionBar"
@@ -43,6 +46,8 @@ export function PublicationExplorerView({
 }: Props) {
   const visible = filterItems(items, filter, query)
   const canReset = filter !== "all" || query.trim() !== ""
+  // The list height changes with the filter; keep later scroll triggers aligned.
+  useEffect(() => requestScrollRefresh(400), [visible.length])
   return (
     <>
       <div className="pub-tools" data-reveal="">
@@ -82,9 +87,11 @@ export function PublicationExplorerView({
         </div>
       ) : null}
       <ol className="pubs">
-        {visible.map((p) => (
-          <PublicationRow key={p.id} p={p} headingLevel={headingLevel} />
-        ))}
+        <AnimatePresence initial={false} mode="popLayout">
+          {visible.map((p) => (
+            <PublicationRow key={p.id} p={p} headingLevel={headingLevel} />
+          ))}
+        </AnimatePresence>
       </ol>
     </>
   )

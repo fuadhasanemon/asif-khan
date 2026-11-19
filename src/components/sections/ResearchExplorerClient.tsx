@@ -13,6 +13,7 @@ type Props = { threads: Thread[]; stages: Record<ThreadIdT, ResearchStage>; init
 /** Research explorer state: the selected thread, deep-linkable as /#research?thread=mig. */
 export function ResearchExplorer({ threads, stages, initial }: Props) {
   const [active, setActive] = useState<ThreadIdT>(initial)
+  const [switched, setSwitched] = useState(false)
 
   useHashParams("research", (params) => {
     const t = parseThread(params.get("thread"))
@@ -20,9 +21,11 @@ export function ResearchExplorer({ threads, stages, initial }: Props) {
   })
 
   function pick(id: ThreadIdT) {
+    if (id === active) return
+    setSwitched(true)
     setActive(id)
     replaceUrl(buildHash("research", { thread: id }))
   }
 
-  return <ResearchExplorerView threads={threads} stages={stages} active={active} onPick={pick} />
+  return <ResearchExplorerView threads={threads} stages={stages} active={active} onPick={pick} animateDiagrams={switched} />
 }

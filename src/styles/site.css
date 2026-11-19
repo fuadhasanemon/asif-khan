@@ -181,7 +181,6 @@
   .cue-line{position:relative;display:block;width:1px;height:40px;background:rgba(243,244,240,.22);overflow:hidden}
   .cue-line::after{content:'';position:absolute;left:0;top:-40%;width:1px;height:40%;background:var(--color-brass-light);animation:cue 2.4s cubic-bezier(.6,0,.4,1) infinite}
   @keyframes cue{0%{top:-40%}100%{top:100%}}
-  .sec-head::before{content:'';grid-column:1/-1;width:64px;height:2px;background:var(--color-brass);transform-origin:0 50%;margin-bottom:-28px}
 
   .rmap{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:56px;align-items:start}
   .rtabs{display:flex;flex-direction:column;border-top:1px solid var(--color-rule);position:sticky;top:100px}
@@ -220,10 +219,6 @@
   .chart-label{font-size:14px;color:#2F3733;padding:0 16px 0 0}
   .chart-track{position:relative;display:block;height:44px;background-image:repeating-linear-gradient(to right,var(--color-rule-soft) 0,var(--color-rule-soft) 1px,transparent 1px,transparent 10%)}
   .chart-bar{position:absolute;top:0;height:44px;min-width:14px;padding:0;background:none;border:0;cursor:pointer}
-  .chart-bar::after{content:'';position:absolute;left:0;right:0;top:15px;height:14px;background:var(--color-ledger);border-radius:1px;transform-origin:0 50%;transition:transform .9s cubic-bezier(.2,.7,.2,1) var(--d,0s),background-color .2s ease}
-  .chart-bar.is-ongoing::after{background:linear-gradient(90deg,var(--color-ledger) 78%,rgba(18,49,44,.3))}
-  .chart-bar:hover::after{background:var(--color-docket)}
-  .chart-bar.is-open::after{background:var(--color-brass)}
   .tl-item{transition:background-color .2s ease}
   .tl-item.is-hot{background:var(--color-tint-hover)}
 
@@ -283,7 +278,7 @@
   .c-copy{min-height:44px;padding:0 18px;font-size:14px;background:none;cursor:pointer}
   .totop{position:fixed;right:28px;bottom:28px;z-index:30;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:var(--color-ledger);color:var(--color-paper);box-shadow:0 8px 22px rgba(18,49,44,.28);animation:fadein .3s ease both;text-decoration:none}
   .totop:hover{background:#1C4740;color:#fff}
-  @media (prefers-reduced-motion: reduce){.mask-in,.cue-line::after,.stage,.stage .work,.a-bar,.a-fade,.a-draw,.a-flow,.a-pulse,.totop{animation:none}.a-draw{stroke-dashoffset:0}.chart-bar::after,.dot,.seg-bar,.progress span,.sec-head::before{transition:none}}
+  @media (prefers-reduced-motion: reduce){.mask-in,.cue-line::after,.stage,.stage .work,.a-bar,.a-fade,.a-draw,.a-flow,.a-pulse,.totop{animation:none}.a-draw{stroke-dashoffset:0}.dot,.seg-bar,.progress span{transition:none}}
 
   .detail{padding:72px 0 128px;scroll-margin-top:68px;animation:stagein .5s cubic-bezier(.2,.7,.2,1) both}
   .crumbs{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--color-muted-1);margin-bottom:48px}
@@ -415,7 +410,6 @@
   .foot{flex-direction:column}
 
   .scroll-cue{display:none}
-  .sec-head::before{margin-bottom:-12px}
   .rtabs{overflow-x:auto;margin:0 -22px;padding:0 22px 4px}
   .rtab{flex:0 0 80%;padding:18px}
   .rtab-name{font-size:20px}
@@ -427,7 +421,6 @@
   .chart-row{grid-template-columns:minmax(0,1fr)}
   .chart-label{padding:12px 0 0;font-size:13px}
   .chart-track,.chart-bar{height:34px}
-  .chart-bar::after{top:10px;height:12px}
   .m-panel{padding:24px 22px;margin-top:24px}
   .compo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 14px}
   .pub{margin:0;padding:24px 0}

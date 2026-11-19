@@ -1,0 +1,117 @@
+/*
+ * Motion states (PLAN.md §4).
+ *
+ * "Start hidden" rules apply ONLY under html[data-motion-ready], which the
+ * pre-paint script sets when JavaScript runs and reduced motion is off. With
+ * JS disabled, reduced motion, or after the 1.5 s failsafe, none of this
+ * applies and every element renders in its final state.
+ *
+ * `data-shown` is set by the GSAP layer as each element is revealed.
+ */
+@layer components {
+  /* GSAP replaces these prototype CSS animations whenever it is in charge. */
+  html[data-motion-ready] .a-bar,
+  html[data-motion-ready] .a-draw,
+  html[data-motion-ready] .a-fade {
+    animation: none;
+  }
+
+  /* Framer Motion owns these state transitions everywhere. */
+  .stage,
+  .stage .work,
+  .cite-text {
+    animation: none;
+  }
+
+  /* GSAP tweens transforms on these nodes; CSS transitions on transform would lag behind it. */
+  .dot {
+    transition: background-color 0.2s ease;
+  }
+  .seg-bar {
+    transition: height 0.2s ease;
+  }
+  .progress span {
+    transition: none;
+    transform-origin: 0 50%;
+  }
+
+  /* Reveal-on-scroll */
+  html[data-motion-ready] [data-reveal]:not([data-shown]) {
+    opacity: 0;
+  }
+
+  /* Section-heading brass rule (a real element; GSAP cannot animate ::before) */
+  .sec-rule {
+    display: block;
+    grid-column: 1 / -1;
+    width: 64px;
+    height: 2px;
+    background: var(--color-brass);
+    transform-origin: 0 50%;
+    margin-bottom: -28px;
+  }
+  html[data-motion-ready] .sec-head:not([data-shown]) .sec-rule {
+    transform: scaleX(0);
+  }
+
+  /* Hero entrance: prototype CSS keyframes (site.css). Play once per visit,
+     not again when returning to the home page by client navigation. */
+  html[data-hero-played] .hero .rise,
+  html[data-hero-played] .hero .mask-in {
+    animation: none;
+  }
+
+  /* Career chart bar fill (a real element; was ::after) */
+  .chart-fill {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 15px;
+    height: 14px;
+    background: var(--color-ledger);
+    border-radius: 1px;
+    transform-origin: 0 50%;
+    transition: background-color 0.2s ease;
+    pointer-events: none;
+  }
+  .chart-bar.is-ongoing .chart-fill {
+    background: linear-gradient(90deg, var(--color-ledger) 78%, rgba(18, 49, 44, 0.3));
+  }
+  .chart-bar:hover .chart-fill {
+    background: var(--color-docket);
+  }
+  .chart-bar.is-open .chart-fill {
+    background: var(--color-brass);
+  }
+  html[data-motion-ready] .chart:not([data-shown]) .chart-fill {
+    transform: scaleX(0);
+  }
+
+  /* Matrix dots and composition bar */
+  html[data-motion-ready] .matrix-box:not([data-shown]) .dot {
+    transform: scale(0);
+  }
+  html[data-motion-ready] .pub-tools:not([data-shown]) .seg-bar {
+    transform: scaleX(0);
+  }
+
+  @media (max-width: 760px) {
+    .sec-rule {
+      margin-bottom: -12px;
+    }
+    .chart-fill {
+      top: 10px;
+      height: 12px;
+    }
+  }
+
+  /* Hero particle field: .particles (prototype: fill, no pointer events, 2.4 s fade-in) wraps the tsParticles element. */
+  .particles-field,
+  .particles-field canvas {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}

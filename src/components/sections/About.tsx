@@ -1,5 +1,7 @@
 import { record, sections, site } from "@/lib/content"
 
+import { CountUp } from "@/components/motion/CountUp"
+
 import { SectionHead } from "./SectionHead"
 
 /** About (prototype `#about`): lead, body, and "The record, counted". */
@@ -20,10 +22,8 @@ export function About() {
             <dl className="rec-list">
               {record.map((r) => (
                 <div className="rec-row" key={r.label}>
-                  {/* Final values are server-rendered; the count-up (step 6) animates toward them. */}
-                  <dt className="rec-num" data-count-to={r.value} data-count-decimals={r.decimals}>
-                    {r.value.toFixed(r.decimals)}
-                  </dt>
+                  {/* Final values are server-rendered; CountUp animates toward them on reveal. */}
+                  <CountUp className="rec-num" value={r.value} decimals={r.decimals} />
                   <dd className="rec-label">{r.label}</dd>
                 </div>
               ))}

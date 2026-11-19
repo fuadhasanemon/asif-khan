@@ -33,8 +33,9 @@ export function BackToTop() {
 
   function toTop(e: React.MouseEvent<HTMLAnchorElement>) {
     e.preventDefault()
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" })
+    // Instant, as in the prototype's goTo('top'). (A native smooth scroll can be
+    // cut short by ScrollTrigger.refresh(), which restores the scroll position.)
+    window.scrollTo(0, 0)
     document.getElementById("main")?.focus({ preventScroll: true })
   }
 

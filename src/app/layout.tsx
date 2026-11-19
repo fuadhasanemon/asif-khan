@@ -4,6 +4,8 @@ import { Newsreader, Public_Sans } from "next/font/google"
 import { motionBootScript } from "@/lib/motion-boot"
 import { site } from "@/lib/content"
 import { Toaster } from "@/components/ui/sonner"
+import { MotionProvider } from "@/components/motion/MotionProvider"
+import { MotionRuntime } from "@/components/motion/MotionRuntime"
 import "./globals.css"
 
 const newsreader = Newsreader({
@@ -42,7 +44,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script dangerouslySetInnerHTML={{ __html: motionBootScript }} />
       </head>
       <body>
-        {children}
+        <MotionProvider>{children}</MotionProvider>
+        <MotionRuntime />
         <Toaster />
       </body>
     </html>

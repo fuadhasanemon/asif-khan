@@ -74,7 +74,7 @@ export function MethodsMatrixView({ data, caption, panelKicker, selected, hotCol
                             className="dot"
                             role="img"
                             aria-label={`${m.name} used in ${pj.short}`}
-                            style={{ "--d": `${(0.2 + mi * 0.05 + pi * 0.03).toFixed(2)}s` } as React.CSSProperties}
+                            data-delay={(0.2 + mi * 0.05 + pi * 0.03).toFixed(2)}
                           />
                         ) : null}
                       </td>

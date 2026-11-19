@@ -12,4 +12,4 @@
  */
 export const MOTION_FAILSAFE_MS = 1500
 
-export const motionBootScript = `(function(){try{var d=document.documentElement;if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.setAttribute('data-motion-ready','');window.__motionFailsafe=setTimeout(function(){if(!window.__motionClaimed){d.removeAttribute('data-motion-ready');d.setAttribute('data-motion-fallback','')}},${MOTION_FAILSAFE_MS})}catch(e){}})()`
+export const motionBootScript = `(function(){try{var d=document.documentElement;if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.setAttribute('data-motion-ready','');window.__motionArmed=true;window.__motionFailsafe=setTimeout(function(){if(!window.__motionClaimed){d.removeAttribute('data-motion-ready');d.setAttribute('data-motion-fallback','')}},${MOTION_FAILSAFE_MS})}catch(e){}})()`

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { AnimatePresence, m } from "motion/react"
 
 import type { CiteStyle } from "@/lib/citations"
 import { CopyButton } from "@/components/site/CopyButton"
@@ -36,9 +37,18 @@ export function CiteBox({ citations, styles, bibHref, bibFilename }: Props) {
         })}
       </div>
       <div className="cite-box">
-        <pre id="cite-text" key={style} className={`cite-text${style === "bibtex" ? " is-code" : ""}`}>
-          {text}
-        </pre>
+        <AnimatePresence mode="wait" initial={false}>
+          <m.pre
+            id="cite-text"
+            key={style}
+            className={`cite-text${style === "bibtex" ? " is-code" : ""}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            {text}
+          </m.pre>
+        </AnimatePresence>
         <div className="cite-actions">
           <CopyButton
             className="copy-btn"

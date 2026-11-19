@@ -1,4 +1,6 @@
 import Link from "next/link"
+import type { Ref } from "react"
+import { m } from "motion/react"
 
 import type { PubTypeT } from "@/lib/schemas"
 import { CopyButton } from "@/components/site/CopyButton"
@@ -22,10 +24,19 @@ export type PublicationListItem = {
 }
 
 /** One publication row (prototype `.pub`). */
-export function PublicationRow({ p, headingLevel = 3 }: { p: PublicationListItem; headingLevel?: 2 | 3 }) {
+export function PublicationRow({
+  p,
+  headingLevel = 3,
+  ref,
+}: {
+  p: PublicationListItem
+  headingLevel?: 2 | 3
+  /** Forwarded so AnimatePresence (popLayout) can measure the row. */
+  ref?: Ref<HTMLLIElement>
+}) {
   const H = headingLevel === 2 ? "h2" : "h3"
   return (
-    <li className="pub">
+    <m.li ref={ref} className="pub" layout="position" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
       <span className="pub-year">{p.year}</span>
       <div>
         <H className="pub-title">
@@ -57,6 +68,6 @@ export function PublicationRow({ p, headingLevel = 3 }: { p: PublicationListItem
           />
         </div>
       </div>
-    </li>
+    </m.li>
   )
 }

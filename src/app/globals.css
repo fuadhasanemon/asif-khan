@@ -3,6 +3,7 @@
 @import "shadcn/tailwind.css";
 @import "../styles/site.css";
 @import "../styles/shell.css";
+@import "../styles/motion.css";
 
 /* The site has no dark theme. `.on-ledger` marks Ledger-background regions instead. */
 @custom-variant dark (&:where(.__no-dark-theme, .__no-dark-theme *));
@@ -108,9 +109,8 @@
   }
 }
 
-/* Smooth anchor scrolling, except for people who asked for less motion. */
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
-}
+/*
+ * No CSS `scroll-behavior: smooth`: ScrollTrigger.refresh() briefly resets and
+ * restores the scroll position, and smooth scrolling turns those jumps into
+ * visible drift. (The prototype's own smooth-scroll rule never applied either.)
+ */

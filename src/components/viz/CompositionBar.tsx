@@ -23,7 +23,7 @@ export function CompositionBar({ segments, filter, onPick }: Props) {
             aria-pressed={on}
             onClick={onPick ? () => onPick(sg.type) : undefined}
           >
-            <span className="seg-bar" style={{ "--d": `${(0.1 + i * 0.12).toFixed(2)}s` } as React.CSSProperties} />
+            <span className="seg-bar" data-delay={(0.1 + i * 0.12).toFixed(2)} />
             <span className="seg-n">{sg.n}</span>
             <span className="seg-label">{sg.label}</span>
           </button>

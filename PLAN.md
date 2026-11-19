@@ -102,6 +102,43 @@ Status: **approved 2026-11-19; step 1 done.**
 - **Back to top:** appears after `scrollY > 720`. It scrolls to the top (instantly under reduced motion) and moves focus to `<main>`.
 - **Playwright** (`pnpm test:e2e`, against the production build): 19 tests at desktop 1440 and mobile 390. They cover the home sections, research threads and deep links, the chart↔timeline link, the methods panel, publication filter/search/empty state/deep links, `/publications` query state, copy citation (clipboard contents + toast), the blocked-clipboard fallback, the detail page (citation styles, link back into research), nav state after navigation, the 404 for unknown slugs, the mobile Sheet (focus trap, Esc, close on navigation), horizontal-scroll regions with no page overflow, and Back to top focus.
 
+### Step 6: motion
+**Ownership as built**
+| Concern | Owner | Where |
+|---|---|---|
+| Hero entrance (name mask, lines, scroll cue) | **Prototype CSS keyframes** (see deviation 1) | `site.css` `.mask-in`/`.rise`; `HeroPlayedFlag` stops a replay on client return |
+| Reveal-on-scroll, section brass rule, chart bar growth, matrix dots, composition bar, first research diagram | GSAP + ScrollTrigger (`batch`, `once`) | `MotionRuntime` (root layout, `useGSAP` keyed on pathname, reverted on change) |
+| Ledger count-up | GSAP + ScrollTrigger (`once`) | `CountUp` (runs after its own hydration; never mutates un-hydrated text) |
+| Research diagram on thread switch | GSAP (attribute/stroke tweens, no SVG transforms) | `ThreadDiagram` layout effect |
+| Reading-progress line | GSAP ScrollTrigger `scrub` | `MotionRuntime`; also on under reduced motion (it is position feedback) |
+| Stage cross-fade + works stagger, timeline accordion, list reorder (`layout` + `popLayout`), cite-style swap, mobile Sheet | Framer Motion (`LazyMotion` + `m`, `domMax`) | `MotionProvider` sets the default transition, and duration 0 under reduced motion |
+| Migration dots, AI cases, checkpoint pulse, scroll cue | SMIL / CSS (prototype) | `.loop-only` / `.still-only` swap under reduced motion with CSS only |
+| Hero particles | tsParticles v4 | `HeroFieldLoader` (idle-time `next/dynamic`, `ssr:false`) → `HeroField` |
+
+**Gating:** the "start hidden" CSS (`motion.css`) applies only under `html[data-motion-ready]`. The flag is claimed when the motion module is evaluated. If the app JS hasn't run within 1.5 s, the failsafe releases it, so below-the-fold sections render statically. `data-shown` marks revealed elements and survives route changes.
+
+**Particle field** (`components/viz/hero-field`):
+- **Pointer push:** a custom external interactor (`push-aside.ts`) sets `particle.offset` each frame (≤ 14 px within 140 px). tsParticles draws particles and builds links from `position + offset`, so velocity is never touched, as the spec requires.
+- **Fully declarative options:** the count (hero area / 14 000, clamped 18–110) goes in `number.value` with density off, and the brass seals are a group (⌈n/9⌉, brass at .9, radius + 0.8). A `particleAdded` listener applies the right-biased x (`W·r^0.55`) to every particle, including ones tsParticles rebuilds after a resize. A first version that hand-placed particles on top of `number: 0` lost them all on a canvas resize; the e2e test caught it.
+- **Reduced motion:** no movement and no pointer interaction, with the loop kept at 30 fps. Frames are identical (a still image), and a resize rebuild blanks for at most one frame. A stopped or 2 fps loop left a visible blank, which I measured.
+- **Pausing and placement:** the field pauses off-screen and on blur. It loads at idle behind the static Ledger background, renders through an OffscreenCanvas, and never takes pointer events.
+
+**Deviations from the brief / prototype (please review)**
+1. **Hero entrance uses CSS, not GSAP.** I measured it: at 4× CPU (Lighthouse mobile, roughly a mid-range phone) the app JS is evaluated after the 1.5 s failsafe. A JS-driven hero would therefore hide the LCP element until JS arrives or the failsafe fires. The prototype's own keyframes start at first paint, need no JS, and end visible with JS off. With them, LCP (the name) measured 0.37–0.71 s unthrottled and 1.22–1.64 s at 4× CPU on the local server.
+2. **tsParticles packages:** `@tsparticles/basic` + `plugin-interactivity` + `interaction-particles-links` instead of `@tsparticles/slim`. It's the same family, but without about 20 unused interactors and shapes in the lazy chunk.
+3. **CSS `scroll-behavior: smooth` removed.** `ScrollTrigger.refresh()` saves and restores the scroll position, and smooth scrolling turned that into drift (it broke the scroll-spy and deep-link tests). The prototype's own rule never applied.
+4. **Back to top is instant**, as in the prototype's `goTo('top')`. A native smooth scroll could be cut short by a refresh (it stopped at 472 px in tests).
+5. **Prototype glitch fixed:** the SMIL migration dots sat at the SVG origin until their `begin` time. They're now hidden until their motion starts.
+6. **Detail-page entrance:** this still uses the prototype CSS (`.detail`, `.dt-main > *`, `.glance` keyframes). The Framer shared-layout route transition comes in step 7 with the extras.
+
+**Tests:** `tests/e2e/motion.spec.ts` covers:
+- motion on: the flag is claimed, reveals happen on scroll, the count-up reaches 4.00/96, chart bars reach full scale, the particle canvas draws and ignores the pointer, and the progress line reaches the end
+- JS off: nothing is hidden
+- reduced motion: end states immediately, still frames instead of loops, a still field that survives a resize
+- failsafe: all chunks are blocked, the flag is released and content is visible
+
+These run in their own Playwright project after the others, because they assert a timing window. The full suite has 25 tests, with 4 consecutive clean runs.
+
 ---
 
 (Original plan below, as approved.)

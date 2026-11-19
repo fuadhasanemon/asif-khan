@@ -1,15 +1,32 @@
+"use client"
+
+import { useLayoutEffect, useRef } from "react"
+
+import { animateDiagram } from "@/lib/motion"
 import type { ThreadIdT } from "@/lib/schemas"
 
 /**
  * Research-line diagrams, ported from the prototype SVGs.
  * - `.a-bar`, `.a-draw`, `.a-fade`: one-shot entrance (GSAP in the motion step).
  * - `.loop-only` groups hold the continuous loops (SMIL / CSS keyframes);
+ *   moving dots stay hidden until their motion begins (the prototype showed
+ *   them at the SVG origin for the first 1.4 s);
  *   `.still-only` groups hold the static stand-ins. A CSS media query swaps
  *   them under prefers-reduced-motion, so no JavaScript is involved.
  */
-export function ThreadDiagram({ thread, label }: { thread: ThreadIdT; label: string }) {
+export function ThreadDiagram({ thread, label, animate = false }: { thread: ThreadIdT; label: string; animate?: boolean }) {
+  const ref = useRef<SVGSVGElement>(null)
+  // After a thread switch, play the entrance as the new diagram mounts (before paint).
+  // The first diagram on the page is animated by the reveal layer instead.
+  useLayoutEffect(() => {
+    if (!animate) return
+    const tl = animateDiagram(ref.current)
+    return () => {
+      tl?.kill()
+    }
+  }, [animate])
   return (
-    <svg viewBox="0 0 520 240" role="img" aria-label={label}>
+    <svg ref={ref} viewBox="0 0 520 240" role="img" aria-label={label}>
       {thread === "count" ? <CountArt /> : thread === "mig" ? <MigrationArt /> : <AiArt />}
     </svg>
   )
@@ -44,16 +61,20 @@ function MigrationArt() {
       <circle cx="80" cy="120" r="22" fill="#F3F4F0" stroke="#12312C" strokeWidth="2" />
       <circle cx="440" cy="120" r="22" fill="#F3F4F0" stroke="#12312C" strokeWidth="2" />
       <g className="loop-only">
-        <circle r="5" fill="#C9A44C">
+        <circle r="5" fill="#C9A44C" visibility="hidden">
+          <set attributeName="visibility" to="visible" begin="1.4s" />
           <animateMotion dur="4.5s" begin="1.4s" repeatCount="indefinite" path={DIRECT} />
         </circle>
-        <circle r="5" fill="#C9A44C">
+        <circle r="5" fill="#C9A44C" visibility="hidden">
+          <set attributeName="visibility" to="visible" begin="3.6s" />
           <animateMotion dur="4.5s" begin="3.6s" repeatCount="indefinite" path={DIRECT} />
         </circle>
-        <circle r="4" fill="#12312C" opacity="0.6">
+        <circle r="4" fill="#12312C" opacity="0.6" visibility="hidden">
+          <set attributeName="visibility" to="visible" begin="1.6s" />
           <animateMotion dur="5s" begin="1.6s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0.47;0.47" keyTimes="0;0.6;1" path={UPPER} />
         </circle>
-        <circle r="4" fill="#12312C" opacity="0.6">
+        <circle r="4" fill="#12312C" opacity="0.6" visibility="hidden">
+          <set attributeName="visibility" to="visible" begin="2.4s" />
           <animateMotion dur="5s" begin="2.4s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0.47;0.47" keyTimes="0;0.6;1" path={LOWER} />
         </circle>
       </g>

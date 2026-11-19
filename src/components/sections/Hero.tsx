@@ -1,11 +1,17 @@
 import Link from "next/link"
 
 import { site } from "@/lib/content"
+import { HeroPlayedFlag } from "@/components/motion/HeroPlayedFlag"
+import { HeroFieldLoader } from "@/components/viz/hero-field/HeroFieldLoader"
 
 /**
  * Hero (prototype `#top`). Server-rendered, so the name is the LCP element.
- * The particle field and the GSAP entrance timeline mount in later steps;
- * `data-hero-*` hooks mark what the timeline animates.
+ *
+ * The entrance uses the prototype's own CSS keyframes (`.mask-in` name rise,
+ * `.rise` lines with delays .1/.42/.6/.6/.85 s), not GSAP: it starts at first
+ * paint without waiting for JavaScript, so LCP never depends on the JS bundle,
+ * and it still ends fully visible with JS off. Reduced motion disables it via
+ * the prototype's media query. The particle field loads when the page is idle.
  */
 export function Hero() {
   const [first, ...rest] = splitName(site.name)
@@ -13,29 +19,31 @@ export function Hero() {
 
   return (
     <section id="top" className="hero on-ledger" aria-labelledby="hero-name">
+      <HeroFieldLoader />
+      <HeroPlayedFlag />
       <div className="wrap hero-inner">
-        <p className="hero-kicker" data-hero-line="">
+        <p className="hero-kicker rise d1">
           {site.role}
         </p>
         <h1 className="hero-name" id="hero-name">
           <span className="mask">
-            <span className="mask-in" data-hero-mask="">
+            <span className="mask-in">
               {first}
             </span>
           </span>{" "}
           <span className="mask">
-            <span className="mask-in m2" data-hero-mask="">
+            <span className="mask-in m2">
               {rest.join(" ")}
             </span>
           </span>
         </h1>
-        <p className="hero-statement" data-hero-line="">
+        <p className="hero-statement rise d3">
           {site.heroStatement}
         </p>
-        <p className="hero-sub" data-hero-line="">
+        <p className="hero-sub rise d4">
           {site.heroSub}
         </p>
-        <div className="hero-actions" data-hero-line="">
+        <div className="hero-actions rise d4">
           <Link className="btn btn-brass" href="/#research">
             Explore research
           </Link>
@@ -44,7 +52,7 @@ export function Hero() {
           </a>
         </div>
       </div>
-      <div className="wrap hero-foot" data-hero-line="">
+      <div className="wrap hero-foot rise d5">
         <span className="hf-label">{announcement.label}</span>
         <span>
           {announcement.text} <Link href={announcement.href}>{announcement.linkText}</Link>

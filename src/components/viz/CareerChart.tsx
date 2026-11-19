@@ -46,18 +46,20 @@ export function CareerChart({ roles, open, hot, onSelect, onHover }: Props) {
                     {
                       left: `${pct(r.start).toFixed(2)}%`,
                       width: `${width.toFixed(2)}%`,
-                      "--d": `${(0.1 + i * 0.08).toFixed(2)}s`,
                     } as React.CSSProperties
                   }
                   aria-label={`${r.title}, ${r.organization}, ${r.dates}`}
                   aria-pressed={isOpen}
-                  aria-controls={`role-${r.id}`}
+                  aria-controls={isOpen ? `role-${r.id}` : undefined}
+                  data-delay={(0.1 + i * 0.08).toFixed(2)}
                   onClick={onSelect ? () => onSelect(r.id) : undefined}
                   onMouseEnter={onHover ? () => onHover(r.id) : undefined}
                   onMouseLeave={onHover ? () => onHover(null) : undefined}
                   onFocus={onHover ? () => onHover(r.id) : undefined}
                   onBlur={onHover ? () => onHover(null) : undefined}
-                />
+                >
+                  <span className="chart-fill" aria-hidden="true" />
+                </button>
               </span>
             </li>
           )
