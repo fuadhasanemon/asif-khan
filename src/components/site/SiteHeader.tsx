@@ -1,6 +1,5 @@
 import Link from "next/link"
-import site from "@content/site.json"
-import sections from "@content/sections.json"
+import { sections, site } from "@/lib/content"
 
 import { MobileMenu } from "./MobileMenu"
 

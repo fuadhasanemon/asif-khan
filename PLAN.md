@@ -51,6 +51,22 @@ Status: **approved 2026-11-19; step 1 done.**
 - The prototype's `html{scroll-behavior:smooth}` never matched (it was scoped under `.root`). Smooth anchor scrolling is now real, but only with `prefers-reduced-motion: no-preference`.
 - I added a skip link ("Skip to content"), visible only on keyboard focus, for the accessibility bar.
 
+### Step 2: content layer and citations
+- **Schemas** (`src/lib/schemas.ts`): one per file, plus `validateContent()` for cross-file rules:
+  - `related` ids exist, and areas and method names resolve.
+  - Works in `sections.json` link real publications, and each filter type appears exactly once.
+  - Every thread has a matching area.
+  - `needsProject` agrees with the projects and uses.
+  - Each publication type's required fields are present (for example, a journal needs volume and pages or an article number, and manuscripts have no year).
+  - `Khan, M. A.` appears exactly once per author list, and author names use the "Surname, I. I." form.
+- **Two validation points:**
+  - `next.config.ts` calls `checkContent()` (fs read), so errors fail `next build`/`next dev` before rendering, and warnings print (TODO profiles, missing abstracts). I checked this by breaking a `related` id: the build stopped with `content/publications.json: p5 relates to unknown “p99”`.
+  - `src/lib/content.ts` validates the bundled JSON again at module load and exposes typed, enriched `PublicationView`s.
+- **Port fidelity:** `tests/unit/prototype.ts` evaluates the prototype's own `Component` class from `design/Main.dc.html`. The tests compare `cite()`, `VENUE`, the author split and `detailVals()` (facts, authorship, placeholder, related, prev/next) for all 18 papers. They also confirm `publications.json` matches the prototype data field by field.
+- **Deviations from the prototype (both are bugs in its output):**
+  1. **Chicago, sole author:** the prototype printed "Khan, M. A.. 2027." with a double period. Fixed. This is the only difference the parity test allows.
+  2. **BibTeX keys:** the prototype gives p5 (proceedings) and p9 (presentation) the same key, `chowdhury2025flood`, which breaks a combined `.bib`. Keys are now unique across the list, so later duplicates get `b`, `c`…; p9 becomes `chowdhury2025floodb`. All other keys are unchanged.
+
 ---
 
 (Original plan below, as approved.)

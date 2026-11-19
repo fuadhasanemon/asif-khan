@@ -1,18 +1,13 @@
 import Link from "next/link"
-import site from "@content/site.json"
-import sections from "@content/sections.json"
+import { profiles, sections, site } from "@/lib/content"
 
 import { CopyButton } from "@/components/site/CopyButton"
 import { CurrentYear } from "@/components/site/CurrentYear"
-
-const isTodo = (href: string) => href.trim().toUpperCase().startsWith("TODO")
 
 /** Contact block on Ledger with the site footer (prototype `#contact`). */
 export function Contact() {
   const { contact } = site
   const labels = sections.contact
-  // TODO profile links are hidden in production and listed in a build-time warning.
-  const profiles = contact.profiles.filter((p) => !isTodo(p.href) || process.env.NODE_ENV !== "production")
 
   return (
     <section id="contact" className="contact on-ledger">
@@ -40,7 +35,7 @@ export function Contact() {
             <h3 className="c-h">{labels.profilesHeading}</h3>
             <ul className="c-links">
               {profiles.map((p) =>
-                isTodo(p.href) ? (
+                p.todo ? (
                   <li key={p.label}>
                     <span className="c-todo" title={p.href}>
                       {p.label} (link to add)

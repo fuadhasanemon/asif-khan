@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next"
 import { Newsreader, Public_Sans } from "next/font/google"
 
 import { motionBootScript } from "@/lib/motion-boot"
-import site from "@content/site.json"
+import { site } from "@/lib/content"
 import "./globals.css"
 
 const newsreader = Newsreader({

@@ -1,4 +1,4 @@
-import site from "@content/site.json"
+import { site } from "@/lib/content"
 
 /** Step 1 shell. Sections land in step 3. */
 export default function HomePage() {
