@@ -37,7 +37,7 @@ export function checkContent(dir: string, log: Pick<Console, "warn"> = console):
   const abstracts = result.warnings.filter((w) => w.includes("abstract not provided"))
   const other = result.warnings.filter((w) => !w.includes("abstract not provided"))
   for (const w of other) log.warn(`⚠ content: ${w}`)
-  if (abstracts.length) log.warn(`⚠ content: ${abstracts.length} publication(s) have no abstract yet; placeholders are shown`)
+  if (abstracts.length) log.warn(`⚠ content: ${abstracts.length} publication(s) have no abstract yet; the abstract section is hidden`)
   if (!result.ok) {
     throw new Error(`Content validation failed:\n  - ${result.errors.join("\n  - ")}`)
   }

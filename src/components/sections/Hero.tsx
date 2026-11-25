@@ -3,6 +3,7 @@ import Link from "next/link"
 import { site } from "@/lib/content"
 import { HeroPlayedFlag } from "@/components/motion/HeroPlayedFlag"
 import { HeroScene } from "@/components/motion/HeroScene"
+import { MotionToggle } from "@/components/motion/MotionToggle"
 import { HeroFieldLoader } from "@/components/viz/hero-field/HeroFieldLoader"
 
 /**
@@ -60,6 +61,7 @@ export function Hero() {
         <span>
           {announcement.text} <Link href={announcement.href}>{announcement.linkText}</Link>
         </span>
+        <MotionToggle className="on-dark" />
         <Link href="/#about" className="scroll-cue">
           <span>Scroll</span>
           <span className="cue-line" aria-hidden="true" />

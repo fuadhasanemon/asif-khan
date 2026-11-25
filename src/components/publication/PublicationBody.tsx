@@ -18,14 +18,17 @@ export function PublicationBody({ p }: { p: PublicationView }) {
 
   return (
     <div className="dt-body">
-      <section className="dt-sec" aria-labelledby="abs-h">
-        <h2 id="abs-h" className="dt-h">
-          Abstract
-        </h2>
-        <div className="dt-content">
-          {p.abstract ? <p className="dt-abstract">{p.abstract}</p> : <p className="ph-box">{p.abstractPlaceholder}</p>}
-        </div>
-      </section>
+      {/* No abstract yet: the section is left out rather than showing an empty box. */}
+      {p.abstract ? (
+        <section className="dt-sec" aria-labelledby="abs-h">
+          <h2 id="abs-h" className="dt-h">
+            Abstract
+          </h2>
+          <div className="dt-content">
+            <p className="dt-abstract">{p.abstract}</p>
+          </div>
+        </section>
+      ) : null}
 
       <section className="dt-sec" aria-labelledby="fit-h">
         <h2 id="fit-h" className="dt-h">
@@ -41,9 +44,9 @@ export function PublicationBody({ p }: { p: PublicationView }) {
               </Link>
             ) : null}
           </div>
-          <div>
-            <h3 className="small-h">Methods</h3>
-            {p.methods.length ? (
+          {p.methods.length ? (
+            <div>
+              <h3 className="small-h">Methods</h3>
               <ul className="chips">
                 {p.methods.map((m) => (
                   <li className="chip" key={m}>
@@ -51,10 +54,8 @@ export function PublicationBody({ p }: { p: PublicationView }) {
                   </li>
                 ))}
               </ul>
-            ) : (
-              <p className="ph-inline">[Add the methods used in this paper]</p>
-            )}
-          </div>
+            </div>
+          ) : null}
           <div>
             <h3 className="small-h">Your role</h3>
             <p className="fit-v">{p.authorship}</p>

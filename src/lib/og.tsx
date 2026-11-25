@@ -49,6 +49,35 @@ async function fonts() {
   ]
 }
 
+/**
+ * Site icon: "AK" in the heading face on the ledger green, with the brass rule
+ * from the cards. Used for the favicon (32 px) and the Apple touch icon (180 px).
+ */
+export async function siteIcon(size: number, opts: { rounded: boolean }) {
+  const s = (n: number) => Math.round((n / 32) * size)
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          background: C.ledger,
+          borderRadius: opts.rounded ? s(7) : 0,
+          fontFamily: "JetBrains Mono",
+        }}
+      >
+        <div style={{ display: "flex", fontSize: s(17), fontWeight: 600, lineHeight: 1, letterSpacing: "-0.06em", color: C.paper }}>AK</div>
+        <div style={{ width: s(16), height: Math.max(2, s(2.5)), marginTop: s(3), background: C.brass }} />
+      </div>
+    ),
+    { width: size, height: size, fonts: await fonts() },
+  )
+}
+
 /** Title size steps down for long titles so every card keeps a calm layout. */
 function titleSize(title: string) {
   if (title.length > 150) return 34

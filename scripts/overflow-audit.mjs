@@ -1,12 +1,20 @@
 // Lists elements that overflow the viewport or clip their own text, per width.
-// Usage: node scripts/overflow-audit.mjs <url> [widths]
+// Usage: node scripts/overflow-audit.mjs <url> [widths] [--text-spacing]
+// --text-spacing applies the WCAG 1.4.12 overrides (line height 1.5, paragraph
+// spacing 2em, letter spacing .12em, word spacing .16em) before checking.
 import { chromium } from "@playwright/test"
-const [url, widthsArg = "1440,1280,1024,768,390,360"] = process.argv.slice(2)
+const args = process.argv.slice(2)
+const spacing = args.includes("--text-spacing")
+const [url, widthsArg = "1440,1280,1024,768,390,360"] = args.filter((a) => !a.startsWith("--"))
 const browser = await chromium.launch()
 for (const w of widthsArg.split(",").map(Number)) {
   const page = await browser.newPage({ viewport: { width: w, height: 900 }, reducedMotion: "reduce" })
   await page.goto(url, { waitUntil: "networkidle" })
   await page.evaluate(() => document.fonts.ready)
+  if (spacing)
+    await page.addStyleTag({
+      content: "*{line-height:1.5!important;letter-spacing:.12em!important;word-spacing:.16em!important}p{margin-bottom:2em!important}",
+    })
   const issues = await page.evaluate(() => {
     const out = []
     const vw = document.documentElement.clientWidth

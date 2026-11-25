@@ -13,12 +13,10 @@ export type MethodsViewProps = {
   onHoverRow?: (id: string | null) => void
 }
 
-export const PLACEHOLDER_USE = {
-  title: "[Add the project or paper where you used this method]",
-  ctx: "On the CV, but not yet linked to a project",
-}
+/** Shown for a method listed on the CV that is not yet tied to a project here. */
+export const CV_ONLY_NOTE = "Listed on the CV; not yet linked to a project on this site."
 
-const countText = (n: number) => (n ? (n === 1 ? "1 project" : `${n} projects`) : "To link")
+const countText = (n: number) => (n ? (n === 1 ? "1 project" : `${n} projects`) : "On CV")
 
 /**
  * Methods × projects matrix with row selection, column hover and the detail
@@ -43,7 +41,7 @@ export function MethodsMatrixView({
   const rowMethod = hotRow ? data.methods.find((m) => m.id === hotRow) : undefined
   const litCols = new Set(hotCol ? [hotCol] : (rowMethod?.projects ?? []))
   const litRows = new Set(hotRow ? [hotRow] : hotCol ? data.methods.filter((m) => m.projects.includes(hotCol)).map((m) => m.id) : [])
-  const uses = method.needsProject ? [{ ...PLACEHOLDER_USE, ph: true }] : method.uses.map((u) => ({ ...u, ph: false }))
+  const uses = method.needsProject ? [] : method.uses
 
   return (
     <>
@@ -118,14 +116,18 @@ export function MethodsMatrixView({
           <p className="m-kicker">{panelKicker}</p>
           <h3 className="m-title">{method.name}</h3>
         </div>
-        <ul className="m-uses">
-          {uses.map((u) => (
-            <li key={u.title} className={`m-use${u.ph ? " is-ph" : ""}`}>
-              <span className="m-use-title">{u.title}</span>
-              <span className="m-use-ctx">{u.ctx}</span>
-            </li>
-          ))}
-        </ul>
+        {uses.length ? (
+          <ul className="m-uses">
+            {uses.map((u) => (
+              <li key={u.title} className="m-use">
+                <span className="m-use-title">{u.title}</span>
+                <span className="m-use-ctx">{u.ctx}</span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="m-use-ctx m-cv-only">{CV_ONLY_NOTE}</p>
+        )}
       </div>
     </>
   )

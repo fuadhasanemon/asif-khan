@@ -3,6 +3,8 @@
 import dynamic from "next/dynamic"
 import { useEffect, useRef, useState } from "react"
 
+import { useMotionPaused } from "@/components/motion/MotionToggle"
+
 const HeroField = dynamic(() => import("./HeroField"), { ssr: false })
 
 type Field = { width: number; height: number; reduced: boolean }
@@ -16,6 +18,8 @@ type Field = { width: number; height: number; reduced: boolean }
 export function HeroFieldLoader() {
   const ref = useRef<HTMLDivElement>(null)
   const [field, setField] = useState<Field | null>(null)
+  // "Pause motion" stills the field exactly as reduced motion does.
+  const paused = useMotionPaused()
 
   useEffect(() => {
     const go = () => {
@@ -49,7 +53,7 @@ export function HeroFieldLoader() {
 
   return (
     <div ref={ref} className="particles" aria-hidden="true">
-      {field ? <HeroField {...field} /> : null}
+      {field ? <HeroField {...field} reduced={field.reduced || paused} /> : null}
     </div>
   )
 }

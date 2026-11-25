@@ -66,7 +66,7 @@ export function choicesFor(file: FileKey, field: string, areas: string[]): strin
 
 /** Short help shown under specific fields. */
 export const FIELD_HELP: Record<string, string> = {
-  abstract: "Leave empty to show the placeholder box.",
+  abstract: "Leave empty to hide the abstract section until you have one.",
   slug: "The page address: /publications/<slug>. Lowercase words joined by hyphens; must be unique.",
   id: "Internal id. Must be unique (publications use p0, p1, …).",
   related: "Ids of related publications, e.g. p15.",

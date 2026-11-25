@@ -550,3 +550,75 @@
     border-top: 0;
   }
 }
+
+/* "Pause motion" control (WCAG 2.2.2) and long-link reflow (WCAG 1.4.10, 320 px). */
+@layer components {
+  .motion-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 4px;
+    border: 0;
+    background: none;
+    font: inherit;
+    font-size: 14px;
+    white-space: nowrap;
+    cursor: pointer;
+    color: var(--color-graphite);
+  }
+  .motion-toggle.on-dark {
+    color: #bacac4;
+  }
+  .motion-toggle:hover,
+  .motion-toggle.on-dark:hover {
+    color: var(--color-paper);
+  }
+  .motion-toggle[aria-pressed="true"] {
+    color: var(--color-brass-light);
+  }
+  .motion-toggle:focus-visible {
+    outline: 2px solid var(--color-brass-light);
+    outline-offset: 2px;
+  }
+  .mt-icon {
+    flex: none;
+    width: 10px;
+    height: 11px;
+    border-left: 3px solid currentColor;
+    border-right: 3px solid currentColor;
+  }
+  .motion-toggle[aria-pressed="true"] .mt-icon {
+    border: 0;
+    background: currentColor;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+  }
+  .hero-foot .motion-toggle {
+    margin-left: auto;
+  }
+  .hero-foot .motion-toggle + .scroll-cue {
+    margin-left: 12px;
+  }
+  .foot-tools {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 24px;
+  }
+  @media (max-width: 760px) {
+    .hero-foot .motion-toggle {
+      margin-left: 0;
+      align-self: flex-start;
+    }
+  }
+  html[data-motion-paused] .cue-line::after,
+  html[data-motion-paused] .a-flow,
+  html[data-motion-paused] .a-pulse {
+    animation-play-state: paused;
+  }
+  .doi,
+  .dt-facts a,
+  .c-p a {
+    overflow-wrap: anywhere;
+  }
+}

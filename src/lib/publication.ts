@@ -80,13 +80,6 @@ export function facts(p: Publication): Fact[] {
   return out
 }
 
-/** Placeholder wording per type when `abstract` is null (prototype abstractPh). */
-export function abstractPlaceholder(p: Publication): string {
-  if (p.type === "review" || p.type === "prep") return "[Optional: a short summary you are comfortable sharing before publication]"
-  if (p.type === "talk") return "[Paste the abstract submitted to the conference]"
-  return "[Paste the abstract from the published version]"
-}
-
 export type Related = { pub: Publication; why: string }
 
 /** Explicit `related` first (labelled by type), then same research line, up to three. */

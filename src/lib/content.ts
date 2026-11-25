@@ -15,7 +15,6 @@ import sectionsJson from "@content/sections.json"
 
 import { bibtexKeys } from "./citations"
 import {
-  abstractPlaceholder,
   authorParts,
   authorship,
   doiUrl,
@@ -65,7 +64,6 @@ export type PublicationView = Publication & {
   url: string | null
   href: string
   bibtexKey: string
-  abstractPlaceholder: string
 }
 
 const keys = bibtexKeys(content.publications)
@@ -83,7 +81,6 @@ export const publications: PublicationView[] = content.publications.map((p) => {
     url: p.doi ? doiUrl(p.doi) : null,
     href: `/publications/${p.slug}`,
     bibtexKey: keys.get(p.id)!,
-    abstractPlaceholder: abstractPlaceholder(p),
   }
 })
 

@@ -1,3 +1,4 @@
+import { connection } from "next/server"
 import { notFound, redirect } from "next/navigation"
 import { Suspense } from "react"
 
@@ -20,6 +21,8 @@ export default function EditPage({ params }: PageProps<"/admin/edit/[file]">) {
 }
 
 async function Editor({ params }: Pick<PageProps<"/admin/edit/[file]">, "params">) {
+  // Request-time only: the session check reads the clock and cookies.
+  await connection()
   const { file } = await params
   const spec = fileSpec(file)
   if (!spec) notFound()

@@ -4,7 +4,6 @@ import kindsJson from "@content/publication-kinds.json"
 import publicationsJson from "@content/publications.json"
 import researchJson from "@content/research.json"
 import {
-  abstractPlaceholder,
   authorList,
   authorParts,
   authorship,
@@ -52,14 +51,13 @@ describe("content parity: publications.json matches the prototype's data", () =>
 
 describe("parity with the prototype's list and detail logic", () => {
   for (const p of pubs) {
-    it(`${p.id}: venue line, author split, facts, authorship, placeholder, related, pager`, () => {
+    it(`${p.id}: venue line, author split, facts, authorship, related, pager`, () => {
       const pp = protoPub(p.id)
       const d = protoDetail(p.id)
       expect(venueLine(p)).toBe(pp.venue)
       expect(authorParts(p)).toEqual({ pre: pp.pre, post: pp.post })
       expect(facts(p)).toEqual(d.facts)
       expect(authorship(p)).toBe(d.role)
-      expect(abstractPlaceholder(p)).toBe(d.abstractPh)
       expect(authorList(p).map((a) => ({ name: a.name, cls: a.isMe ? "me" : "", sep: a.sep }))).toEqual(d.authors)
       expect(
         relatedFor(p, pubs).map((r) => ({ why: r.why, title: r.pub.title, meta: kindMeta(r.pub, kinds) })),

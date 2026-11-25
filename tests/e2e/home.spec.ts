@@ -51,13 +51,14 @@ test.describe("home page", () => {
     await expect(page.locator(".chart-row").first()).toHaveClass(/is-hot/)
   })
 
-  test("methods: selecting a row updates the live panel, including the placeholder", async ({ page }) => {
+  test("methods: selecting a row updates the live panel, including CV-only methods", async ({ page }) => {
     await gotoReady(page, "/")
     await page.getByRole("button", { name: /^Comparative case study/ }).click()
     await expect(page.locator("#method-panel .m-title")).toHaveText("Comparative case study")
     await expect(page.locator("#method-panel")).toContainText("Supervised by Dr. Julia Albarracín")
     await page.getByRole("button", { name: /^Process tracing/ }).press("Enter")
-    await expect(page.locator("#method-panel .m-use.is-ph")).toHaveText(/\[Add the project or paper where you used this method\]/)
+    await expect(page.locator("#method-panel .m-cv-only")).toHaveText(/Listed on the CV/)
+    await expect(page.locator("main")).not.toContainText("[Add")
   })
 
   test("back to top appears after the hero and returns focus to main", async ({ page }) => {

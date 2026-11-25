@@ -121,7 +121,7 @@
   .m-use{display:flex;flex-direction:column;gap:6px;padding:18px 0;border-top:1px solid var(--color-rule-soft)}
   .m-use-title{font-family:var(--font-serif);font-size:21px;line-height:1.35}
   .m-use-ctx{font-size:15px;color:var(--color-muted-1)}
-  .m-use.is-ph .m-use-title{font-family:var(--font-sans);font-size:15px;color:var(--color-ph-fg);background:var(--color-ph-bg);padding:6px 10px;align-self:flex-start;border-radius:2px}
+  .m-cv-only{margin:0;max-width:44ch}
   .tool-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px;margin-top:72px;padding-top:32px;border-top:1px solid var(--color-rule)}
   .tool-line{font-size:16px;line-height:1.65;color:#2F3733;margin:0;max-width:360px}
 

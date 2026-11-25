@@ -283,7 +283,7 @@ export function validateContent(raw: RawContent): ValidationResult {
       if (methods)
         for (const m of p.methods)
           if (!methodNames.has(m)) errors.push(`content/publications.json: ${p.id} lists method “${m}”, which is not in methods.json`)
-      if (p.abstract === null) warnings.push(`${p.id}: abstract not provided (placeholder shown)`)
+      if (p.abstract === null) warnings.push(`${p.id}: abstract not provided (abstract section hidden)`)
     }
     if (sections) {
       for (const [thread, stage] of Object.entries(sections.research.stages))

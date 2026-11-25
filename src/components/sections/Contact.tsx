@@ -1,6 +1,8 @@
 import Link from "next/link"
+
 import { profiles, sections, site } from "@/lib/content"
 
+import { MotionToggle } from "@/components/motion/MotionToggle"
 import { CopyButton } from "@/components/site/CopyButton"
 import { CurrentYear } from "@/components/site/CurrentYear"
 
@@ -64,7 +66,10 @@ export function Contact() {
           <span>
             © <CurrentYear /> {site.name}
           </span>
-          <Link href="/#top">Back to top</Link>
+          <span className="foot-tools">
+            <MotionToggle className="on-dark" />
+            <Link href="/#top">Back to top</Link>
+          </span>
         </footer>
       </div>
     </section>
