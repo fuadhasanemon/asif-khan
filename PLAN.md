@@ -177,6 +177,26 @@ Approved: signature scroll scene (pinned), career-chart year guide, methods cros
    - AI: holding the pointer on the human checkpoint pauses the cases and turns the ring brass
 5. **Tests:** `interactive.spec.ts` covers the scene (pinned, beats, About doesn't move), the year guide (pointer and keyboard), the crosshair, and the diagrams. `ready.ts` waits for the page's one post-hydration re-measure before tests interact. Timing-sensitive specs run in the serial motion project. The full suite is 38 tests, with consecutive clean runs.
 
+### Requested changes (2026-11-25)
+1. **Typography (overrides the brief's Newsreader / Public Sans):**
+   - Headings use **JetBrains Mono** (self-hosted via `next/font`).
+   - Paragraphs and UI use the **SF Mono** stack: `"SF Mono", SFMono-Regular, ui-monospace, JetBrains Mono, …`. Apple's licence doesn't allow serving SF Mono as a web font, so it shows on Apple devices, and everyone else gets the already-loaded JetBrains Mono (no second font download).
+   - `src/styles/type.css` re-sets the scale for monospace (about 0.6em glyphs), with fluid sizes for the name, titles and statements, and moves paragraph-type elements (lead, statements, intros, stage text) to the paragraph face.
+   - OG cards now use JetBrains Mono (`@fontsource/jetbrains-mono`).
+2. **Hero name clipping (fixed):**
+   - The rise mask (`overflow: hidden`, line-height 0.92, bottom padding only) cropped the tops of tall glyphs. The mask now has room on every side.
+   - The name sizes fluidly (`clamp(42px, 7vw, 100px)`) with tightened monospace word gaps. On phones it sets as two lines ("Md. Asif" / "Khan") at up to 68 px.
+   - Measured at 1440, 1280, 1024, 768, 390 and 360 px: one line on desktop, glyphs inside the mask, no horizontal overflow.
+3. **Section order:** `sections.json` now has `homeOrder` (validated: six sections, each once), set to **Publications, Research, About, Experience, Methods, Recognition**. The page and the nav follow it at runtime, so the admin panel can reorder them. Whichever section follows the hero drops its top rule.
+4. **Admin panel** (`/admin`, see `ADMIN.md`):
+   - **Editing:** a password login (`ADMIN_PASSWORD`, signed httpOnly cookie, 8 h) and generated form editors for all eight content files: add, remove (with a confirm step) and reorder list items; dropdowns for fixed choices; empty nullable fields saved as `null`; slug from title; CV PDF upload.
+   - **Validation:** each save is checked with the build's own `validateContent` across all files, and nothing is written on errors, with messages pointing at the item and field.
+   - **Storage:** saves go to disk in development (or with `ADMIN_LOCAL_WRITE=1`), or become a GitHub commit (`GITHUB_TOKEN`, `GITHUB_REPO`), which makes Vercel redeploy.
+   - **Security:** every action re-checks the session; admin pages are request-time (`connection()`), `noindex`, and disallowed in robots.txt; disk access is scoped to `content/` and `public/`; the CV path is validated.
+   - **Tests:** unit tests cover sessions (tamper, expiry, password change), storage mode, the path guard and form helpers; e2e covers login and the editor.
+5. **Responsiveness audit:** `scripts/overflow-audit.mjs` checks every element at every width for viewport overflow or clipped text. The home and publication pages are clean at all six widths.
+6. **MotionSites:** the account is on the free plan (one prompt fetch left). I showed nine library directions suited to a research portfolio; they're awaiting your pick for refinements.
+
 ---
 
 (Original plan below, as approved.)

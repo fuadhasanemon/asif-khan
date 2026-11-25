@@ -543,3 +543,10 @@
     }
   }
 }
+
+/* Whichever section follows the hero has no top rule (order is configurable). */
+@layer components {
+  .scene-spacer + .section {
+    border-top: 0;
+  }
+}

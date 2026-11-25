@@ -1,0 +1,312 @@
+/*
+ * Typography: headings in JetBrains Mono, paragraphs in SF Mono (with the
+ * JetBrains Mono fallback). Monospace glyphs are ~0.6em wide, far wider than
+ * the prototype's Newsreader, so this layer re-sets the scale. Loaded after
+ * site.css; selectors mirror the prototype's so specificity stays equal.
+ */
+@layer components {
+  body {
+    font-size: 15px;
+  }
+
+  /* Paragraph-type text uses the paragraph face, even where the prototype set it in the display serif. */
+  .lead,
+  .hero-statement,
+  .contact-statement,
+  .body p,
+  .stage p,
+  .earlier p,
+  .sec-intro {
+    font-family: var(--font-sans);
+  }
+
+  /* ── Header ─────────────────────────────────────────── */
+  .brand {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+  .navlinks a {
+    font-size: 13.5px;
+  }
+  .btn {
+    font-size: 13.5px;
+    font-weight: 600;
+  }
+  .mobile-menu a {
+    font-size: 20px;
+  }
+
+  /* ── Hero ───────────────────────────────────────────── */
+  .hero-kicker {
+    font-size: 14px;
+  }
+  .hero-name {
+    font-weight: 500;
+    font-size: clamp(42px, 7vw, 100px);
+    line-height: 1;
+    letter-spacing: -0.045em;
+    /* A monospace space is a full character wide; tighten the gaps between words. */
+    word-spacing: -0.3em;
+  }
+  @media (max-width: 760px) {
+    /* Phones: "Md. Asif" over "Khan", so the name can be large instead of shrinking to fit one line. */
+    .hero-name {
+      font-size: clamp(44px, 15vw, 68px);
+      line-height: 1.02;
+    }
+    .hero-name .mask {
+      display: block;
+      width: fit-content;
+    }
+  }
+  /* The rise mask clipped the tops of tall glyphs (the "f" in "Asif"); give it room above and below. */
+  .mask {
+    padding: 0.14em 0.04em 0.12em 0;
+    margin: -0.14em -0.04em -0.12em 0;
+  }
+  .hero-statement {
+    font-weight: 400;
+    font-size: clamp(19px, 2.1vw, 27px);
+    line-height: 1.45;
+    letter-spacing: -0.02em;
+    max-width: 44ch;
+  }
+  .hero-sub {
+    font-size: 14px;
+    max-width: 62ch;
+  }
+  .hero-foot {
+    font-size: 13px;
+  }
+
+  /* ── Sections ───────────────────────────────────────── */
+  .h2 {
+    font-weight: 500;
+    font-size: clamp(28px, 3.4vw, 44px);
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+  }
+  .sec-intro {
+    font-size: 14.5px;
+    line-height: 1.75;
+    max-width: 58ch;
+  }
+  .small-h,
+  .record h3,
+  .edu-h,
+  .search-l {
+    font-size: 13.5px;
+  }
+
+  /* About */
+  .body p {
+    font-size: 15px;
+    line-height: 1.8;
+    max-width: 64ch;
+  }
+  .body p.lead,
+  .lead {
+    font-size: 19px;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+  }
+  .rec-num {
+    font-size: 32px;
+    letter-spacing: -0.04em;
+  }
+  .rec-label {
+    font-size: 13.5px;
+  }
+
+  /* Research */
+  .rtab-name {
+    font-size: 16px;
+    line-height: 1.35;
+  }
+  .rtab-line,
+  .rtab-n {
+    font-size: 12.5px;
+  }
+  .stage h3 {
+    font-size: clamp(20px, 2vw, 26px);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+  .stage p {
+    font-size: 14.5px;
+    line-height: 1.8;
+    max-width: 64ch;
+  }
+  .work-title {
+    font-size: 14.5px;
+    line-height: 1.55;
+  }
+  .work-meta {
+    font-size: 12.5px;
+  }
+  .earlier h3 {
+    font-size: 17px;
+  }
+  .earlier p {
+    font-size: 14px;
+  }
+
+  /* Experience */
+  .chart-label,
+  .tick {
+    font-size: 12px;
+  }
+  .tl-role {
+    font-size: 17px;
+    letter-spacing: -0.02em;
+  }
+  .tl-org {
+    font-size: 13.5px;
+  }
+  .tl-date,
+  .tl-kind {
+    font-size: 12px;
+  }
+  .tl-detail li {
+    font-size: 14px;
+  }
+  .tl-note {
+    font-size: 13.5px;
+  }
+  .edu-deg {
+    font-size: 16px;
+  }
+  .edu-inst,
+  .edu-note {
+    font-size: 13px;
+  }
+
+  /* Methods */
+  .mx-pj {
+    font-size: 13px;
+  }
+  .mx-yr,
+  .mx-n {
+    font-size: 11.5px;
+  }
+  .mx-m {
+    font-size: 13.5px;
+  }
+  .m-title {
+    font-size: clamp(20px, 2vw, 26px);
+    letter-spacing: -0.02em;
+  }
+  .m-use-title {
+    font-size: 15px;
+  }
+  .m-use-ctx,
+  .tool-line {
+    font-size: 13.5px;
+  }
+
+  /* Publications */
+  .seg-n {
+    font-size: 20px;
+  }
+  .seg-label,
+  .pub-count {
+    font-size: 12px;
+  }
+  .pub-year {
+    font-size: 15px;
+  }
+  .pub-title {
+    font-size: 16.5px;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+  }
+  .pub-authors,
+  .pub-venue {
+    font-size: 13px;
+  }
+  .pub-foot,
+  .doi,
+  .details-link,
+  .copy-btn {
+    font-size: 12.5px;
+  }
+  .f-btn {
+    font-size: 13px;
+  }
+  .search input {
+    font-size: 14px;
+  }
+
+  /* Recognition */
+  .aw-t {
+    font-size: 15px;
+  }
+  .aw-m {
+    font-size: 12.5px;
+  }
+
+  /* Contact */
+  .contact-statement {
+    font-size: clamp(22px, 2.8vw, 36px);
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+    max-width: 40ch;
+  }
+  .c-email {
+    font-size: clamp(16px, 1.8vw, 22px);
+  }
+  .c-links a,
+  .c-p {
+    font-size: 14.5px;
+  }
+  .foot {
+    font-size: 12.5px;
+  }
+
+  /* Publication page */
+  .dt-title {
+    font-weight: 500;
+    font-size: clamp(24px, 3vw, 38px);
+    line-height: 1.22;
+    letter-spacing: -0.03em;
+  }
+  .dt-authors {
+    font-size: 14.5px;
+  }
+  .dt-venue {
+    font-size: 13.5px;
+  }
+  .dt-h {
+    font-size: 18px;
+  }
+  .fit-v,
+  .rel-t {
+    font-size: 15px;
+  }
+  .pg-t {
+    font-size: 14px;
+  }
+  .cite-text {
+    font-size: 13.5px;
+  }
+  .fact dd {
+    font-size: 13.5px;
+  }
+
+  @media (max-width: 760px) {
+    .body p.lead,
+    .lead {
+      font-size: 17px;
+    }
+    .tl-role {
+      font-size: 16px;
+    }
+    .pub-title {
+      font-size: 15.5px;
+    }
+    .mobile-menu a {
+      font-size: 19px;
+    }
+  }
+}

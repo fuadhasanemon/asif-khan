@@ -7,7 +7,7 @@ import { SectionHead } from "./SectionHead"
 /** About (prototype `#about`): lead, body, and "The record, counted". */
 export function About() {
   return (
-    <section id="about" className="section first" aria-labelledby="about-h">
+    <section id="about" className="section" aria-labelledby="about-h">
       <div className="wrap">
         <SectionHead id="about" title={sections.about.title} />
         <div className="about-grid">

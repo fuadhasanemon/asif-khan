@@ -1,9 +1,9 @@
 /**
  * Open Graph cards (1200×630) in the site's type and colours, rendered at
  * build time with next/og. Satori needs static TTF/OTF/WOFF files, so the
- * fonts come from Fontsource's static WOFF builds of the same families
- * (Newsreader, Public Sans; both SIL OFL), not the variable woff2 files
- * next/font serves to browsers.
+ * font comes from Fontsource's static WOFF build of JetBrains Mono (SIL OFL),
+ * the site's heading face. SF Mono, used for paragraphs on Apple devices,
+ * cannot be embedded, so cards use JetBrains Mono throughout.
  */
 import { readFile } from "node:fs/promises"
 import { join } from "node:path"
@@ -34,29 +34,27 @@ async function fontData() {
   "use cache"
   cacheLife("max") // font files never change between builds
   return Promise.all([
-    fontFile("newsreader", "newsreader-latin-400-normal.woff"),
-    fontFile("newsreader", "newsreader-latin-500-normal.woff"),
-    fontFile("public-sans", "public-sans-latin-400-normal.woff"),
-    fontFile("public-sans", "public-sans-latin-600-normal.woff"),
+    fontFile("jetbrains-mono", "jetbrains-mono-latin-400-normal.woff"),
+    fontFile("jetbrains-mono", "jetbrains-mono-latin-500-normal.woff"),
+    fontFile("jetbrains-mono", "jetbrains-mono-latin-600-normal.woff"),
   ])
 }
 
 async function fonts() {
-  const [serif, serifMedium, sans, sansBold] = await fontData()
+  const [regular, medium, semibold] = await fontData()
   return [
-    { name: "Newsreader", data: serif, weight: 400 as const, style: "normal" as const },
-    { name: "Newsreader", data: serifMedium, weight: 500 as const, style: "normal" as const },
-    { name: "Public Sans", data: sans, weight: 400 as const, style: "normal" as const },
-    { name: "Public Sans", data: sansBold, weight: 600 as const, style: "normal" as const },
+    { name: "JetBrains Mono", data: regular, weight: 400 as const, style: "normal" as const },
+    { name: "JetBrains Mono", data: medium, weight: 500 as const, style: "normal" as const },
+    { name: "JetBrains Mono", data: semibold, weight: 600 as const, style: "normal" as const },
   ]
 }
 
 /** Title size steps down for long titles so every card keeps a calm layout. */
 function titleSize(title: string) {
-  if (title.length > 150) return 44
-  if (title.length > 110) return 50
-  if (title.length > 70) return 58
-  return 66
+  if (title.length > 150) return 34
+  if (title.length > 110) return 38
+  if (title.length > 70) return 44
+  return 52
 }
 
 function Frame({ domain, children }: { domain: string; children: React.ReactNode }) {
@@ -70,7 +68,7 @@ function Frame({ domain, children }: { domain: string; children: React.ReactNode
         background: C.ledger,
         color: C.paper,
         padding: "64px 72px",
-        fontFamily: "Public Sans",
+        fontFamily: "JetBrains Mono",
       }}
     >
       {children}
@@ -97,10 +95,10 @@ export async function personCard(input: { name: string; role: string; statement:
     (
       <Frame domain={input.domain}>
         <div style={{ fontSize: 28, color: C.brassLight, marginBottom: 20 }}>{input.role}</div>
-        <div style={{ fontFamily: "Newsreader", fontSize: 120, lineHeight: 0.95, letterSpacing: "-0.02em", marginBottom: 34 }}>
+        <div style={{ fontFamily: "JetBrains Mono", fontWeight: 500, fontSize: 96, lineHeight: 1, letterSpacing: "-0.05em", marginBottom: 34 }}>
           {input.name}
         </div>
-        <div style={{ fontFamily: "Newsreader", fontSize: 40, lineHeight: 1.22, maxWidth: 900 }}>{input.statement}</div>
+        <div style={{ fontFamily: "JetBrains Mono", fontWeight: 500, fontSize: 32, lineHeight: 1.4, maxWidth: 960 }}>{input.statement}</div>
       </Frame>
     ),
     { ...OG_SIZE, fonts: await fonts() },
@@ -129,7 +127,8 @@ export async function publicationCard(input: {
         <div style={{ display: "flex", fontSize: 24, color: C.brassLight, marginBottom: 26 }}>{meta}</div>
         <div
           style={{
-            fontFamily: "Newsreader",
+            fontFamily: "JetBrains Mono",
+            fontWeight: 500,
             fontSize: titleSize(input.title),
             lineHeight: 1.12,
             letterSpacing: "-0.01em",

@@ -40,6 +40,15 @@ if (!result.ok) throw new Error(`Content validation failed:\n  - ${result.errors
 export const content: Content = result.content
 export const { site, record, research, experience, methods, kinds, sections } = content
 
+/** Nav items in the configured home order (sections.homeOrder); anything not ordered (Contact) goes last. */
+export const navItems = [...sections.nav].sort((a, b) => {
+  const rank = (id: string) => {
+    const i = (sections.homeOrder as string[]).indexOf(id)
+    return i < 0 ? Number.MAX_SAFE_INTEGER : i
+  }
+  return rank(a.id) - rank(b.id)
+})
+
 /** Profile links, minus TODO placeholders in production. */
 export const profiles = site.contact.profiles
   .filter((p) => !isTodo(p.href) || process.env.NODE_ENV !== "production")

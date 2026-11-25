@@ -148,7 +148,14 @@ const StageSchema = z.object({
   diagramLabel: text,
   works: z.array(z.object({ title: text, meta: text, publication: z.string().regex(/^p\d+$/).nullable() })).min(1),
 })
+/** Home sections that can be ordered (the hero always comes first, contact last). */
+export const HomeSectionId = z.enum(["publications", "research", "about", "experience", "skills", "recognition"])
+
 export const SectionsSchema = z.object({
+  homeOrder: z
+    .array(HomeSectionId)
+    .length(6)
+    .refine((a) => new Set(a).size === a.length, { message: "each home section must appear exactly once" }),
   nav: z.array(z.object({ id: text, label: text })).min(1),
   about: z.object({ ...Head, recordHeading: text }),
   research: z.object({
@@ -190,6 +197,7 @@ export type PubTypeT = z.infer<typeof PubType>
 export type Kinds = Record<PubTypeT, string>
 export type Publication = z.infer<typeof PublicationSchema>
 export type Sections = z.infer<typeof SectionsSchema>
+export type HomeSectionIdT = z.infer<typeof HomeSectionId>
 
 export type RawContent = {
   site: unknown

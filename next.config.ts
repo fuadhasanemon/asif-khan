@@ -10,6 +10,8 @@ checkContent(join(process.cwd(), "content"))
 const nextConfig: NextConfig = {
   env: { NEXT_PUBLIC_BUILD_YEAR: String(new Date().getFullYear()) },
   cacheComponents: true,
+  // The admin panel uploads the CV PDF (≤ 8 MB) through a server action.
+  experimental: { serverActions: { bodySizeLimit: "10mb" } },
   partialPrefetching: true,
   turbopack: {
     rules: {

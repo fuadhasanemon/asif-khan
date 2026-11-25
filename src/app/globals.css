@@ -1,7 +1,9 @@
 @import "tailwindcss";
 @import "../styles/site.css";
+@import "../styles/type.css";
 @import "../styles/shell.css";
 @import "../styles/motion.css";
+@import "../styles/admin.css";
 
 /* The site has no dark theme. `.on-ledger` marks Ledger-background regions instead. */
 @custom-variant dark (&:where(.__no-dark-theme, .__no-dark-theme *));
@@ -37,8 +39,9 @@
   --color-ph-bg: #f5ecd2;
   --color-ph-fg: #7a4e00;
 
-  --font-serif: var(--font-newsreader), Georgia, serif;
-  --font-sans: var(--font-public-sans), system-ui, sans-serif;
+  /* Names kept for the ported prototype CSS: --font-serif = headings, --font-sans = paragraphs and UI. */
+  --font-serif: var(--font-jetbrains), ui-monospace, Menlo, Consolas, monospace;
+  --font-sans: "SF Mono", SFMono-Regular, ui-monospace, var(--font-jetbrains), Menlo, Consolas, monospace;
   --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 
   --radius-btn: 3px;

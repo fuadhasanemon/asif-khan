@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { sections, site } from "@/lib/content"
+import { navItems, site } from "@/lib/content"
 
 import { MobileMenu } from "./MobileMenu"
 import { NavLinks } from "./NavLinks"
@@ -9,7 +9,7 @@ import { NavLinks } from "./NavLinks"
  * the reading-progress scrub is wired in the motion step.
  */
 export function SiteHeader() {
-  const nav = sections.nav.map((n) => ({ href: `/#${n.id}`, label: n.label, id: n.id }))
+  const nav = navItems.map((n) => ({ href: `/#${n.id}`, label: n.label, id: n.id }))
 
   return (
     <header className="nav on-ledger">

@@ -27,6 +27,8 @@ export default defineConfig({
   ],
   webServer: {
     command: `pnpm start -p ${PORT}`,
+    // Throwaway admin password for the admin e2e test (no storage is configured, so nothing can be saved).
+    env: { ADMIN_PASSWORD: "e2e-admin-password" },
     port: PORT,
     reuseExistingServer: !process.env.CI,
     timeout: 60_000,

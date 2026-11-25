@@ -1,4 +1,4 @@
-import { publications, sections, site } from "@/lib/content"
+import { navItems, publications, site } from "@/lib/content"
 import { ME } from "@/lib/schemas"
 import { BackToTop } from "@/components/site/BackToTop"
 import { CommandMenu } from "@/components/site/CommandMenu"
@@ -25,7 +25,7 @@ export default function SiteLayout({ children }: LayoutProps<"/">) {
       <Contact />
       <BackToTop />
       <CommandMenu
-        sections={sections.nav}
+        sections={navItems}
         publications={palettePublications}
         email={site.contact.email}
         cvPath={site.contact.cvPath}

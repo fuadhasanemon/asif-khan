@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next"
-import { Newsreader, Public_Sans } from "next/font/google"
+import { JetBrains_Mono } from "next/font/google"
 
 import { motionBootScript } from "@/lib/motion-boot"
 import { site } from "@/lib/content"
@@ -9,19 +9,17 @@ import { MotionRuntime } from "@/components/motion/MotionRuntime"
 import { SiteAnalytics } from "@/components/site/SiteAnalytics"
 import "./globals.css"
 
-const newsreader = Newsreader({
-  subsets: ["latin"],
-  axes: ["opsz"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-newsreader",
-})
-
-const publicSans = Public_Sans({
+/**
+ * Headings: JetBrains Mono (self-hosted). Paragraphs: SF Mono where the system
+ * has it (Apple platforms; Apple's licence does not allow serving it as a web
+ * font), falling back to the same JetBrains Mono so no second font downloads.
+ * See --font-serif / --font-sans in globals.css.
+ */
+const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
   style: ["normal", "italic"],
   display: "swap",
-  variable: "--font-public-sans",
+  variable: "--font-jetbrains",
 })
 
 export const metadata: Metadata = {
@@ -38,7 +36,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${newsreader.variable} ${publicSans.variable}`}
+      className={jetbrains.variable}
       suppressHydrationWarning
     >
       <head>
